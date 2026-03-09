@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-dark-800 text-white;
+}
+
+/* Improved accessibility focus styles */
+*:focus {
+  @apply outline-2 outline-offset-2 outline-gold-500;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gold-500 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gold-400;
+}
+
+/* Ensure text remains readable on all backgrounds */
+.text-contrast-safe {
+  @apply text-white;
+}
+
+/* Improved button accessibility */
+.btn-primary {
+  @apply bg-gold-500 text-dark-900 px-6 py-3 rounded-md font-medium 
+         hover:bg-gold-400 focus:ring-2 focus:ring-gold-500 focus:ring-offset-2 
+         focus:ring-offset-dark-800 transition-colors;
+}
+
+.btn-secondary {
+  @apply border-2 border-gold-500 text-gold-500 px-6 py-3 rounded-md font-medium 
+         hover:bg-gold-500 hover:text-dark-900 focus:ring-2 focus:ring-gold-500 
+         focus:ring-offset-2 focus:ring-offset-dark-800 transition-colors;
+}
