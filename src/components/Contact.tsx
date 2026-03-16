@@ -73,7 +73,7 @@ const Contact = () => {
                 Get Directions
               </a>
               <a
-                href="https://www.google.com/maps/place/Hair+Mechanics/@47.3073,-122.2285"
+                href="https://g.page/r/Cc2wjU_thhsrEAI/review"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center bg-amber-500 hover:bg-amber-400 text-gray-900 px-5 py-2.5 rounded-md text-sm font-medium transition-colors"

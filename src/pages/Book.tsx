@@ -78,6 +78,14 @@ const BookPage = () => {
             <Phone className="h-5 w-5 mr-2" />
             Call to Book: {PHONE_DISPLAY}
           </button>
+          <div className="mt-3">
+            <a
+              href="sms:+12063999288?body=Hi, I'd like to book a haircut at Hair Mechanics"
+              className="inline-flex items-center text-amber-500 hover:text-amber-400 font-medium text-lg"
+            >
+              💬 Or text us to book
+            </a>
+          </div>
           <div className="mt-4 flex items-center justify-center text-gray-400 text-sm space-x-4">
             <span className="flex items-center"><Clock className="h-4 w-4 mr-1" /> Open 7 days a week</span>
             <span className="flex items-center"><MapPin className="h-4 w-4 mr-1" /> Auburn, WA</span>
@@ -151,7 +159,7 @@ const BookPage = () => {
           </div>
           <div className="text-center mt-6">
             <a
-              href="https://www.google.com/maps/place/Hair+Mechanics/@47.3073,-122.2285"
+              href="https://g.page/r/Cc2wjU_thhsrEAI/review"
               target="_blank"
               rel="noopener noreferrer"
               className="text-amber-500 hover:text-amber-400 text-sm underline"
@@ -231,6 +239,14 @@ const BookPage = () => {
             <Phone className="h-5 w-5 mr-2" />
             {PHONE_DISPLAY}
           </button>
+          <div className="mt-3">
+            <a
+              href="sms:+12063999288?body=Hi, I'd like to book a haircut at Hair Mechanics"
+              className="text-gray-900 hover:text-gray-700 font-medium underline"
+            >
+              💬 Text us instead
+            </a>
+          </div>
         </div>
       </section>
 
