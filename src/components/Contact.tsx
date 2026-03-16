@@ -34,7 +34,7 @@ const Contact = () => {
             </div>
 
             <div className="flex space-x-4 mt-8">
-              <a href="https://instagram.com/hairmechanics" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-amber-500" aria-label="Follow us on Instagram">
+              <a href="https://www.instagram.com/hairmechanics1997" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-amber-500" aria-label="Follow us on Instagram">
                 <Instagram className="h-6 w-6" />
               </a>
               <a href="https://www.facebook.com/hairmechanics1997" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-amber-500" aria-label="Like us on Facebook">
