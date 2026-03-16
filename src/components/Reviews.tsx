@@ -3,19 +3,19 @@ import { Star } from 'lucide-react';
 
 const reviews = [
   {
-    name: "John Smith",
+    name: "Marcus T.",
     rating: 5,
-    text: "Best haircut I've ever had. The attention to detail is amazing.",
+    text: "Been coming here for over a year now. Always leave looking fresh. The vibe is chill and the cuts are clean every single time.",
   },
   {
-    name: "Mike Johnson",
+    name: "Ryan P.",
     rating: 5,
-    text: "Great atmosphere and even better service. Highly recommended!",
+    text: "Drove 30 minutes to get here and it's worth every mile. They actually listen to what you want and nail it.",
   },
   {
-    name: "David Wilson",
+    name: "Chris L.",
     rating: 5,
-    text: "Professional service and amazing results every time.",
+    text: "My go-to spot in Auburn. Walked in for a fade and beard trim, walked out feeling like a new man. Fair prices too.",
   },
 ];
 

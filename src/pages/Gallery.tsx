@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { useNavigate } from 'react-router-dom';
+import { useSEO } from '../utils/useSEO';
 
-// Get all haircut images from the assets folder
 const galleryImages = [
   "/assets/haircuts/cut_1-1.jpg",
   "/assets/haircuts/cut_1-2.jpg",
@@ -85,66 +84,120 @@ const galleryImages = [
 ];
 
 const GalleryPage = () => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const navigate = useNavigate();
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [visibleCount, setVisibleCount] = useState(12);
 
-  const handleNavigation = (sectionId: string) => {
-    navigate(`/#${sectionId}`);
-  };
+  useSEO({
+    title: 'Gallery | Hair Mechanics Barbershop Auburn, WA | Our Work',
+    description: 'Browse our portfolio of precision haircuts, fades, and beard work at Hair Mechanics in Auburn, WA. See real results from our expert barbers.',
+    canonical: 'https://hairmechanics.com/gallery',
+  });
+
+  const visibleImages = galleryImages.slice(0, visibleCount);
+  const hasMore = visibleCount < galleryImages.length;
+
+  useEffect(() => {
+    if (selectedIndex === null) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedIndex(null);
+      else if (e.key === 'ArrowRight' && selectedIndex < galleryImages.length - 1) setSelectedIndex(selectedIndex + 1);
+      else if (e.key === 'ArrowLeft' && selectedIndex > 0) setSelectedIndex(selectedIndex - 1);
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [selectedIndex]);
 
   return (
     <div className="min-h-screen bg-dark-800">
       <Navbar onBook={() => window.location.href = 'tel:+1-206-399-9288'} />
-      
       <main className="pt-24">
         <section className="py-12 bg-dark-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-4xl font-bold text-center mb-12">
               <span className="text-amber-500">Our Work</span>
             </h1>
-            
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {galleryImages.map((image, index) => (
-                <div 
+              {visibleImages.map((image, index) => (
+                <div
                   key={index}
                   className="group relative cursor-pointer overflow-hidden rounded-lg"
-                  onClick={() => setSelectedImage(image)}
+                  onClick={() => setSelectedIndex(index)}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`View haircut photo ${index + 1}`}
+                  onKeyDown={(e) => { if (e.key === 'Enter') setSelectedIndex(index); }}
                 >
-                  <img 
+                  <img
                     src={image}
-                    alt="Haircut example"
+                    alt={`Haircut style ${index + 1}`}
                     className="w-full h-80 object-cover transform transition-transform duration-300 group-hover:scale-105"
                     loading="lazy"
                   />
                 </div>
               ))}
             </div>
+            {hasMore && (
+              <div className="text-center mt-12">
+                <button
+                  onClick={() => setVisibleCount(prev => Math.min(prev + 12, galleryImages.length))}
+                  className="bg-amber-500 text-gray-900 px-8 py-3 rounded-md font-medium hover:bg-amber-400 transition-colors"
+                >
+                  Load More ({galleryImages.length - visibleCount} remaining)
+                </button>
+              </div>
+            )}
           </div>
         </section>
       </main>
 
-      {/* Lightbox */}
-      {selectedImage && (
-        <div 
+      {selectedIndex !== null && (
+        <div
           className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
+          onClick={() => setSelectedIndex(null)}
+          role="dialog"
+          aria-label="Image lightbox"
         >
-          <div className="relative max-w-6xl w-full">
-            <button 
-              className="absolute top-4 right-4 text-white hover:text-amber-500 transition-colors"
-              onClick={() => setSelectedImage(null)}
+          <div className="relative max-w-6xl w-full flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="absolute top-4 right-4 text-white hover:text-amber-500 transition-colors z-10"
+              onClick={() => setSelectedIndex(null)}
+              aria-label="Close lightbox"
             >
               <X className="h-8 w-8" />
             </button>
-            <img 
-              src={selectedImage}
-              alt="Haircut example"
+            {selectedIndex > 0 && (
+              <button
+                className="absolute left-2 text-white hover:text-amber-500 transition-colors z-10 bg-black/50 rounded-full p-2"
+                onClick={() => setSelectedIndex(selectedIndex - 1)}
+                aria-label="Previous image"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+              </button>
+            )}
+            <img
+              src={galleryImages[selectedIndex]}
+              alt={`Haircut style ${selectedIndex + 1}`}
               className="w-full h-auto max-h-[90vh] object-contain rounded-lg"
             />
+            {selectedIndex < galleryImages.length - 1 && (
+              <button
+                className="absolute right-2 text-white hover:text-amber-500 transition-colors z-10 bg-black/50 rounded-full p-2"
+                onClick={() => setSelectedIndex(selectedIndex + 1)}
+                aria-label="Next image"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+              </button>
+            )}
+            <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-sm">
+              {selectedIndex + 1} / {galleryImages.length} — Arrow keys to navigate, Esc to close
+            </p>
           </div>
         </div>
       )}
-
       <Footer />
     </div>
   );

@@ -3,8 +3,8 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import App from './App.tsx';
 import GalleryPage from './pages/Gallery.tsx';
-import BlogPage from './pages/Blog.tsx';
-import BlogPost from './pages/BlogPost.tsx';
+import BookPage from './pages/Book.tsx';
+import NotFound from './pages/NotFound.tsx';
 import './index.css';
 
 // Scroll restoration component
@@ -36,9 +36,9 @@ const AppWithScrollRestoration = () => {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/book" element={<BookPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
-        <Route path="/blog" element={<BlogPage />} />
-        <Route path="/blog/:slug" element={<BlogPost />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

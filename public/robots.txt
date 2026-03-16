@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /assets/haircuts/
+
+Sitemap: https://hairmechanics.com/sitemap.xml

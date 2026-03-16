@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, User, Clock, Tag } from 'lucide-react';
+import { Calendar, Clock } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -9,7 +9,7 @@ const blogPosts = [
     title: "Top 5 Men's Haircut Trends for 2025",
     excerpt: "Discover the hottest men's haircut styles that are dominating this year, from modern crops to classic fades with contemporary twists.",
     image: "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-    author: "James Wilson",
+    author: "Hair Mechanics",
     date: "April 15, 2025",
     readTime: "5 min read",
     tags: ["Trends", "Men's Styles", "Haircuts"],
@@ -20,55 +20,11 @@ const blogPosts = [
     title: "The Complete Guide to Beard Maintenance",
     excerpt: "Learn how to keep your beard looking its best with our comprehensive guide covering everything from washing to styling.",
     image: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-    author: "Michael Rodriguez",
+    author: "Hair Mechanics",
     date: "April 8, 2025",
     readTime: "7 min read",
     tags: ["Beard Care", "Grooming", "Maintenance"],
     slug: "complete-guide-to-beard-maintenance"
-  },
-  {
-    id: 3,
-    title: "How to Choose the Right Haircut for Your Face Shape",
-    excerpt: "Finding the perfect haircut for your face shape can make all the difference. We break down the best styles for every face shape.",
-    image: "https://images.unsplash.com/photo-1619625506362-608ea7e91054?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-    author: "David Chen",
-    date: "March 27, 2025",
-    readTime: "6 min read",
-    tags: ["Hair Guide", "Face Shapes", "Style Tips"],
-    slug: "haircut-for-your-face-shape"
-  },
-  {
-    id: 4,
-    title: "The Ultimate Hair Product Guide: Which One Is Right for You?",
-    excerpt: "Navigate the world of hair products with confidence. From pomades to clays, we help you find the perfect product for your style.",
-    image: "https://images.unsplash.com/photo-1581674210501-c760093514f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-    author: "James Wilson",
-    date: "March 18, 2025",
-    readTime: "8 min read",
-    tags: ["Products", "Styling", "Hair Care"],
-    slug: "ultimate-hair-product-guide"
-  },
-  {
-    id: 5,
-    title: "From Bowl Cuts to Buzz Cuts: The Evolution of Men's Hairstyles",
-    excerpt: "Take a journey through the decades and explore how men's hairstyles have evolved and the cultural influences behind them.",
-    image: "https://images.unsplash.com/photo-1593702288056-f17f118085d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-    author: "Michael Rodriguez",
-    date: "March 5, 2025",
-    readTime: "10 min read",
-    tags: ["History", "Hair Culture", "Trends"],
-    slug: "evolution-of-mens-hairstyles"
-  },
-  {
-    id: 6,
-    title: "5 Quick Fixes for Bad Hair Days",
-    excerpt: "Everyone has bad hair days, but with these simple tricks and tips, you can turn your hair situation around in minutes.",
-    image: "https://images.unsplash.com/photo-1586083702768-190ae093d34d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-    author: "David Chen",
-    date: "February 22, 2025",
-    readTime: "4 min read",
-    tags: ["Quick Tips", "Hair Care", "Styling"],
-    slug: "quick-fixes-for-bad-hair-days"
   }
 ];
 
@@ -129,8 +85,6 @@ const BlogPage = () => {
                     </p>
                     
                     <div className="flex items-center text-sm text-gray-500 mb-4">
-                      <User className="h-4 w-4 mr-1" />
-                      <span className="mr-4">{post.author}</span>
                       <Calendar className="h-4 w-4 mr-1" />
                       <span className="mr-4">{post.date}</span>
                       <Clock className="h-4 w-4 mr-1" />

@@ -19,11 +19,11 @@ const Hero = ({ onBook }: HeroProps) => {
       
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
-          <span className="block text-white">Welcome to</span>
-          <span className="block text-gold-500 mt-2">Hair Mechanics</span>
+          <span className="block text-white">Auburn's Favorite</span>
+          <span className="block text-gold-500 mt-2">Barber Shop</span>
         </h1>
         <p className="mt-6 text-xl sm:text-2xl max-w-lg mx-auto text-gray-300">
-          Where traditional craftsmanship meets modern style
+          Expert haircuts, clean fades, and beard trims — walk-ins welcome
         </p>
         <div className="mt-10 space-y-4">
           <button 

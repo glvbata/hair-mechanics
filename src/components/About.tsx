@@ -8,10 +8,10 @@ const About = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl font-bold">
-              <span className="text-amber-500">Why Choose Us</span>
+              <span className="text-amber-500">Auburn's Go-To Barber Shop</span>
             </h2>
             <p className="mt-4 text-gray-300 text-lg">
-              At Hair Mechanics, we're dedicated to providing you with more than just a haircut – we create an experience that leaves you looking and feeling your best.
+              Looking for a great haircut near Auburn? Hair Mechanics is more than just a barbershop — we're a neighborhood spot where you get expert cuts, clean fades, and quality beard work every time. Men, women, and kids welcome.
             </p>
             
             <div className="mt-8 space-y-6">

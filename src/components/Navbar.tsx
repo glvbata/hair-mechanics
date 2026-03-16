@@ -60,7 +60,6 @@ const Navbar = ({ onBook }: NavbarProps) => {
               Services
             </a>
             <Link to="/gallery" className="text-gray-300 hover:text-gold-500 transition-colors">Gallery</Link>
-            <Link to="/blog" className="text-gray-300 hover:text-gold-500 transition-colors">Blog</Link>
             <a 
               href="/#contact" 
               className="text-gray-300 hover:text-gold-500 transition-colors"
@@ -121,13 +120,6 @@ const Navbar = ({ onBook }: NavbarProps) => {
               onClick={() => setIsOpen(false)}
             >
               Gallery
-            </Link>
-            <Link 
-              to="/blog" 
-              className="block px-3 py-2 text-gray-300 hover:text-gold-500 hover:bg-dark-800 rounded-md"
-              onClick={() => setIsOpen(false)}
-            >
-              Blog
             </Link>
             <a 
               href="/#contact" 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Ruler } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 const services = [
   {
@@ -64,7 +64,7 @@ const Services = () => {
     <section id="services" className="py-24 bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold text-center mb-12">
-          <span className="text-amber-500">Services & Pricing</span>
+          <span className="text-amber-500">Haircut Services & Pricing</span>
         </h2>
         
         <div className="grid md:grid-cols-3 gap-8 mb-24">
@@ -110,7 +110,7 @@ const Services = () => {
                   onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
                 >
                   <span className="font-medium">{item.question}</span>
-                  <Ruler 
+                  <ChevronDown 
                     className={`h-5 w-5 text-amber-500 transform transition-transform ${
                       openFAQ === index ? 'rotate-180' : ''
                     }`}

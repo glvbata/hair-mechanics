@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Calendar, User, Clock, Tag, ArrowLeft, Share2, Facebook, Twitter } from 'lucide-react';
+import { Calendar, Clock, ArrowLeft, Share2, Facebook } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -9,9 +9,9 @@ const blogPostsData = {
     title: "Top 5 Men's Haircut Trends for 2025",
     excerpt: "Discover the hottest men's haircut styles that are dominating this year, from modern crops to classic fades with contemporary twists.",
     image: "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-    author: "James Wilson",
-    authorRole: "Master Barber",
-    authorImage: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    author: "Hair Mechanics",
+    authorRole: "Auburn's Premier Barbershop",
+    authorImage: "/assets/Logo.png",
     date: "April 15, 2025",
     readTime: "5 min read",
     tags: ["Trends", "Men's Styles", "Haircuts"],
@@ -62,9 +62,9 @@ const blogPostsData = {
     title: "The Complete Guide to Beard Maintenance",
     excerpt: "Learn how to keep your beard looking its best with our comprehensive guide covering everything from washing to styling.",
     image: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
-    author: "Michael Rodriguez",
-    authorRole: "Style Specialist",
-    authorImage: "https://images.unsplash.com/photo-1582893561942-d61adcb2e534?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+    author: "Hair Mechanics",
+    authorRole: "Auburn's Premier Barbershop",
+    authorImage: "/assets/Logo.png",
     date: "April 8, 2025",
     readTime: "7 min read",
     tags: ["Beard Care", "Grooming", "Maintenance"],
