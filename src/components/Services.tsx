@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 
 const services = [
@@ -7,30 +8,35 @@ const services = [
     price: "$40",
     description: "Precision haircut with styling",
     includes: ["Consultation", "Precision Cut", "Style"],
+    link: "/services/haircut",
   },
   {
     title: "Haircut & Beard",
     price: "$50",
     description: "Complete grooming experience",
     includes: ["Haircut", "Beard Trim & Shape", "Line Up", "Style"],
+    link: "/services/beard-trim",
   },
   {
     title: "Kids Cut",
     price: "$35",
     description: "Ages 12 and under",
     includes: ["Consultation", "Cut", "Style"],
+    link: "/services/kids-cut",
   },
   {
     title: "Women's Cut",
     price: "$35",
     description: "Precision cut for women",
     includes: ["Consultation", "Cut", "Style"],
+    link: "/services/womens-cut",
   },
   {
     title: "Line Up",
     price: "$20",
     description: "Quick touch-up between cuts",
     includes: ["Neck Trim", "Line Up", "Light Styling"],
+    link: "/services/line-up",
   }
 ];
 
@@ -90,6 +96,9 @@ const Services = () => {
                   </li>
                 ))}
               </ul>
+              <Link to={service.link} className="inline-block mt-4 text-amber-500 hover:text-amber-400 text-sm font-medium transition-colors">
+                Learn more →
+              </Link>
             </div>
           ))}
         </div>
