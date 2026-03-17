@@ -3,19 +3,14 @@ import { Star } from 'lucide-react';
 
 const reviews = [
   {
-    name: "Marcus T.",
+    name: "Ricky M.",
     rating: 5,
-    text: "Been coming here for over a year now. Always leave looking fresh. The vibe is chill and the cuts are clean every single time.",
+    text: "I've been bouncing around looking for someone who can really cut my hair and do a really good job. Glen, the owner, is absolutely amazing with what he does. He really puts a lot of effort into making sure that you like what he's doing. The place is nice, clean, and roomy!",
   },
   {
-    name: "Ryan P.",
+    name: "khon meckdara",
     rating: 5,
-    text: "Drove 30 minutes to get here and it's worth every mile. They actually listen to what you want and nail it.",
-  },
-  {
-    name: "Chris L.",
-    rating: 5,
-    text: "My go-to spot in Auburn. Walked in for a fade and beard trim, walked out feeling like a new man. Fair prices too.",
+    text: "Glen is a great barber, he's been cutting my hair for years. The shop is very modern and clean. I'm glad that I found a barber that can cut my type of hair.",
   },
 ];
 
@@ -23,11 +18,12 @@ const Reviews = () => {
   return (
     <section id="reviews" className="py-24 bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center mb-12">
+        <h2 className="text-3xl font-bold text-center mb-4">
           <span className="text-amber-500">Client Reviews</span>
         </h2>
+        <p className="text-center text-gray-400 mb-10">4.5 out of 5 stars — 83 reviews on Google</p>
         
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {reviews.map((review, index) => (
             <div key={index} className="bg-gray-800 p-6 rounded-lg">
               <div className="flex mb-4">

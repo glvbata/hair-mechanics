@@ -25,9 +25,8 @@ const services = [
 ];
 
 const reviews = [
-  { name: 'Marcus T.', text: 'Been coming here for over a year now. Always leave looking fresh. The vibe is chill and the cuts are clean every single time.' },
-  { name: 'Ryan P.', text: "Drove 30 minutes to get here and it's worth every mile. They actually listen to what you want and nail it." },
-  { name: 'Chris L.', text: 'My go-to spot in Auburn. Walked in for a fade and beard trim, walked out feeling like a new man. Fair prices too.' },
+  { name: 'Ricky M.', text: "I've been bouncing around looking for someone who can really cut my hair and do a really good job. Glen, the owner, is absolutely amazing with what he does. He really puts a lot of effort into making sure that you like what he's doing. The place is nice, clean, and roomy!" },
+  { name: 'khon meckdara', text: "Glen is a great barber, he's been cutting my hair for years. The shop is very modern and clean. I'm glad that I found a barber that can cut my type of hair." },
 ];
 
 const BookPage = () => {
@@ -214,7 +213,7 @@ const BookPage = () => {
             <div className="rounded-lg overflow-hidden h-64 sm:h-auto">
               <iframe
                 title="Hair Mechanics Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2706.5!2d-122.2285!3d47.3073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDE4JzI2LjMiTiAxMjLCsDEzJzQyLjYiVw!5e0!3m2!1sen!2sus!4v1"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2706.5!2d-122.2289829!3d47.3190759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490597faf9a7db9%3A0x2b1b86ed4f8db0cd!2sHair%20Mechanics%20LLC!5e0!3m2!1sen!2sus!4v1"
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: '250px' }}
