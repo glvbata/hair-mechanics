@@ -58,16 +58,31 @@ const FAQ = [
     answer: "Yes, we have free parking available at the side of the shop and additional street parking nearby."
   },
   {
-    question: "What COVID-19 safety measures do you have in place?",
-    answer: "We follow all local health guidelines, sanitize stations between clients, and maintain high cleanliness standards."
+    question: "Is the shop wheelchair accessible?",
+    answer: "Yes! We have a wheelchair accessible entrance and parking lot. A restroom is also available on-site."
   }
 ];
 
 const Services = () => {
   const [openFAQ, setOpenFAQ] = React.useState<number | null>(null);
 
+  // FAQ Schema for Google rich results
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": FAQ.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
+
   return (
     <section id="services" className="py-24 bg-gray-900">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold text-center mb-12">
           <span className="text-amber-500">Haircut Services & Pricing</span>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Award, Clock, Scissors, Users } from 'lucide-react';
+import { Award, Clock, Scissors, Users, Accessibility } from 'lucide-react';
 
 const About = () => {
   return (
@@ -52,6 +52,16 @@ const About = () => {
                 <div className="ml-4">
                   <h3 className="text-lg font-medium">Community Focus</h3>
                   <p className="mt-1 text-gray-400">Proudly serving Auburn and surrounding communities with personalized attention to every client.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <div className="flex-shrink-0 bg-amber-500 rounded-md p-2">
+                  <Accessibility className="h-6 w-6 text-gray-900" />
+                </div>
+                <div className="ml-4">
+                  <h3 className="text-lg font-medium">Wheelchair Accessible</h3>
+                  <p className="mt-1 text-gray-400">Wheelchair accessible entrance and parking lot. Restroom available on-site.</p>
                 </div>
               </div>
             </div>

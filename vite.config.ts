@@ -17,5 +17,12 @@ export default defineConfig({
   build: {
     assetsDir: 'assets',
     copyPublicDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+        },
+      },
+    },
   },
 });
