@@ -1,5 +1,6 @@
 import React from 'react';
 import { MapPin, Phone, Mail, Clock, Instagram, Facebook } from 'lucide-react';
+import { trackDirectionsClick, trackReviewClick } from '../utils/analytics';
 
 const Contact = () => {
   return (
@@ -68,6 +69,7 @@ const Contact = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center bg-gray-700 hover:bg-gray-600 text-white px-5 py-2.5 rounded-md text-sm font-medium transition-colors"
+                onClick={trackDirectionsClick}
               >
                 <MapPin className="h-4 w-4 mr-2" />
                 Get Directions
@@ -77,6 +79,7 @@ const Contact = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center bg-amber-500 hover:bg-amber-400 text-gray-900 px-5 py-2.5 rounded-md text-sm font-medium transition-colors"
+                onClick={trackReviewClick}
               >
                 ⭐ Leave Us a Review
               </a>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { X, Phone } from 'lucide-react';
 import PageLayout from '../components/PageLayout';
+import { trackGalleryView } from '../utils/analytics';
 
 const galleryImages = [
   "/assets/haircuts/cut_1-1.jpg",
@@ -140,11 +141,11 @@ const GalleryPage = () => {
               <div
                 key={image}
                 className="break-inside-avoid mb-2 sm:mb-3 group cursor-pointer relative overflow-hidden rounded-xl"
-                onClick={() => setSelectedIndex(index)}
+                onClick={() => { setSelectedIndex(index); trackGalleryView(index); }}
                 role="button"
                 tabIndex={0}
                 aria-label={`View haircut photo ${index + 1}`}
-                onKeyDown={(e) => { if (e.key === 'Enter') setSelectedIndex(index); }}
+                onKeyDown={(e) => { if (e.key === 'Enter') { setSelectedIndex(index); trackGalleryView(index); } }}
               >
                 <img
                   src={image}

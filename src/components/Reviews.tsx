@@ -1,5 +1,6 @@
 import React from 'react';
 import { Star } from 'lucide-react';
+import { trackReviewClick } from '../utils/analytics';
 
 const reviews = [
   {
@@ -43,11 +44,12 @@ const Reviews = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-amber-500 text-gray-900 px-6 py-3 rounded-md font-medium hover:bg-amber-400 transition-colors"
+            onClick={trackReviewClick}
           >
             ⭐ Leave Us a Review on Google
           </a>
           <p className="text-gray-500 text-sm">
-            <a href="https://g.page/r/Cc2wjU_thhsrEAI/review" target="_blank" rel="noopener noreferrer" className="hover:text-amber-500 transition-colors underline">
+            <a href="https://g.page/r/Cc2wjU_thhsrEAI/review" target="_blank" rel="noopener noreferrer" className="hover:text-amber-500 transition-colors underline" onClick={trackReviewClick}>
               See all reviews on Google
             </a>
           </p>

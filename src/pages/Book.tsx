@@ -1,5 +1,6 @@
 import { Phone, MapPin, Clock, Star, CheckCircle } from 'lucide-react';
 import { useSEO } from '../utils/useSEO';
+import { trackSMSClick, trackReviewClick } from '../utils/analytics';
 
 const PHONE_NUMBER = '+1-206-399-9288';
 const PHONE_DISPLAY = '(206) 399-9288';
@@ -80,6 +81,7 @@ const BookPage = () => {
           <div className="mt-3">
             <a
               href="sms:+12063999288?body=Hi, I'd like to book a haircut at Hair Mechanics"
+              onClick={trackSMSClick}
               className="inline-flex items-center text-amber-500 hover:text-amber-400 font-medium text-lg"
             >
               💬 Or text us to book
@@ -162,6 +164,7 @@ const BookPage = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="text-amber-500 hover:text-amber-400 text-sm underline"
+              onClick={trackReviewClick}
             >
               See all reviews on Google
             </a>
@@ -241,6 +244,7 @@ const BookPage = () => {
           <div className="mt-3">
             <a
               href="sms:+12063999288?body=Hi, I'd like to book a haircut at Hair Mechanics"
+              onClick={trackSMSClick}
               className="text-gray-900 hover:text-gray-700 font-medium underline"
             >
               💬 Text us instead

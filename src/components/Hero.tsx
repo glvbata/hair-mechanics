@@ -1,5 +1,6 @@
 import React from 'react';
 import { Phone } from 'lucide-react';
+import { trackSMSClick } from '../utils/analytics';
 
 interface HeroProps {
   onBook: () => void;
@@ -37,6 +38,7 @@ const Hero = ({ onBook }: HeroProps) => {
             </button>
             <a
               href="sms:+12063999288?body=Hi, I'd like to book a haircut at Hair Mechanics"
+              onClick={trackSMSClick}
               className="border-2 border-gold-500 text-gold-500 px-6 py-3 rounded-md font-medium hover:bg-gold-500 hover:text-dark-900 transition-colors text-lg inline-flex items-center justify-center"
             >
               💬 Text to Book
