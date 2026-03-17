@@ -43,8 +43,8 @@ const SumnerPage = () => (
         <h2 className="text-2xl font-bold text-amber-500 text-center mb-10">Why Sumner Residents Choose Us</h2>
         <div className="grid sm:grid-cols-2 gap-6">
           {[
-            { icon: MapPin, title: 'Close to Sumner', desc: 'Located at 1251 A St, Auburn — quick drive via WA-167.' },
-            { icon: Star, title: '5.0 Google Rating', desc: 'Trusted by clients from Sumner, Auburn, and the valley.' },
+            { icon: MapPin, title: 'Close to Sumner', desc: 'Located at 1251 A Street NE, Auburn — quick drive via WA-167.' },
+            { icon: Star, title: '4.5 Google Rating', desc: 'Trusted by clients from Sumner, Auburn, and the valley — 83 reviews.' },
             { icon: Clock, title: 'Open 7 Days', desc: 'Mon–Fri 10am–8pm, Sat–Sun 8am–8pm.' },
             { icon: Phone, title: 'Walk-ins Welcome', desc: 'No appointment needed — call, text, or just show up.' },
           ].map((item, i) => (

@@ -13,7 +13,7 @@ const Footer = () => {
               <span className="ml-3 text-xl font-bold tracking-wider text-white">HAIR MECHANICS</span>
             </div>
             <p className="text-gray-400 text-sm">Auburn's favorite barber shop.</p>
-            <p className="text-gray-500 text-xs mt-1">1251 A St, Auburn, WA 98001</p>
+            <p className="text-gray-500 text-xs mt-1">1251 A Street NE, Auburn, WA 98002</p>
           </div>
 
           {/* Services */}

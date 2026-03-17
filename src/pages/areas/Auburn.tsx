@@ -61,9 +61,9 @@ const AuburnPage = () => (
         <h2 className="text-2xl font-bold text-amber-500 text-center mb-10">Why Auburn Chooses Hair Mechanics</h2>
         <div className="grid sm:grid-cols-2 gap-6">
           {[
-            { icon: Star, title: '5.0 Google Rating', desc: 'Consistently top-rated by Auburn locals.' },
+            { icon: Star, title: '4.5 Google Rating', desc: 'Consistently top-rated by Auburn locals — 83 reviews.' },
             { icon: Clock, title: 'Open 7 Days', desc: 'Mon–Fri 10am–8pm, Sat–Sun 8am–8pm.' },
-            { icon: MapPin, title: 'Central Auburn Location', desc: '1251 A St, Auburn, WA 98001 — free parking.' },
+            { icon: MapPin, title: 'Central Auburn Location', desc: '1251 A Street NE, Auburn, WA 98002 — free parking.' },
             { icon: Phone, title: 'Walk-ins Welcome', desc: 'No appointment needed. Call or just stop by.' },
           ].map((item, i) => (
             <div key={i} className="bg-gray-800 p-6 rounded-lg flex items-start">

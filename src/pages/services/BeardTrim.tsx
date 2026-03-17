@@ -61,7 +61,7 @@ const BeardTrimPage = () => (
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
           {[
             { label: 'Years Experience', value: '5+' },
-            { label: 'Google Rating', value: '5.0 ★' },
+            { label: 'Google Rating', value: '4.5 ★' },
             { label: 'Walk-ins Welcome', value: '✓' },
             { label: 'Open 7 Days', value: '✓' },
           ].map((s, i) => (

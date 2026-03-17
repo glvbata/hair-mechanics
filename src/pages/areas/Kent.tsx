@@ -43,8 +43,8 @@ const KentPage = () => (
         <h2 className="text-2xl font-bold text-amber-500 text-center mb-10">Why Kent Residents Choose Hair Mechanics</h2>
         <div className="grid sm:grid-cols-2 gap-6">
           {[
-            { icon: MapPin, title: 'Minutes from Kent', desc: 'Located at 1251 A St, Auburn — quick drive via WA-167 or city streets.' },
-            { icon: Star, title: '5.0 Google Rating', desc: 'Top-rated by clients from Kent, Auburn, and surrounding areas.' },
+            { icon: MapPin, title: 'Minutes from Kent', desc: 'Located at 1251 A Street NE, Auburn — quick drive via WA-167 or city streets.' },
+            { icon: Star, title: '4.5 Google Rating', desc: 'Top-rated by clients from Kent, Auburn, and surrounding areas — 83 reviews.' },
             { icon: Clock, title: 'Open 7 Days', desc: 'Mon–Fri 10am–8pm, Sat–Sun 8am–8pm. Walk-ins always welcome.' },
             { icon: Phone, title: 'Easy Booking', desc: 'Call, text, or just walk in — no appointment needed.' },
           ].map((item, i) => (

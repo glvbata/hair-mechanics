@@ -100,7 +100,7 @@ const BookPage = () => {
             {[
               { label: 'Years in Business', value: '5+' },
               { label: 'Happy Clients', value: '2K+' },
-              { label: 'Google Rating', value: '5.0 ★' },
+              { label: 'Google Rating', value: '4.5 ★' },
               { label: 'Open 7 Days', value: '✓' },
             ].map((stat, i) => (
               <div key={i}>
@@ -181,8 +181,8 @@ const BookPage = () => {
               <div className="flex items-start">
                 <MapPin className="h-5 w-5 text-amber-500 mr-3 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="font-medium">1251 A St</p>
-                  <p className="text-gray-400">Auburn, WA 98001</p>
+                  <p className="font-medium">1251 A Street NE</p>
+                  <p className="text-gray-400">Auburn, WA 98002</p>
                 </div>
               </div>
               <div className="flex items-start">

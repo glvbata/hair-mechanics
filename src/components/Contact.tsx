@@ -14,7 +14,7 @@ const Contact = () => {
             <div className="space-y-6">
               <div className="flex items-center">
                 <MapPin className="h-6 w-6 text-amber-500 mr-4" />
-                <p itemProp="address">1251 A St, Auburn, WA 98001, United States</p>
+                <p itemProp="address">1251 A Street NE, Auburn, WA 98002, United States</p>
               </div>
               <div className="flex items-center">
                 <Phone className="h-6 w-6 text-amber-500 mr-4" />
