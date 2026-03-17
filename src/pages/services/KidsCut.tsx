@@ -1,4 +1,5 @@
 import PageLayout from '../../components/PageLayout';
+import ServiceSchema from '../../components/ServiceSchema';
 import { Phone } from 'lucide-react';
 
 const handleCall = () => {
@@ -18,6 +19,7 @@ const KidsCutPage = () => (
     description="Affordable kids haircuts at Hair Mechanics in Auburn, WA. Patient barbers, fun atmosphere. Ages 12 and under just $35. Walk-ins welcome. Call (206) 399-9288."
     canonical="https://hairmechanics.com/services/kids-cut"
   >
+    <ServiceSchema name="Kids Haircut" description="Affordable kids haircuts for ages 12 and under at Hair Mechanics in Auburn, WA." price="35.00" url="https://hairmechanics.com/services/kids-cut" />
     <section className="relative py-20 sm:py-28">
       <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/assets/HeroImage.jpg")' }}>
         <div className="absolute inset-0 bg-dark-900/85"></div>

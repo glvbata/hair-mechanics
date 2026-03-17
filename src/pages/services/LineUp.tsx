@@ -1,4 +1,5 @@
 import PageLayout from '../../components/PageLayout';
+import ServiceSchema from '../../components/ServiceSchema';
 import { Phone } from 'lucide-react';
 
 const handleCall = () => {
@@ -18,6 +19,7 @@ const LineUpPage = () => (
     description="Quick line up and edge up at Hair Mechanics in Auburn, WA. Clean hairline, neck trim, light styling — just $20. Walk-ins welcome. Call (206) 399-9288."
     canonical="https://hairmechanics.com/services/line-up"
   >
+    <ServiceSchema name="Line Up & Edge Up" description="Quick line up and edge up with neck trim and light styling at Hair Mechanics in Auburn, WA." price="20.00" url="https://hairmechanics.com/services/line-up" />
     <section className="relative py-20 sm:py-28">
       <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/assets/HeroImage.jpg")' }}>
         <div className="absolute inset-0 bg-dark-900/85"></div>

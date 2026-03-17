@@ -17,7 +17,7 @@ body {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -25,11 +25,20 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gold-500 rounded-full;
+  @apply bg-gold-500/60 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gold-400;
+  @apply bg-gold-500;
+}
+
+/* Hide scrollbar for filter bars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Ensure text remains readable on all backgrounds */
@@ -39,13 +48,13 @@ body {
 
 /* Improved button accessibility */
 .btn-primary {
-  @apply bg-gold-500 text-dark-900 px-6 py-3 rounded-md font-medium 
+  @apply bg-gold-500 text-dark-900 px-6 py-3 rounded-full font-medium 
          hover:bg-gold-400 focus:ring-2 focus:ring-gold-500 focus:ring-offset-2 
-         focus:ring-offset-dark-800 transition-colors;
+         focus:ring-offset-dark-800 transition-all hover:shadow-lg hover:shadow-gold-500/20;
 }
 
 .btn-secondary {
-  @apply border-2 border-gold-500 text-gold-500 px-6 py-3 rounded-md font-medium 
+  @apply border-2 border-gold-500 text-gold-500 px-6 py-3 rounded-full font-medium 
          hover:bg-gold-500 hover:text-dark-900 focus:ring-2 focus:ring-gold-500 
-         focus:ring-offset-2 focus:ring-offset-dark-800 transition-colors;
+         focus:ring-offset-2 focus:ring-offset-dark-800 transition-all;
 }

@@ -1,4 +1,5 @@
 import PageLayout from '../../components/PageLayout';
+import ServiceSchema from '../../components/ServiceSchema';
 import { Phone } from 'lucide-react';
 
 const handleCall = () => {
@@ -18,6 +19,7 @@ const FadePage = () => (
     description="Get a precision fade haircut at Hair Mechanics in Auburn, WA. Skin fades, mid fades, taper fades — expert barbers, walk-ins welcome. Call (206) 399-9288."
     canonical="https://hairmechanics.com/services/fade"
   >
+    <ServiceSchema name="Fade Haircut" description="Precision fade haircut including skin fades, mid fades, and taper fades with consultation and styling." price="40.00" url="https://hairmechanics.com/services/fade" />
     {/* Hero */}
     <section className="relative py-20 sm:py-28">
       <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/assets/HeroImage.jpg")' }}>
