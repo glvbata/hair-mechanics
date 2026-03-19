@@ -15,7 +15,7 @@ const ServiceSchema = ({ name, description, price, url }: ServiceSchemaProps) =>
         "name": name,
         "description": description,
         "provider": {
-          "@type": "HairSalon",
+          "@type": "BarberShop",
           "name": "Hair Mechanics LLC",
           "address": {
             "@type": "PostalAddress",
