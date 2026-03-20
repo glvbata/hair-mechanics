@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Phone, Instagram, Facebook } from 'lucide-react';
+import { trackSocialClick } from '../utils/analytics';
 
 const Footer = () => {
   return (
@@ -14,6 +16,23 @@ const Footer = () => {
             </div>
             <p className="text-gray-400 text-sm">Auburn's favorite barber shop.</p>
             <p className="text-gray-500 text-xs mt-1">1251 A Street NE, Auburn, WA 98002</p>
+            <a href="tel:+1-206-399-9288" className="text-amber-500 hover:text-amber-400 text-sm mt-2 inline-flex items-center">
+              <Phone className="h-3.5 w-3.5 mr-1.5" /> (206) 399-9288
+            </a>
+            <div className="flex space-x-3 mt-3">
+              <a href="https://www.instagram.com/hairmechanics1997" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-amber-500 transition-colors" aria-label="Instagram" onClick={() => trackSocialClick('instagram')}>
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a href="https://www.facebook.com/hairmechanics1997" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-amber-500 transition-colors" aria-label="Facebook" onClick={() => trackSocialClick('facebook')}>
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a href="https://www.tiktok.com/@glencelestial" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-amber-500 transition-colors" aria-label="TikTok" onClick={() => trackSocialClick('tiktok')}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M15 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/><path d="M15 8v8a4 4 0 0 1-4 4"/><line x1="15" y1="4" x2="15" y2="12"/></svg>
+              </a>
+              <a href="https://www.google.com/maps/place/Hair+Mechanics+LLC" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-amber-500 transition-colors" aria-label="Google Business Profile" onClick={() => trackSocialClick('google')}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+              </a>
+            </div>
           </div>
 
           {/* Services */}

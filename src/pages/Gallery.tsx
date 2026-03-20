@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { X, Phone } from 'lucide-react';
 import PageLayout from '../components/PageLayout';
-import { trackGalleryView } from '../utils/analytics';
+import { trackGalleryView, handleCall } from '../utils/analytics';
 
 const galleryImages = [
   "/assets/haircuts/cut_1-1.jpg",
@@ -104,16 +104,6 @@ const GalleryPage = () => {
     };
   }, [selectedIndex]);
 
-  const handleCall = () => {
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'conversion', {
-        send_to: 'AW-17956338356/ONVqCLjl6IgcELT1n_JC',
-        value: 1.0, currency: 'USD',
-      });
-    }
-    window.location.href = 'tel:+1-206-399-9288';
-  };
-
   return (
     <PageLayout
       title="Gallery | Hair Mechanics Barbershop Auburn, WA | Our Work"
@@ -152,6 +142,7 @@ const GalleryPage = () => {
                   alt={`Haircut by Hair Mechanics ${index + 1}`}
                   className="w-full h-auto block transform transition-all duration-700 group-hover:scale-105"
                   loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>

@@ -92,11 +92,12 @@ Targeting: auburn hair, barber, haircut near me, barbershop, barber shop, hair s
 ### GA4 Custom Events (`src/utils/analytics.ts`)
 | Event Name | Trigger | Where |
 |------------|---------|-------|
+| `phone_call` | User taps any "Call" button | All pages (centralized via analytics.ts) |
 | `sms_click` | User taps "Text to Book" | Hero, Book page |
 | `get_directions` | User clicks "Get Directions" | Contact section |
 | `review_click` | User clicks any review/leave-review link | Reviews, Contact, Book |
 | `gallery_image_view` | User opens a photo in lightbox | Gallery |
-| `phone_call` | (available, not yet wired) | — |
+| `social_click` | User clicks a social media link | Footer |
 
 ### Google Ads
 - **Tag ID:** `AW-17956338356`
@@ -158,8 +159,7 @@ src/
 
 ### Should do soon
 - [ ] **Google Search Console** — verify hairmechanics.com and submit sitemap
-- [ ] **GA4 conversions** — mark `sms_click`, `review_click`, `phone_call` as conversions in GA4 dashboard
-- [ ] **Wire `trackPhoneCall`** — the helper exists in analytics.ts but isn't called on phone links yet (Google Ads conversion fires instead; could add both)
+- [ ] **GA4 conversions** — mark `sms_click`, `review_click`, `phone_call`, `social_click` as conversions in GA4 dashboard
 - [ ] **Rich Results Test** — run https://search.google.com/test/rich-results on hairmechanics.com to validate structured data
 
 ### When ready
@@ -169,9 +169,6 @@ src/
 - [ ] **More Google reviews** — add more real reviews to the Reviews component as they come in
 
 ### Nice to have
-- [ ] **Google Business Profile link** — add direct link to GBP in footer or contact
-- [ ] **Schema: Review snippets** — add individual Review schema markup for the displayed reviews
 - [ ] **Image optimization** — convert gallery JPGs to WebP with `<picture>` fallbacks
-- [ ] **Lazy load map iframe** — defer Google Maps iframe load until section is in viewport
 - [ ] **A/B test CTAs** — test "Call Now" vs "Book Now" copy with GA4 events
 - [ ] **Email signup / promotions** — capture leads for repeat business

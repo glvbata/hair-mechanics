@@ -16,8 +16,27 @@ const reviews = [
 ];
 
 const Reviews = () => {
+  const reviewSchema = {
+    "@context": "https://schema.org",
+    "@type": "BarberShop",
+    "name": "Hair Mechanics LLC",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.5",
+      "reviewCount": "83",
+      "bestRating": "5"
+    },
+    "review": reviews.map(r => ({
+      "@type": "Review",
+      "author": { "@type": "Person", "name": r.name },
+      "reviewRating": { "@type": "Rating", "ratingValue": String(r.rating), "bestRating": "5" },
+      "reviewBody": r.text
+    }))
+  };
+
   return (
     <section id="reviews" className="py-24 bg-gray-900">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold text-center mb-4">
           <span className="text-amber-500">Client Reviews</span>

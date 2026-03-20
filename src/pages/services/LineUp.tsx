@@ -1,17 +1,7 @@
 import PageLayout from '../../components/PageLayout';
 import ServiceSchema from '../../components/ServiceSchema';
 import { Phone } from 'lucide-react';
-
-const handleCall = () => {
-  if (typeof window.gtag === 'function') {
-    window.gtag('event', 'conversion', {
-      send_to: 'AW-17956338356/ONVqCLjl6IgcELT1n_JC',
-      value: 1.0,
-      currency: 'USD',
-    });
-  }
-  window.location.href = 'tel:+1-206-399-9288';
-};
+import { handleCall } from '../../utils/analytics';
 
 const LineUpPage = () => (
   <PageLayout

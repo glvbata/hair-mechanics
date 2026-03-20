@@ -1,21 +1,8 @@
 import { Phone, MapPin, Clock, Star, CheckCircle } from 'lucide-react';
 import { useSEO } from '../utils/useSEO';
-import { trackSMSClick, trackReviewClick } from '../utils/analytics';
+import { trackSMSClick, trackReviewClick, handleCall } from '../utils/analytics';
 
-const PHONE_NUMBER = '+1-206-399-9288';
 const PHONE_DISPLAY = '(206) 399-9288';
-
-const handleCall = () => {
-  // Fire Google Ads click-to-call conversion
-  if (typeof window.gtag === 'function') {
-    window.gtag('event', 'conversion', {
-      send_to: 'AW-17956338356/ONVqCLjl6IgcELT1n_JC',
-      value: 1.0,
-      currency: 'USD',
-    });
-  }
-  window.location.href = `tel:${PHONE_NUMBER}`;
-};
 
 const services = [
   { name: 'Haircut', price: '$40' },
@@ -189,7 +176,7 @@ const BookPage = () => {
               </div>
               <div className="flex items-start">
                 <Phone className="h-5 w-5 text-amber-500 mr-3 mt-0.5 flex-shrink-0" />
-                <a href={`tel:${PHONE_NUMBER}`} className="hover:text-amber-500 transition-colors">{PHONE_DISPLAY}</a>
+                <a href={`tel:+1-206-399-9288`} className="hover:text-amber-500 transition-colors">{PHONE_DISPLAY}</a>
               </div>
               <div className="flex items-start">
                 <Clock className="h-5 w-5 text-amber-500 mr-3 mt-0.5 flex-shrink-0" />
