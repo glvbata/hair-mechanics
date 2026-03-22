@@ -6,7 +6,7 @@ const BarberPage = () => (
   <PageLayout
     title="Meet Your Barber | Hair Mechanics Auburn WA"
     description="Meet the barber behind Hair Mechanics in Auburn, WA. Years of experience, a passion for the craft, and a commitment to making every client look their best."
-    canonical="https://hairmechanics.com/barber"
+    canonical="https://hairmechanics.net/barber"
   >
     {/* Hero */}
     <section className="relative py-20 sm:py-28">

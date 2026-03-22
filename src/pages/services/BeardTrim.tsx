@@ -7,9 +7,9 @@ const BeardTrimPage = () => (
   <PageLayout
     title="Beard Trim & Shaping Auburn WA | Hair Mechanics Barber Shop"
     description="Professional beard trims and shaping at Hair Mechanics in Auburn, WA. Clean lines, hot towel finish. Included with haircut & beard combo ($50). Call (206) 399-9288."
-    canonical="https://hairmechanics.com/services/beard-trim"
+    canonical="https://hairmechanics.net/services/beard-trim"
   >
-    <ServiceSchema name="Beard Trim & Shaping" description="Professional beard trim and shaping included with haircut and beard combo service." price="50.00" url="https://hairmechanics.com/services/beard-trim" />
+    <ServiceSchema name="Beard Trim & Shaping" description="Professional beard trim and shaping included with haircut and beard combo service." price="50.00" url="https://hairmechanics.net/services/beard-trim" />
     <section className="relative py-20 sm:py-28">
       <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/assets/HeroImage.jpg")' }}>
         <div className="absolute inset-0 bg-dark-900/85"></div>

@@ -7,9 +7,8 @@ const PHONE_DISPLAY = '(206) 399-9288';
 const services = [
   { name: 'Haircut', price: '$40' },
   { name: 'Haircut & Beard', price: '$50' },
-  { name: "Women's Cut", price: '$35' },
   { name: 'Kids Cut (12 & under)', price: '$35' },
-  { name: 'Line Up', price: '$20' },
+  { name: 'Line Up / Trim', price: '$20' },
 ];
 
 const reviews = [
@@ -21,7 +20,7 @@ const BookPage = () => {
   useSEO({
     title: 'Book a Haircut | Hair Mechanics Barber Shop Auburn, WA | (206) 399-9288',
     description: 'Book your haircut at Hair Mechanics, Auburn\'s top barber shop. Walk-ins welcome. Haircuts, fades, beard trims for men, women, and kids. Open 7 days. Call (206) 399-9288.',
-    canonical: 'https://hairmechanics.com/book',
+    canonical: 'https://hairmechanics.net/book',
   });
 
   return (

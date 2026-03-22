@@ -5,18 +5,18 @@ import { handleCall } from '../../utils/analytics';
 
 const LineUpPage = () => (
   <PageLayout
-    title="Line Up & Edge Up Auburn WA | $20 Quick Touch-Up | Hair Mechanics"
-    description="Quick line up and edge up at Hair Mechanics in Auburn, WA. Clean hairline, neck trim, light styling — just $20. Walk-ins welcome. Call (206) 399-9288."
-    canonical="https://hairmechanics.com/services/line-up"
+    title="Line Up & Trim Auburn WA | $20 Quick Touch-Up | Hair Mechanics"
+    description="Quick line up and trim at Hair Mechanics in Auburn, WA. Clean hairline, neck trim, light styling — just $20. Walk-ins welcome. Call (206) 399-9288."
+    canonical="https://hairmechanics.net/services/line-up"
   >
-    <ServiceSchema name="Line Up & Edge Up" description="Quick line up and edge up with neck trim and light styling at Hair Mechanics in Auburn, WA." price="20.00" url="https://hairmechanics.com/services/line-up" />
+    <ServiceSchema name="Line Up / Trim" description="Quick line up and trim with neck trim and light styling at Hair Mechanics in Auburn, WA." price="20.00" url="https://hairmechanics.net/services/line-up" />
     <section className="relative py-20 sm:py-28">
       <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/assets/HeroImage.jpg")' }}>
         <div className="absolute inset-0 bg-dark-900/85"></div>
       </div>
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
         <h1 className="text-3xl sm:text-5xl font-bold">
-          <span className="text-amber-500">Line Up & Edge Up</span>
+          <span className="text-amber-500">Line Up / Trim</span>
           <span className="block text-white mt-2">in Auburn, WA</span>
         </h1>
         <p className="mt-4 text-lg text-gray-300 max-w-xl mx-auto">

@@ -11,7 +11,6 @@ import FadePage from './pages/services/Fade.tsx';
 import BeardTrimPage from './pages/services/BeardTrim.tsx';
 import HaircutPage from './pages/services/Haircut.tsx';
 import KidsCutPage from './pages/services/KidsCut.tsx';
-import WomensCutPage from './pages/services/WomensCut.tsx';
 import LineUpPage from './pages/services/LineUp.tsx';
 // Area pages
 import AuburnPage from './pages/areas/Auburn.tsx';
@@ -53,7 +52,6 @@ const AppWithScrollRestoration = () => (
       <Route path="/services/beard-trim" element={<BeardTrimPage />} />
       <Route path="/services/haircut" element={<HaircutPage />} />
       <Route path="/services/kids-cut" element={<KidsCutPage />} />
-      <Route path="/services/womens-cut" element={<WomensCutPage />} />
       <Route path="/services/line-up" element={<LineUpPage />} />
       {/* Area pages */}
       <Route path="/auburn-barber" element={<AuburnPage />} />

@@ -1,4 +1,4 @@
-# Hair Mechanics — hairmechanics.com
+# Hair Mechanics — hairmechanics.net
 
 Barber shop website for **Hair Mechanics LLC** in Auburn, WA.  
 React 18 + TypeScript + Vite + Tailwind CSS 3 + React Router v6. Deployed on **Netlify**.
@@ -76,7 +76,7 @@ React 18 + TypeScript + Vite + Tailwind CSS 3 + React Router v6. Deployed on **N
 ### Sitemap & Robots
 - `public/sitemap.xml` — all 16 public pages with priorities
 - `public/robots.txt` — allows all, blocks `/assets/haircuts/`, points to sitemap
-- Submitted to Google via: `https://hairmechanics.com/sitemap.xml`
+- Submitted to Google via: `https://hairmechanics.net/sitemap.xml`
 
 ### Keywords
 Targeting: auburn hair, barber, haircut near me, barbershop, barber shop, hair salon, auburn barber shop, fade haircut, beard trim, asian hair salons auburn
@@ -115,7 +115,7 @@ Targeting: auburn hair, barber, haircut near me, barbershop, barber shop, hair s
 ## Deployment & Hosting
 
 - **Host:** Netlify
-- **Domain:** hairmechanics.com
+- **Domain:** hairmechanics.net
 - **Build:** `npm run build` → outputs to `dist/`
 - **SPA redirect:** `/*` → `/index.html` (200) in `netlify.toml`
 - **Security headers:** X-Content-Type-Options, X-Frame-Options, Referrer-Policy
@@ -158,9 +158,9 @@ src/
 ## What's Missing / TODO
 
 ### Should do soon
-- [ ] **Google Search Console** — verify hairmechanics.com and submit sitemap
+- [ ] **Google Search Console** — verify hairmechanics.net and submit sitemap
 - [ ] **GA4 conversions** — mark `sms_click`, `review_click`, `phone_call`, `social_click` as conversions in GA4 dashboard
-- [ ] **Rich Results Test** — run https://search.google.com/test/rich-results on hairmechanics.com to validate structured data
+- [ ] **Rich Results Test** — run https://search.google.com/test/rich-results on hairmechanics.net to validate structured data
 
 ### When ready
 - [ ] **Gallery images** — replace/add higher quality photos (currently 76 images from Instagram)

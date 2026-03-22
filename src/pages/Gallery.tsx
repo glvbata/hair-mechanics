@@ -108,7 +108,7 @@ const GalleryPage = () => {
     <PageLayout
       title="Gallery | Hair Mechanics Barbershop Auburn, WA | Our Work"
       description="Browse our portfolio of precision haircuts, fades, tapers, and beard work at Hair Mechanics in Auburn, WA. See real results from our expert barbers."
-      canonical="https://hairmechanics.com/gallery"
+      canonical="https://hairmechanics.net/gallery"
     >
       {/* Hero */}
       <section className="relative py-16 sm:py-24">

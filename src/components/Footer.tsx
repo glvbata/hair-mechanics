@@ -43,8 +43,7 @@ const Footer = () => {
               <li><Link to="/services/fade" className="text-gray-400 hover:text-amber-500 transition-colors">Fades</Link></li>
               <li><Link to="/services/beard-trim" className="text-gray-400 hover:text-amber-500 transition-colors">Beard Trim</Link></li>
               <li><Link to="/services/kids-cut" className="text-gray-400 hover:text-amber-500 transition-colors">Kids Cuts</Link></li>
-              <li><Link to="/services/womens-cut" className="text-gray-400 hover:text-amber-500 transition-colors">Women's Cuts</Link></li>
-              <li><Link to="/services/line-up" className="text-gray-400 hover:text-amber-500 transition-colors">Line Up</Link></li>
+              <li><Link to="/services/line-up" className="text-gray-400 hover:text-amber-500 transition-colors">Line Up / Trim</Link></li>
             </ul>
           </div>
 

@@ -25,14 +25,7 @@ const services = [
     link: "/services/kids-cut",
   },
   {
-    title: "Women's Cut",
-    price: "$35",
-    description: "Precision cut for women",
-    includes: ["Consultation", "Cut", "Style"],
-    link: "/services/womens-cut",
-  },
-  {
-    title: "Line Up",
+    title: "Line Up / Trim",
     price: "$20",
     description: "Quick touch-up between cuts",
     includes: ["Neck Trim", "Line Up", "Light Styling"],

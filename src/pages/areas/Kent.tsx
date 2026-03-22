@@ -6,7 +6,7 @@ const KentPage = () => (
   <PageLayout
     title="Barber Shop Near Kent WA | Hair Mechanics Auburn | Haircuts & Fades"
     description="Looking for a barber shop near Kent, WA? Hair Mechanics in Auburn is just minutes away. Expert haircuts, fades, beard trims. Walk-ins welcome. Call (206) 399-9288."
-    canonical="https://hairmechanics.com/kent-barber"
+    canonical="https://hairmechanics.net/kent-barber"
   >
     <section className="relative py-20 sm:py-28">
       <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/assets/HeroImage.jpg")' }}>
@@ -57,9 +57,8 @@ const KentPage = () => (
           {[
             { name: 'Haircut', price: '$40' },
             { name: 'Haircut & Beard', price: '$50' },
-            { name: "Women's Cut", price: '$35' },
             { name: 'Kids Cut (12 & under)', price: '$35' },
-            { name: 'Line Up', price: '$20' },
+            { name: 'Line Up / Trim', price: '$20' },
           ].map((s, i) => (
             <div key={i} className="flex justify-between items-center bg-gray-800 px-5 py-4 rounded-lg">
               <span className="font-medium">{s.name}</span>

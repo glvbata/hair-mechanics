@@ -7,7 +7,7 @@ interface SEOProps {
   ogImage?: string;
 }
 
-const DEFAULT_OG_IMAGE = 'https://hairmechanics.com/assets/HeroImage.jpg';
+const DEFAULT_OG_IMAGE = 'https://hairmechanics.net/assets/HeroImage.jpg';
 
 const setMetaTag = (property: string, content: string, isProperty = false) => {
   const attr = isProperty ? 'property' : 'name';
@@ -61,7 +61,7 @@ export const useSEO = ({ title, description, canonical, ogImage }: SEOProps) => 
       setMetaTag('og:title', 'Hair Mechanics | Auburn Barber Shop & Haircuts Near Me', true);
       setMetaTag('og:description', 'Auburn\'s top-rated barber shop. Expert haircuts, fades, beard trims. Walk-ins welcome. Open 7 days.', true);
       setMetaTag('og:image', DEFAULT_OG_IMAGE, true);
-      if (link) link.href = 'https://hairmechanics.com';
+      if (link) link.href = 'https://hairmechanics.net';
     };
   }, [title, description, canonical, ogImage]);
 };

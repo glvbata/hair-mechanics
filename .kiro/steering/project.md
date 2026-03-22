@@ -28,4 +28,4 @@ inclusion: always
 - Blog has 2 published posts with full content; more can be added to BlogPost.tsx data
 - Reviews are manually curated — plan to sync with Google Business reviews
 - Unused components exist: Barbers.tsx, Store.tsx, StyleGuide.tsx, Gallery.tsx (component version) — these have placeholder/fake data and are not rendered
-- Pricing: Haircut $40, Haircut & Beard $50, Kids Cut $35, Women's Cut $35, Line Up $20
+- Pricing: Haircut $40, Haircut & Beard $50, Kids Cut $35, Line Up / Trim $20

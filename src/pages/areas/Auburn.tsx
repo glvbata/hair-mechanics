@@ -6,7 +6,7 @@ const AuburnPage = () => (
   <PageLayout
     title="Barber Shop in Auburn WA | Hair Mechanics | Haircuts & Fades"
     description="Hair Mechanics is Auburn's top-rated barber shop. Expert haircuts, fades, beard trims for men, women & kids. Walk-ins welcome, open 7 days. Call (206) 399-9288."
-    canonical="https://hairmechanics.com/auburn-barber"
+    canonical="https://hairmechanics.net/auburn-barber"
   >
     <section className="relative py-20 sm:py-28">
       <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/assets/HeroImage.jpg")' }}>
@@ -33,9 +33,8 @@ const AuburnPage = () => (
           {[
             { name: 'Haircut', price: '$40' },
             { name: 'Haircut & Beard', price: '$50' },
-            { name: "Women's Cut", price: '$35' },
             { name: 'Kids Cut (12 & under)', price: '$35' },
-            { name: 'Line Up', price: '$20' },
+            { name: 'Line Up / Trim', price: '$20' },
           ].map((s, i) => (
             <div key={i} className="flex justify-between items-center bg-gray-800 px-5 py-4 rounded-lg">
               <span className="font-medium">{s.name}</span>

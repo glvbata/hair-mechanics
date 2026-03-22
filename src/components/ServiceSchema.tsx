@@ -26,7 +26,7 @@ const ServiceSchema = ({ name, description, price, url }: ServiceSchemaProps) =>
             "addressCountry": "US"
           },
           "telephone": "+1-206-399-9288",
-          "url": "https://hairmechanics.com"
+          "url": "https://hairmechanics.net"
         },
         "areaServed": {
           "@type": "City",
