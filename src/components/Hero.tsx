@@ -9,14 +9,18 @@ interface HeroProps {
 const Hero = ({ onBook }: HeroProps) => {
   return (
     <section id="home" className="relative h-screen flex items-center justify-center">
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: 'url("/assets/HeroImage.jpg")',
-        }}
-      >
-        <div className="absolute inset-0 bg-dark-900/80"></div>
-      </div>
+      <picture className="absolute inset-0">
+        <source srcSet="/assets/HeroImage.webp" type="image/webp" />
+        <img
+          src="/assets/HeroImage.jpg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          fetchPriority="high"
+          decoding="sync"
+        />
+      </picture>
+      <div className="absolute inset-0 bg-dark-900/80"></div>
       
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
