@@ -16,7 +16,6 @@ const Hero = ({ onBook }: HeroProps) => {
           alt=""
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover object-center"
-          fetchPriority="high"
           decoding="sync"
         />
       </picture>
