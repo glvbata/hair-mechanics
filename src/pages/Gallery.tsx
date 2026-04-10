@@ -137,13 +137,16 @@ const GalleryPage = () => {
                 aria-label={`View haircut photo ${index + 1}`}
                 onKeyDown={(e) => { if (e.key === 'Enter') { setSelectedIndex(index); trackGalleryView(index); } }}
               >
-                <img
-                  src={image}
-                  alt={`Haircut by Hair Mechanics ${index + 1}`}
-                  className="w-full h-auto block transform transition-all duration-700 group-hover:scale-105"
-                  loading="lazy"
-                  decoding="async"
-                />
+                <picture>
+                  <source srcSet={image.replace(/\.(jpg|jpeg|png)$/i, '.webp')} type="image/webp" />
+                  <img
+                    src={image}
+                    alt={`Haircut by Hair Mechanics ${index + 1}`}
+                    className="w-full h-auto block transform transition-all duration-700 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             ))}
