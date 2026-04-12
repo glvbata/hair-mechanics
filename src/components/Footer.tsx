@@ -11,11 +11,14 @@ const Footer = () => {
           {/* Brand */}
           <div className="flex flex-col items-center sm:items-start">
             <div className="flex items-center mb-3">
-              <img src="/assets/Logo.png" alt="Hair Mechanics Logo" className="h-10 w-auto rounded-md" />
+              <picture>
+                <source srcSet="/assets/Logo.webp" type="image/webp" />
+                <img src="/assets/Logo.png" alt="Hair Mechanics Logo" className="h-10 w-auto rounded-md" width="40" height="40" />
+              </picture>
               <span className="ml-3 text-xl font-bold tracking-wider text-white">HAIR MECHANICS</span>
             </div>
             <p className="text-gray-400 text-sm">Auburn's favorite barber shop.</p>
-            <p className="text-gray-500 text-xs mt-1">1251 A Street NE, Auburn, WA 98002</p>
+            <p className="text-gray-400 text-xs mt-1">1251 A Street NE, Auburn, WA 98002</p>
             <a href="tel:+1-206-399-9288" className="text-amber-500 hover:text-amber-400 text-sm mt-2 inline-flex items-center">
               <Phone className="h-3.5 w-3.5 mr-1.5" /> (206) 399-9288
             </a>

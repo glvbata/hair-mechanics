@@ -34,11 +34,16 @@ const Navbar = ({ onBook }: NavbarProps) => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <img 
-                src="/assets/Logo.png" 
-                alt="Hair Mechanics Logo" 
-                className="h-10 w-auto rounded-md"
-              />
+              <picture>
+                <source srcSet="/assets/Logo.webp" type="image/webp" />
+                <img
+                  src="/assets/Logo.png"
+                  alt="Hair Mechanics Logo"
+                  className="h-10 w-auto rounded-md"
+                  width="40"
+                  height="40"
+                />
+              </picture>
               <span className="ml-3 text-xl font-bold tracking-wider text-white">HAIR MECHANICS</span>
             </Link>
           </div>

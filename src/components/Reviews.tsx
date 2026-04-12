@@ -48,7 +48,7 @@ const Reviews = () => {
           >
             ⭐ Leave Us a Review on Google
           </a>
-          <p className="text-gray-500 text-sm">
+          <p className="text-gray-400 text-sm">
             <a href="https://g.page/r/Cc2wjU_thhsrEAI/review" target="_blank" rel="noopener noreferrer" className="hover:text-amber-500 transition-colors underline" onClick={trackReviewClick}>
               See all reviews on Google
             </a>
