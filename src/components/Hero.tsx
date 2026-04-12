@@ -11,12 +11,14 @@ const Hero = ({ onBook }: HeroProps) => {
     <section id="home" className="relative h-screen flex items-center justify-center">
       <picture className="absolute inset-0">
         <source srcSet="/assets/HeroImage.webp" type="image/webp" />
+        {/* eslint-disable-next-line */}
         <img
           src="/assets/HeroImage.jpg"
           alt=""
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover object-center"
-          decoding="sync"
+          {...({ fetchpriority: 'high' } as React.ImgHTMLAttributes<HTMLImageElement>)}
+          decoding="async"
         />
       </picture>
       <div className="absolute inset-0 bg-dark-900/80"></div>

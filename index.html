@@ -162,11 +162,9 @@
     }
     </script>
 
-    <!-- Preload critical assets -->
-    <link rel="preload" as="image" href="/assets/HeroImage.jpg">
-    
-    <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <!-- Preload critical assets — WebP for modern browsers, JPG fallback for old -->
+    <link rel="preload" as="image" href="/assets/HeroImage.webp" type="image/webp">
+    <link rel="preload" as="image" href="/assets/HeroImage.jpg" media="not (type: 'image/webp')">
     
     <!-- Meta tags for mobile -->
     <meta name="theme-color" content="#1A1A1A">
