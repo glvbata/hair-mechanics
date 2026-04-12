@@ -44,7 +44,7 @@ const Footer = () => {
               <li><Link to="/services/beard-trim" className="text-gray-400 hover:text-amber-500 transition-colors">Beard Trim</Link></li>
               <li><Link to="/services/kids-cut" className="text-gray-400 hover:text-amber-500 transition-colors">Kids Cuts</Link></li>
               <li><Link to="/services/line-up" className="text-gray-400 hover:text-amber-500 transition-colors">Line Up / Trim</Link></li>
-              <li><Link to="/barber" className="text-gray-400 hover:text-amber-500 transition-colors">Meet Glen</Link></li>
+              <li><Link to="/team" className="text-gray-400 hover:text-amber-500 transition-colors">Our Team</Link></li>
             </ul>
           </div>
 

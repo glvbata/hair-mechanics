@@ -6,6 +6,8 @@ import GalleryPage from './pages/Gallery.tsx';
 import BookPage from './pages/Book.tsx';
 import NotFound from './pages/NotFound.tsx';
 import BarberPage from './pages/Barber.tsx';
+import BarberAkshatPage from './pages/BarberAkshat.tsx';
+import TeamPage from './pages/Team.tsx';
 // Service pages
 import FadePage from './pages/services/Fade.tsx';
 import BeardTrimPage from './pages/services/BeardTrim.tsx';
@@ -60,8 +62,10 @@ const AppWithScrollRestoration = () => (
       <Route path="/sumner-barber" element={<SumnerPage />} />
       <Route path="/puyallup-barber" element={<PuyallupPage />} />
       <Route path="/renton-barber" element={<RentonPage />} />
-      {/* Barber profile (draft - no nav links) */}
+      {/* Team & barber profiles */}
+      <Route path="/team" element={<TeamPage />} />
       <Route path="/barber" element={<BarberPage />} />
+      <Route path="/barber/akshat" element={<BarberAkshatPage />} />
       {/* 404 */}
       <Route path="*" element={<NotFound />} />
     </Routes>
