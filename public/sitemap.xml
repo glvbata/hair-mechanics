@@ -15,6 +15,22 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- Blog -->
+  <url>
+    <loc>https://hairmechanics.net/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hairmechanics.net/blog/top-mens-haircut-trends-2026</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hairmechanics.net/blog/complete-guide-to-beard-maintenance</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <!-- Service pages -->
   <url>
     <loc>https://hairmechanics.net/services/fade</loc>

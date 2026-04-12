@@ -10,10 +10,10 @@ const blogPosts = [
     excerpt: "Discover the hottest men's haircut styles that are dominating this year, from modern crops to classic fades with contemporary twists.",
     image: "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
     author: "Hair Mechanics",
-    date: "April 15, 2025",
+    date: "April 15, 2026",
     readTime: "5 min read",
     tags: ["Trends", "Men's Styles", "Haircuts"],
-    slug: "top-mens-haircut-trends-2025"
+    slug: "top-mens-haircut-trends-2026"
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const blogPosts = [
     excerpt: "Learn how to keep your beard looking its best with our comprehensive guide covering everything from washing to styling.",
     image: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
     author: "Hair Mechanics",
-    date: "April 8, 2025",
+    date: "April 8, 2026",
     readTime: "7 min read",
     tags: ["Beard Care", "Grooming", "Maintenance"],
     slug: "complete-guide-to-beard-maintenance"

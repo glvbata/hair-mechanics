@@ -7,6 +7,8 @@ import './index.css';
 // Lazy-load all non-home pages — keeps initial bundle small
 const GalleryPage      = lazy(() => import('./pages/Gallery.tsx'));
 const BookPage         = lazy(() => import('./pages/Book.tsx'));
+const BlogPage         = lazy(() => import('./pages/Blog.tsx'));
+const BlogPostPage     = lazy(() => import('./pages/BlogPost.tsx'));
 const NotFound         = lazy(() => import('./pages/NotFound.tsx'));
 const BarberPage       = lazy(() => import('./pages/Barber.tsx'));
 const BarberAkshatPage = lazy(() => import('./pages/BarberAkshat.tsx'));
@@ -52,6 +54,8 @@ const AppWithScrollRestoration = () => (
         <Route path="/" element={<App />} />
         <Route path="/book" element={<BookPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<BlogPostPage />} />
         {/* Service pages */}
         <Route path="/services/fade" element={<FadePage />} />
         <Route path="/services/beard-trim" element={<BeardTrimPage />} />

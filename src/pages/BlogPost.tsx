@@ -1,22 +1,22 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Calendar, Clock, ArrowLeft, Share2, Facebook } from 'lucide-react';
+import { Calendar, Clock, ArrowLeft, Share2, Facebook, Twitter } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const blogPostsData = {
-  "top-mens-haircut-trends-2025": {
-    title: "Top 5 Men's Haircut Trends for 2025",
+  "top-mens-haircut-trends-2026": {
+    title: "Top 5 Men's Haircut Trends for 2026",
     excerpt: "Discover the hottest men's haircut styles that are dominating this year, from modern crops to classic fades with contemporary twists.",
     image: "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
     author: "Hair Mechanics",
     authorRole: "Auburn's Premier Barbershop",
     authorImage: "/assets/Logo.png",
-    date: "April 15, 2025",
+    date: "April 15, 2026",
     readTime: "5 min read",
     tags: ["Trends", "Men's Styles", "Haircuts"],
     content: `
-      <p class="mb-4">The world of men's hairstyling is constantly evolving, and 2025 is bringing some exciting trends to the forefront. At Hair Mechanics, we're always on top of the latest styles, and we're excited to share the top trends that are dominating this year.</p>
+      <p class="mb-4">The world of men's hairstyling is constantly evolving, and 2026 is bringing some exciting trends to the forefront. At Hair Mechanics, we're always on top of the latest styles, and we're excited to share the top trends that are dominating this year.</p>
       
       <h2 class="text-2xl font-bold mt-8 mb-4 text-amber-500">1. Textured Crop</h2>
       <p class="mb-4">The textured crop continues to evolve in 2025, with more emphasis on natural texture and movement. This versatile style features short sides with length on top, styled forward with natural texture.</p>
@@ -65,7 +65,7 @@ const blogPostsData = {
     author: "Hair Mechanics",
     authorRole: "Auburn's Premier Barbershop",
     authorImage: "/assets/Logo.png",
-    date: "April 8, 2025",
+    date: "April 8, 2026",
     readTime: "7 min read",
     tags: ["Beard Care", "Grooming", "Maintenance"],
     content: `
@@ -127,7 +127,7 @@ const blogPostsData = {
       {
         id: 1,
         title: "Top 5 Men's Haircut Trends for 2025",
-        slug: "top-mens-haircut-trends-2025",
+        slug: "top-mens-haircut-trends-2026",
         image: "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
       },
       {
