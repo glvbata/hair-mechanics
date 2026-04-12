@@ -201,11 +201,14 @@ const GalleryPage = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
               </button>
             )}
-            <img
-              src={galleryImages[selectedIndex]}
-              alt={`Haircut by Hair Mechanics ${selectedIndex + 1}`}
-              className="w-full h-auto max-h-[85vh] object-contain rounded-xl shadow-2xl"
-            />
+            <picture>
+              <source srcSet={galleryImages[selectedIndex].replace(/\.(jpg|jpeg|png)$/i, '.webp')} type="image/webp" />
+              <img
+                src={galleryImages[selectedIndex]}
+                alt={`Haircut by Hair Mechanics ${selectedIndex + 1}`}
+                className="w-full h-auto max-h-[85vh] object-contain rounded-xl shadow-2xl"
+              />
+            </picture>
             {selectedIndex < galleryImages.length - 1 && (
               <button
                 className="absolute right-1 sm:right-3 text-white/60 hover:text-amber-500 transition-colors z-10 bg-black/60 rounded-full p-2.5"
