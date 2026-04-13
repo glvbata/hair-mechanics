@@ -3,8 +3,78 @@ import { useParams, Link } from 'react-router-dom';
 import { Calendar, Clock, ArrowLeft, Share2, Facebook, Twitter } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useSEO } from '../utils/useSEO';
 
 const blogPostsData = {
+  "walk-in-barber-auburn-wa-open-late": {
+    title: "Best Walk-In Barber in Auburn, WA — Open Late 7 Days a Week",
+    excerpt: "Need a haircut without an appointment? Hair Mechanics is Auburn's top walk-in barber shop, open until 8PM weekdays and 8AM–8PM on weekends. No booking required.",
+    image: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+    author: "Hair Mechanics",
+    authorRole: "Auburn's Premier Barbershop",
+    authorImage: "/assets/Logo.png",
+    date: "April 12, 2026",
+    readTime: "4 min read",
+    tags: ["Walk-Ins", "Auburn WA", "Hours"],
+    content: `
+      <p class="mb-4">Life moves fast. Sometimes you look in the mirror on a Tuesday night and realize you needed a haircut two weeks ago. That's exactly why Hair Mechanics built our schedule around your life — not the other way around.</p>
+
+      <p class="mb-4">We're open <strong>7 days a week</strong>, and we take walk-ins all day, every day. No app. No waitlist. No "next available is Thursday at 2pm." Just show up.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-amber-500">Our Hours — Later Than Anyone in Auburn</h2>
+      <p class="mb-4">Most barbershops in Auburn close at 5pm or 6pm. That doesn't work if you have a job. Here's what makes us different:</p>
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li><strong>Monday–Friday:</strong> 10am–8pm</li>
+        <li><strong>Saturday–Sunday:</strong> 8am–8pm</li>
+      </ul>
+      <p class="mb-4">That means you can walk in after work on a weeknight and still get a fresh cut before dinner. Or come in early Saturday morning before your day starts. We built our hours around the reality of people's schedules.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-amber-500">Why Walk-In Works Better Than You Think</h2>
+      <p class="mb-4">Appointment-only shops make sense for some services — but for a great haircut, walk-in is often the better experience. Here's why:</p>
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li><strong>No waiting days for an open slot.</strong> When you want a cut, you get one.</li>
+        <li><strong>Flexible timing.</strong> Got 45 minutes between errands? Perfect.</li>
+        <li><strong>No cancellation anxiety.</strong> Something came up? Just come another time — no penalty.</li>
+        <li><strong>Same quality every time.</strong> Our barbers are experienced professionals whether you booked ahead or just walked in.</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-amber-500">What to Expect When You Walk In</h2>
+      <p class="mb-4">First visit? Here's how it goes at Hair Mechanics:</p>
+      <ol class="list-decimal pl-6 mb-6 space-y-2">
+        <li>Walk in at <strong>1251 A Street NE, Auburn, WA 98002</strong>. Free parking right out front.</li>
+        <li>Check in with the barber. If there's a short wait, we have a pool table — seriously.</li>
+        <li>Tell your barber what you're looking for, or show a photo. We work with all hair types.</li>
+        <li>Walk out looking sharp.</li>
+      </ol>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-amber-500">Pricing — Straightforward, No Surprises</h2>
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li><strong>Haircut:</strong> $40 (includes consultation and styling)</li>
+        <li><strong>Haircut & Beard:</strong> $50</li>
+        <li><strong>Kids Cut (12 & under):</strong> $35</li>
+        <li><strong>Line Up / Trim:</strong> $20</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-amber-500">Serving Auburn and the Surrounding Area</h2>
+      <p class="mb-4">Hair Mechanics is the go-to walk-in barber for customers coming from all over the South King County area — Auburn, Kent, Federal Way, Renton, Sumner, and Puyallup. We're centrally located with easy access from Highway 18 and Auburn Way.</p>
+
+      <p class="mt-8 mb-4">Ready for a cut? Just show up. We'll handle the rest.</p>
+    `,
+    relatedPosts: [
+      {
+        id: 1,
+        title: "Top 5 Men's Haircut Trends for 2026",
+        slug: "top-mens-haircut-trends-2026",
+        image: "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: 2,
+        title: "The Complete Guide to Beard Maintenance",
+        slug: "complete-guide-to-beard-maintenance",
+        image: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+      }
+    ]
+  },
   "top-mens-haircut-trends-2026": {
     title: "Top 5 Men's Haircut Trends for 2026",
     excerpt: "Discover the hottest men's haircut styles that are dominating this year, from modern crops to classic fades with contemporary twists.",
@@ -55,6 +125,66 @@ const blogPostsData = {
         title: "How to Choose the Right Haircut for Your Face Shape",
         slug: "haircut-for-your-face-shape",
         image: "https://images.unsplash.com/photo-1619625506362-608ea7e91054?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+      }
+    ]
+  },
+  "how-to-maintain-a-fade": {
+    title: "How to Maintain a Fade Between Cuts",
+    excerpt: "A great fade starts fading within a week. Here's exactly how to keep it sharp longer — and when it's time to come back in.",
+    image: "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+    author: "Hair Mechanics",
+    authorRole: "Auburn's Premier Barbershop",
+    authorImage: "/assets/Logo.png",
+    date: "April 19, 2026",
+    readTime: "4 min read",
+    tags: ["Fade", "Maintenance", "Grooming Tips"],
+    content: `
+  <p class="mb-4">A clean fade looks incredible the day you leave the chair. But by day 10, the lines soften, the blend starts to blur, and the whole thing loses its edge. That's not a flaw — it's just how hair grows. The question is what you do about it.</p>
+
+  <p class="mb-4">Here's how to extend the life of your fade and know exactly when to come back in.</p>
+
+  <h2 class="text-2xl font-bold mt-8 mb-4 text-amber-500">How Fast Does a Fade Grow Out?</h2>
+  <p class="mb-4">On average, hair grows about half an inch per month — roughly 1/8 inch per week. For a tight skin fade, you'll notice softening within 7–10 days. A mid or taper fade typically stays clean for 2–3 weeks before needing a touch-up.</p>
+  <p class="mb-4">The tighter the fade, the faster it shows growth. That's the trade-off with a skin fade — it looks the sharpest, but it also needs the most maintenance.</p>
+
+  <h2 class="text-2xl font-bold mt-8 mb-4 text-amber-500">1. Keep Your Scalp Clean</h2>
+  <p class="mb-4">Dead skin, oil, and product buildup can make a fade look dull even when the length is still good. Wash your hair 2–3 times a week with a gentle shampoo. On non-wash days, rinse with water and condition the longer hair on top.</p>
+  <p class="mb-4">A clean scalp also means healthier, faster-growing hair — which matters when you're trying to maintain shape.</p>
+
+  <h2 class="text-2xl font-bold mt-8 mb-4 text-amber-500">2. Moisturize the Skin on Your Sides</h2>
+  <p class="mb-4">Short faded sides expose a lot of scalp. Dry skin shows — especially under light. Apply a small amount of a light moisturizer or beard oil to the faded areas every couple of days. It keeps the skin looking healthy and makes the fade look cleaner longer.</p>
+
+  <h2 class="text-2xl font-bold mt-8 mb-4 text-amber-500">3. Style the Top Consistently</h2>
+  <p class="mb-4">The contrast between your fade and the length on top is what makes the cut look intentional. If the top gets frizzy, flat, or shapeless, the whole style suffers even if the sides are still clean.</p>
+  <p class="mb-4">Use a small amount of pomade, clay, or cream (depending on your hair type) to keep the top styled. Ask your barber what product works best for your texture — they'll know exactly what to recommend.</p>
+
+  <h2 class="text-2xl font-bold mt-8 mb-4 text-amber-500">4. Get a Line-Up Between Full Cuts</h2>
+  <p class="mb-4">If you're on a 3–4 week schedule between full cuts, consider coming in at the halfway point for a line-up. A line-up cleans up your hairline, temple fade, and neckline for $20 — and it resets how sharp the whole cut looks without a full session.</p>
+  <p class="mb-4">A lot of our regulars at Hair Mechanics do a full cut every 3–4 weeks and a line-up in between. It's the most cost-effective way to always look clean.</p>
+
+  <h2 class="text-2xl font-bold mt-8 mb-4 text-amber-500">When to Come Back for a Full Cut</h2>
+  <p class="mb-4">Here's a simple guide by fade type:</p>
+  <ul class="list-disc pl-6 mb-6 space-y-2">
+    <li><strong>Skin fade:</strong> Every 2–3 weeks for a full cut, or a line-up at week 1.5</li>
+    <li><strong>Mid fade:</strong> Every 3–4 weeks</li>
+    <li><strong>Taper fade:</strong> Every 4 weeks — the most low-maintenance option</li>
+  </ul>
+  <p class="mb-4">When the blend starts to look like two separate lengths instead of a smooth gradient, it's time to come back in.</p>
+
+  <p class="mt-8 mb-4">Ready for a fresh cut or a quick line-up? Walk in anytime — we're open 7 days a week in Auburn, WA, until 8PM on weekdays.</p>
+`,
+    relatedPosts: [
+      {
+        id: 3,
+        title: "Best Walk-In Barber in Auburn, WA — Open Late 7 Days a Week",
+        slug: "walk-in-barber-auburn-wa-open-late",
+        image: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: 1,
+        title: "Top 5 Men's Haircut Trends for 2026",
+        slug: "top-mens-haircut-trends-2026",
+        image: "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
       }
     ]
   },
@@ -143,6 +273,13 @@ const blogPostsData = {
 const BlogPost = () => {
   const { slug } = useParams();
   const post = blogPostsData[slug as keyof typeof blogPostsData];
+
+  useSEO({
+    title: post ? `${post.title} | Hair Mechanics Auburn WA` : 'Post Not Found | Hair Mechanics',
+    description: post ? post.excerpt : 'Hair Mechanics barbershop blog — haircut tips, grooming guides, and style trends.',
+    canonical: slug ? `https://hairmechanics.net/blog/${slug}` : 'https://hairmechanics.net/blog',
+  });
+
   const handleBooking = () => {
     window.location.href = 'tel:+1-206-399-9288';
   };

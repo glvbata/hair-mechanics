@@ -2,11 +2,34 @@ import React from 'react';
 import { Calendar, Clock } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useSEO } from '../utils/useSEO';
 
 const blogPosts = [
   {
+    id: 4,
+    title: "How to Maintain a Fade Between Cuts",
+    excerpt: "A great fade starts fading within a week. Here's exactly how to keep it sharp longer — and when it's time to come back in.",
+    image: "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+    author: "Hair Mechanics",
+    date: "April 19, 2026",
+    readTime: "4 min read",
+    tags: ["Fade", "Maintenance", "Grooming Tips"],
+    slug: "how-to-maintain-a-fade"
+  },
+  {
+    id: 3,
+    title: "Best Walk-In Barber in Auburn, WA — Open Late 7 Days a Week",
+    excerpt: "Need a haircut without an appointment? Hair Mechanics is Auburn's top walk-in barber shop, open until 8PM weekdays and 8AM–8PM on weekends. No booking required.",
+    image: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+    author: "Hair Mechanics",
+    date: "April 12, 2026",
+    readTime: "4 min read",
+    tags: ["Walk-Ins", "Auburn WA", "Hours"],
+    slug: "walk-in-barber-auburn-wa-open-late"
+  },
+  {
     id: 1,
-    title: "Top 5 Men's Haircut Trends for 2025",
+    title: "Top 5 Men's Haircut Trends for 2026",
     excerpt: "Discover the hottest men's haircut styles that are dominating this year, from modern crops to classic fades with contemporary twists.",
     image: "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
     author: "Hair Mechanics",
@@ -29,10 +52,16 @@ const blogPosts = [
 ];
 
 const BlogPage = () => {
+  useSEO({
+    title: 'Hair Care Blog | Haircut Tips & Trends | Hair Mechanics Auburn WA',
+    description: 'Expert hair and grooming tips from Hair Mechanics, Auburn\'s top-rated barber shop. Haircut trends, beard care, fade guides, and more.',
+    canonical: 'https://hairmechanics.net/blog',
+  });
+
   const handleBooking = () => {
     window.location.href = 'tel:+1-206-399-9288';
   };
-  
+
   return (
     <div className="min-h-screen bg-dark-800">
       <Navbar onBook={handleBooking} />
