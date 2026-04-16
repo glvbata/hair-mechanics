@@ -86,7 +86,7 @@ Targeting: auburn hair, barber, haircut near me, barbershop, barber shop, hair s
 ## Google & Analytics
 
 ### Google Analytics (GA4)
-- **Property ID:** `G-93J5P4VBV2`
+- **Measurement ID:** `G-C82GRQVLDF`
 - Loaded in `index.html` via gtag.js
 
 ### GA4 Custom Events (`src/utils/analytics.ts`)
