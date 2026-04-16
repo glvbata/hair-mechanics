@@ -99,7 +99,7 @@ const BookPage = () => {
           </div>
           <button
             onClick={handleCall}
-            className="bg-amber-500 text-gray-900 px-4 py-2 rounded-md font-medium hover:bg-amber-400 transition-colors inline-flex items-center text-sm sm:text-base"
+            className="bg-gold-500 text-gray-900 px-4 py-2 rounded-md font-medium hover:bg-gold-400 transition-colors inline-flex items-center text-sm sm:text-base"
           >
             <Phone className="h-4 w-4 mr-1.5" />
             Call Now
@@ -117,14 +117,14 @@ const BookPage = () => {
         </div>
         <div className="relative z-10 text-center px-4 py-16 sm:py-24">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold">
-            <span className="text-amber-500">Auburn's Top-Rated Barber Shop</span>
+            <span className="text-gold-500">Auburn's Top-Rated Barber Shop</span>
           </h1>
           <p className="mt-4 text-lg sm:text-xl text-gray-300 max-w-md mx-auto">
             Walk-ins welcome. Expert haircuts, clean fades, and beard trims — open 7 days.
           </p>
           <button
             onClick={handleCall}
-            className="mt-8 bg-amber-500 text-gray-900 px-8 py-4 rounded-md font-bold text-lg hover:bg-amber-400 transition-colors inline-flex items-center"
+            className="mt-8 bg-gold-500 text-gray-900 px-8 py-4 rounded-md font-bold text-lg hover:bg-gold-400 transition-colors inline-flex items-center"
           >
             <Phone className="h-5 w-5 mr-2" />
             Call to Book: {PHONE_DISPLAY}
@@ -133,7 +133,7 @@ const BookPage = () => {
             <a
               href="sms:+12063999288?body=Hi, I'd like to book a haircut at Hair Mechanics"
               onClick={trackSMSClick}
-              className="inline-flex items-center text-amber-500 hover:text-amber-400 font-medium text-lg"
+              className="inline-flex items-center text-gold-500 hover:text-gold-400 font-medium text-lg"
             >
               💬 Or text us to book
             </a>
@@ -156,7 +156,7 @@ const BookPage = () => {
               { label: 'Open 7 Days', value: '✓' },
             ].map((stat, i) => (
               <div key={i}>
-                <p className="text-2xl font-bold text-amber-500">{stat.value}</p>
+                <p className="text-2xl font-bold text-gold-500">{stat.value}</p>
                 <p className="text-sm text-gray-400 mt-1">{stat.label}</p>
               </div>
             ))}
@@ -168,20 +168,20 @@ const BookPage = () => {
       <section className="py-12 bg-dark-800">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-2xl font-bold text-center mb-8">
-            <span className="text-amber-500">Services & Pricing</span>
+            <span className="text-gold-500">Services & Pricing</span>
           </h2>
           <div className="space-y-3">
             {services.map((s, i) => (
               <div key={i} className="flex justify-between items-center bg-gray-800 px-5 py-4 rounded-lg">
                 <span className="font-medium">{s.name}</span>
-                <span className="text-amber-500 font-bold text-lg">{s.price}</span>
+                <span className="text-gold-500 font-bold text-lg">{s.price}</span>
               </div>
             ))}
           </div>
           <div className="text-center mt-8">
             <button
               onClick={handleCall}
-              className="bg-amber-500 text-gray-900 px-8 py-3 rounded-md font-medium hover:bg-amber-400 transition-colors inline-flex items-center"
+              className="bg-gold-500 text-gray-900 px-8 py-3 rounded-md font-medium hover:bg-gold-400 transition-colors inline-flex items-center"
             >
               <Phone className="h-5 w-5 mr-2" />
               Book Your Cut
@@ -194,14 +194,14 @@ const BookPage = () => {
       <section className="py-12 bg-dark-900">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-2xl font-bold text-center mb-8">
-            <span className="text-amber-500">What Our Clients Say</span>
+            <span className="text-gold-500">What Our Clients Say</span>
           </h2>
           <div className="space-y-4">
             {reviews.map((r, i) => (
               <div key={i} className="bg-gray-800 p-5 rounded-lg">
                 <div className="flex mb-2">
                   {[...Array(5)].map((_, j) => (
-                    <Star key={j} className="h-4 w-4 text-amber-500 fill-current" />
+                    <Star key={j} className="h-4 w-4 text-gold-500 fill-current" />
                   ))}
                 </div>
                 <p className="text-gray-300 mb-2">"{r.text}"</p>
@@ -214,7 +214,7 @@ const BookPage = () => {
               href="https://g.page/r/Cc2wjU_thhsrEAI/review"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-amber-500 hover:text-amber-400 text-sm underline"
+              className="text-gold-500 hover:text-gold-400 text-sm underline"
               onClick={trackReviewClick}
             >
               See all reviews on Google
@@ -227,23 +227,23 @@ const BookPage = () => {
       <section className="py-12 bg-dark-800">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-2xl font-bold text-center mb-8">
-            <span className="text-amber-500">Find Us</span>
+            <span className="text-gold-500">Find Us</span>
           </h2>
           <div className="grid sm:grid-cols-2 gap-8">
             <div className="space-y-4">
               <div className="flex items-start">
-                <MapPin className="h-5 w-5 text-amber-500 mr-3 mt-0.5 flex-shrink-0" />
+                <MapPin className="h-5 w-5 text-gold-500 mr-3 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="font-medium">1251 A Street NE</p>
                   <p className="text-gray-400">Auburn, WA 98002</p>
                 </div>
               </div>
               <div className="flex items-start">
-                <Phone className="h-5 w-5 text-amber-500 mr-3 mt-0.5 flex-shrink-0" />
-                <a href={`tel:+1-206-399-9288`} className="hover:text-amber-500 transition-colors">{PHONE_DISPLAY}</a>
+                <Phone className="h-5 w-5 text-gold-500 mr-3 mt-0.5 flex-shrink-0" />
+                <a href={`tel:+1-206-399-9288`} className="hover:text-gold-500 transition-colors">{PHONE_DISPLAY}</a>
               </div>
               <div className="flex items-start">
-                <Clock className="h-5 w-5 text-amber-500 mr-3 mt-0.5 flex-shrink-0" />
+                <Clock className="h-5 w-5 text-gold-500 mr-3 mt-0.5 flex-shrink-0" />
                 <div>
                   <p>Mon–Fri: 10am – 8pm</p>
                   <p>Sat–Sun: 8am – 8pm</p>
@@ -281,7 +281,7 @@ const BookPage = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 bg-amber-500">
+      <section className="py-16 bg-gold-500">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready for a Fresh Cut?</h2>
           <p className="text-gray-800 mb-8 text-lg">Call now or walk in — we're open 7 days a week.</p>
@@ -307,7 +307,7 @@ const BookPage = () => {
       {/* Minimal footer */}
       <footer className="bg-dark-900 py-6 text-center text-gray-500 text-sm">
         <p>© {new Date().getFullYear()} Hair Mechanics. All rights reserved.</p>
-        <a href="/" className="text-amber-500 hover:text-amber-400 text-xs mt-2 inline-block">Visit full website</a>
+        <a href="/" className="text-gold-500 hover:text-gold-400 text-xs mt-2 inline-block">Visit full website</a>
       </footer>
     </div>
   );

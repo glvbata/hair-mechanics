@@ -19,7 +19,7 @@ const Footer = () => {
             </div>
             <p className="text-gray-400 text-sm">Auburn's favorite barber shop.</p>
             <p className="text-gray-400 text-xs mt-1">1251 A Street NE, Auburn, WA 98002</p>
-            <a href="tel:+1-206-399-9288" className="text-gold-500 hover:text-amber-400 text-sm mt-2 inline-flex items-center">
+            <a href="tel:+1-206-399-9288" className="text-gold-500 hover:text-gold-400 text-sm mt-2 inline-flex items-center">
               <Phone className="h-3.5 w-3.5 mr-1.5" /> (206) 399-9288
             </a>
             <div className="flex space-x-3 mt-3">

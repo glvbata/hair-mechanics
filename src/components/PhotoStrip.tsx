@@ -4,13 +4,13 @@ import { ArrowRight } from 'lucide-react';
 
 // Hand-picked variety — fades, crops, beards, different angles
 const photos = [
-  '/assets/haircuts/117177259_171243871267999_2539513688223642210_n.jpg',
-  '/assets/haircuts/117212049_171243447934708_1504320330852135190_n.jpg',
-  '/assets/haircuts/117306837_171243944601325_3137892813058056448_n.jpg',
-  '/assets/haircuts/117339330_171243734601346_3884303529806118020_n.jpg',
-  '/assets/haircuts/118583704_178697420522644_9112869283729704689_n.jpg',
-  '/assets/haircuts/117246166_171243501268036_6943416825657207028_n.jpg',
-  '/assets/haircuts/117301459_171243674601352_9128453643540599895_n.jpg',
+  { src: '/assets/haircuts/117177259_171243871267999_2539513688223642210_n.jpg', alt: 'Clean fade haircut by Hair Mechanics Auburn WA' },
+  { src: '/assets/haircuts/117212049_171243447934708_1504320330852135190_n.jpg', alt: 'Precision taper fade Auburn barber' },
+  { src: '/assets/haircuts/117306837_171243944601325_3137892813058056448_n.jpg', alt: 'Fresh haircut and beard trim Hair Mechanics' },
+  { src: '/assets/haircuts/117339330_171243734601346_3884303529806118020_n.jpg', alt: 'Skin fade with lineup Auburn WA' },
+  { src: '/assets/haircuts/118583704_178697420522644_9112869283729704689_n.jpg', alt: 'Expert barbering work at Hair Mechanics Auburn' },
+  { src: '/assets/haircuts/117246166_171243501268036_6943416825657207028_n.jpg', alt: 'Low fade haircut Auburn barbershop' },
+  { src: '/assets/haircuts/117301459_171243674601352_9128453643540599895_n.jpg', alt: 'High fade and beard shape Auburn WA barber' },
 ];
 
 const PhotoStrip = () => {
@@ -39,14 +39,14 @@ const PhotoStrip = () => {
 
       {/* Horizontal scroll strip */}
       <div className="flex gap-3 overflow-x-auto pl-4 sm:pl-8 lg:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] pr-4 pb-4 snap-x snap-mandatory no-scrollbar">
-        {photos.map((src, i) => (
+        {photos.map((photo, i) => (
           <div
             key={i}
             className="relative flex-none w-56 sm:w-72 h-80 sm:h-96 snap-start overflow-hidden group"
           >
             <img
-              src={src}
-              alt={`Hair Mechanics haircut ${i + 1}`}
+              src={photo.src}
+              alt={photo.alt}
               className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
             />

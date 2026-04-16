@@ -10,6 +10,8 @@ const barbers = [
     specialties: ['Fades', 'Beard Work', 'Classic Cuts'],
     image: '/assets/glen profile.png',
     slug: '/barber',
+    aspect: 'aspect-[4/5]',
+    objectPosition: 'object-center',
   },
   {
     name: 'Akshat Rait',
@@ -18,6 +20,8 @@ const barbers = [
     specialties: ['Tapers', 'Skin Fades', 'Modern Styles'],
     image: '/assets/akshat.jpg',
     slug: '/barber/akshat',
+    aspect: 'aspect-[4/3]',
+    objectPosition: 'object-top',
   },
 ];
 
@@ -52,11 +56,11 @@ const TeamPage = () => (
               to={barber.slug}
               className="group bg-gray-800 rounded-lg overflow-hidden hover:ring-2 hover:ring-gold-500 transition-all duration-200"
             >
-              <div className="aspect-[4/5] overflow-hidden bg-dark-700">
+              <div className={`${barber.aspect} overflow-hidden bg-dark-700`}>
                 <img
                   src={barber.image}
                   alt={barber.name}
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  className={`w-full h-full object-cover ${barber.objectPosition} group-hover:scale-105 transition-transform duration-500`}
                   loading="lazy"
                   decoding="async"
                   onError={(e) => {

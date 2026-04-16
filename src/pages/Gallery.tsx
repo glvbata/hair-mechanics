@@ -140,7 +140,7 @@ const GalleryPage = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-dark-900 via-dark-900/90 to-dark-800" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl sm:text-6xl font-bold tracking-tight">
-            <span className="text-amber-500">Our Work</span>
+            <span className="text-gold-500">Our Work</span>
           </h1>
           <p className="mt-4 text-gray-400 text-lg max-w-md mx-auto">
             {galleryImages.length} cuts — real results, no filters
@@ -155,7 +155,7 @@ const GalleryPage = () => {
             {visibleImages.map((image, index) => (
               <div
                 key={image}
-                className="break-inside-avoid mb-2 sm:mb-3 group cursor-pointer relative overflow-hidden rounded-xl"
+                className="break-inside-avoid mb-2 sm:mb-3 group cursor-pointer relative overflow-hidden"
                 onClick={() => { setSelectedIndex(index); trackGalleryView(index); }}
                 role="button"
                 tabIndex={0}
@@ -181,7 +181,7 @@ const GalleryPage = () => {
             <div className="text-center mt-12">
               <button
                 onClick={() => setVisibleCount(prev => Math.min(prev + 16, galleryImages.length))}
-                className="bg-amber-500 text-gray-900 px-10 py-3.5 rounded-full font-medium hover:bg-amber-400 transition-all hover:shadow-lg hover:shadow-amber-500/25 text-sm uppercase tracking-wider"
+                className="btn-primary text-sm uppercase tracking-wider px-10 py-3.5"
               >
                 Show More — {galleryImages.length - visibleCount} left
               </button>
@@ -191,7 +191,7 @@ const GalleryPage = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-14 bg-gradient-to-r from-amber-500 to-amber-600">
+      <section className="py-14 bg-gradient-to-r from-gold-500 to-gold-600">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">Like What You See?</h2>
           <p className="text-gray-800 mb-6">Walk in or call — open 7 days a week.</p>
@@ -203,7 +203,7 @@ const GalleryPage = () => {
 
       {/* Sticky CTA bar */}
       <div className={`fixed bottom-0 left-0 right-0 z-40 transition-transform duration-300 ${showStickyBar && selectedIndex === null ? 'translate-y-0' : 'translate-y-full'}`}>
-        <div className="bg-amber-500 px-4 py-3 flex items-center justify-between max-w-lg mx-auto rounded-t-2xl shadow-2xl">
+        <div className="bg-gold-500 px-4 py-3 flex items-center justify-between max-w-lg mx-auto rounded-t-2xl shadow-2xl">
           <div>
             <p className="text-gray-900 font-bold text-sm leading-tight">Like what you see?</p>
             <p className="text-gray-800 text-xs">Walk-ins welcome · Open 7 days</p>
@@ -227,7 +227,7 @@ const GalleryPage = () => {
         >
           <div className="relative max-w-5xl w-full flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
             <button
-              className="absolute -top-2 -right-2 sm:top-2 sm:right-2 text-white/60 hover:text-amber-500 transition-colors z-10 bg-black/60 rounded-full p-2.5"
+              className="absolute -top-2 -right-2 sm:top-2 sm:right-2 text-white/60 hover:text-gold-500 transition-colors z-10 bg-black/60 rounded-full p-2.5"
               onClick={() => setSelectedIndex(null)}
               aria-label="Close lightbox"
             >
@@ -235,7 +235,7 @@ const GalleryPage = () => {
             </button>
             {selectedIndex > 0 && (
               <button
-                className="absolute left-1 sm:left-3 text-white/60 hover:text-amber-500 transition-colors z-10 bg-black/60 rounded-full p-2.5"
+                className="absolute left-1 sm:left-3 text-white/60 hover:text-gold-500 transition-colors z-10 bg-black/60 rounded-full p-2.5"
                 onClick={() => setSelectedIndex(selectedIndex - 1)}
                 aria-label="Previous image"
               >
@@ -247,12 +247,12 @@ const GalleryPage = () => {
               <img
                 src={galleryImages[selectedIndex]}
                 alt={`Haircut by Hair Mechanics ${selectedIndex + 1}`}
-                className="w-full h-auto max-h-[85vh] object-contain rounded-xl shadow-2xl"
+                className="w-full h-auto max-h-[85vh] object-contain shadow-2xl"
               />
             </picture>
             {selectedIndex < galleryImages.length - 1 && (
               <button
-                className="absolute right-1 sm:right-3 text-white/60 hover:text-amber-500 transition-colors z-10 bg-black/60 rounded-full p-2.5"
+                className="absolute right-1 sm:right-3 text-white/60 hover:text-gold-500 transition-colors z-10 bg-black/60 rounded-full p-2.5"
                 onClick={() => setSelectedIndex(selectedIndex + 1)}
                 aria-label="Next image"
               >
@@ -265,7 +265,7 @@ const GalleryPage = () => {
               </p>
               <button
                 onClick={(e) => { e.stopPropagation(); handleCall(); }}
-                className="bg-amber-500 text-gray-900 text-xs font-bold px-4 py-1.5 rounded-full flex items-center gap-1.5 hover:bg-amber-400 transition-colors"
+                className="bg-gold-500 text-gray-900 text-xs font-bold px-4 py-1.5 rounded-full flex items-center gap-1.5 hover:bg-gold-400 transition-colors"
               >
                 <Phone className="h-3 w-3" /> Get This Cut
               </button>

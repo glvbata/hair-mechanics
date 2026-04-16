@@ -16,13 +16,13 @@ const HaircutPage = () => (
       </div>
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
         <h1 className="text-3xl sm:text-5xl font-bold">
-          <span className="text-amber-500">Men's Haircuts</span>
+          <span className="text-gold-500">Men's Haircuts</span>
           <span className="block text-white mt-2">in Auburn, WA</span>
         </h1>
         <p className="mt-4 text-lg text-gray-300 max-w-xl mx-auto">
           Precision cuts tailored to your style. Consultation included — walk-ins welcome, open 7 days.
         </p>
-        <button onClick={handleCall} className="mt-8 bg-amber-500 text-gray-900 px-8 py-4 rounded-md font-bold text-lg hover:bg-amber-400 transition-colors inline-flex items-center">
+        <button onClick={handleCall} className="mt-8 bg-gold-500 text-gray-900 px-8 py-4 rounded-md font-bold text-lg hover:bg-gold-400 transition-colors inline-flex items-center">
           <Phone className="h-5 w-5 mr-2" /> Book a Haircut: (206) 399-9288
         </button>
       </div>
@@ -30,7 +30,7 @@ const HaircutPage = () => (
 
     <section className="py-16 bg-dark-900">
       <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-2xl font-bold text-amber-500 text-center mb-10">What You Get</h2>
+        <h2 className="text-2xl font-bold text-gold-500 text-center mb-10">What You Get</h2>
         <div className="grid sm:grid-cols-3 gap-6">
           {[
             { name: 'Consultation', desc: 'We talk through what you want before we start cutting.' },
@@ -45,14 +45,14 @@ const HaircutPage = () => (
         </div>
         <div className="text-center mt-10">
           <div className="bg-gray-800 rounded-lg p-6 inline-block">
-            <p className="text-4xl font-bold text-amber-500">$40</p>
+            <p className="text-4xl font-bold text-gold-500">$40</p>
             <p className="text-gray-400 mt-2">Consultation + Cut + Style</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section className="py-16 bg-amber-500">
+    <section className="py-16 bg-gold-500">
       <div className="max-w-3xl mx-auto px-4 text-center">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">Time for a Fresh Cut?</h2>
         <p className="text-gray-800 mb-6">Walk in or call — Auburn's go-to barber shop.</p>

@@ -14,13 +14,13 @@ const AuburnPage = () => (
       </div>
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
         <h1 className="text-3xl sm:text-5xl font-bold">
-          <span className="text-amber-500">Auburn's Top-Rated</span>
+          <span className="text-gold-500">Auburn's Top-Rated</span>
           <span className="block text-white mt-2">Barber Shop</span>
         </h1>
         <p className="mt-4 text-lg text-gray-300 max-w-xl mx-auto">
           Hair Mechanics — expert haircuts, clean fades, and beard trims right here in Auburn, WA. Walk-ins welcome, open 7 days.
         </p>
-        <button onClick={handleCall} className="mt-8 bg-amber-500 text-gray-900 px-8 py-4 rounded-md font-bold text-lg hover:bg-amber-400 transition-colors inline-flex items-center">
+        <button onClick={handleCall} className="mt-8 bg-gold-500 text-gray-900 px-8 py-4 rounded-md font-bold text-lg hover:bg-gold-400 transition-colors inline-flex items-center">
           <Phone className="h-5 w-5 mr-2" /> Call Now: (206) 399-9288
         </button>
       </div>
@@ -28,7 +28,7 @@ const AuburnPage = () => (
 
     <section className="py-16 bg-dark-900">
       <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-2xl font-bold text-amber-500 text-center mb-10">Services & Pricing</h2>
+        <h2 className="text-2xl font-bold text-gold-500 text-center mb-10">Services & Pricing</h2>
         <div className="space-y-3 max-w-lg mx-auto">
           {[
             { name: 'Haircut', price: '$40' },
@@ -38,7 +38,7 @@ const AuburnPage = () => (
           ].map((s, i) => (
             <div key={i} className="flex justify-between items-center bg-gray-800 px-5 py-4 rounded-lg">
               <span className="font-medium">{s.name}</span>
-              <span className="text-amber-500 font-bold text-lg">{s.price}</span>
+              <span className="text-gold-500 font-bold text-lg">{s.price}</span>
             </div>
           ))}
         </div>
@@ -47,7 +47,7 @@ const AuburnPage = () => (
 
     <section className="py-16 bg-dark-800">
       <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-2xl font-bold text-amber-500 text-center mb-10">Why Auburn Chooses Hair Mechanics</h2>
+        <h2 className="text-2xl font-bold text-gold-500 text-center mb-10">Why Auburn Chooses Hair Mechanics</h2>
         <div className="grid sm:grid-cols-2 gap-6">
           {[
             { icon: Star, title: '4.5 Google Rating', desc: 'Consistently top-rated by Auburn locals — 83 reviews.' },
@@ -56,7 +56,7 @@ const AuburnPage = () => (
             { icon: Phone, title: 'Walk-ins Welcome', desc: 'No appointment needed. Call or just stop by.' },
           ].map((item, i) => (
             <div key={i} className="bg-gray-800 p-6 rounded-lg flex items-start">
-              <item.icon className="h-6 w-6 text-amber-500 mr-4 mt-0.5 flex-shrink-0" />
+              <item.icon className="h-6 w-6 text-gold-500 mr-4 mt-0.5 flex-shrink-0" />
               <div>
                 <h3 className="font-bold mb-1">{item.title}</h3>
                 <p className="text-gray-400 text-sm">{item.desc}</p>
@@ -69,7 +69,7 @@ const AuburnPage = () => (
 
     <section className="py-12 bg-dark-900">
       <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-2xl font-bold text-amber-500 text-center mb-8">Find Us in Auburn</h2>
+        <h2 className="text-2xl font-bold text-gold-500 text-center mb-8">Find Us in Auburn</h2>
         <div className="rounded-lg overflow-hidden h-64 sm:h-80">
           <iframe
             title="Hair Mechanics Auburn Location"
@@ -80,7 +80,7 @@ const AuburnPage = () => (
       </div>
     </section>
 
-    <section className="py-16 bg-amber-500">
+    <section className="py-16 bg-gold-500">
       <div className="max-w-3xl mx-auto px-4 text-center">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">Auburn's Favorite Barber Shop</h2>
         <p className="text-gray-800 mb-6">Walk in or call — we're ready for you.</p>

@@ -16,13 +16,13 @@ const BeardTrimPage = () => (
       </div>
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
         <h1 className="text-3xl sm:text-5xl font-bold">
-          <span className="text-amber-500">Beard Trim & Shaping</span>
+          <span className="text-gold-500">Beard Trim & Shaping</span>
           <span className="block text-white mt-2">in Auburn, WA</span>
         </h1>
         <p className="mt-4 text-lg text-gray-300 max-w-xl mx-auto">
           Clean beard lines, precise shaping, and grooming — paired with a fresh cut for the complete look.
         </p>
-        <button onClick={handleCall} className="mt-8 bg-amber-500 text-gray-900 px-8 py-4 rounded-md font-bold text-lg hover:bg-amber-400 transition-colors inline-flex items-center">
+        <button onClick={handleCall} className="mt-8 bg-gold-500 text-gray-900 px-8 py-4 rounded-md font-bold text-lg hover:bg-gold-400 transition-colors inline-flex items-center">
           <Phone className="h-5 w-5 mr-2" /> Book Now: (206) 399-9288
         </button>
       </div>
@@ -30,7 +30,7 @@ const BeardTrimPage = () => (
 
     <section className="py-16 bg-dark-900">
       <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-2xl font-bold text-amber-500 text-center mb-10">What's Included</h2>
+        <h2 className="text-2xl font-bold text-gold-500 text-center mb-10">What's Included</h2>
         <div className="grid sm:grid-cols-2 gap-6">
           {[
             { name: 'Haircut & Beard Combo', price: '$50', desc: 'Full haircut plus beard trim, shaping, and line up.' },
@@ -39,7 +39,7 @@ const BeardTrimPage = () => (
             <div key={i} className="bg-gray-800 p-6 rounded-lg">
               <div className="flex justify-between items-start mb-2">
                 <h3 className="text-lg font-bold">{s.name}</h3>
-                <span className="text-amber-500 font-bold">{s.price}</span>
+                <span className="text-gold-500 font-bold">{s.price}</span>
               </div>
               <p className="text-gray-400 text-sm">{s.desc}</p>
             </div>
@@ -58,7 +58,7 @@ const BeardTrimPage = () => (
             { label: 'Open 7 Days', value: '✓' },
           ].map((s, i) => (
             <div key={i}>
-              <p className="text-2xl font-bold text-amber-500">{s.value}</p>
+              <p className="text-2xl font-bold text-gold-500">{s.value}</p>
               <p className="text-sm text-gray-400 mt-1">{s.label}</p>
             </div>
           ))}
@@ -66,7 +66,7 @@ const BeardTrimPage = () => (
       </div>
     </section>
 
-    <section className="py-16 bg-amber-500">
+    <section className="py-16 bg-gold-500">
       <div className="max-w-3xl mx-auto px-4 text-center">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">Get the Full Package</h2>
         <p className="text-gray-800 mb-6">Haircut + beard trim combo — walk in or call today.</p>

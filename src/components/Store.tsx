@@ -41,7 +41,7 @@ const Store = () => {
     <section id="store" className="py-24 bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold text-center mb-12">
-          <span className="text-amber-500">Premium Products</span>
+          <span className="text-gold-500">Premium Products</span>
         </h2>
         
         <div className="grid md:grid-cols-4 gap-8">
@@ -55,7 +55,7 @@ const Store = () => {
                 />
                 <div className="absolute top-2 right-2">
                   <div className="flex items-center bg-gray-900/80 rounded-full px-2 py-1">
-                    <Star className="h-4 w-4 text-amber-500 fill-current" />
+                    <Star className="h-4 w-4 text-gold-500 fill-current" />
                     <span className="ml-1 text-sm">{product.rating}</span>
                   </div>
                 </div>
@@ -66,8 +66,8 @@ const Store = () => {
                 <p className="text-gray-400 text-sm mb-4">{product.description}</p>
                 
                 <div className="flex justify-between items-center">
-                  <span className="text-xl font-bold text-amber-500">${product.price}</span>
-                  <button className="bg-amber-500 text-gray-900 p-2 rounded-full hover:bg-amber-400 transition-colors">
+                  <span className="text-xl font-bold text-gold-500">${product.price}</span>
+                  <button className="bg-gold-500 text-gray-900 p-2 rounded-full hover:bg-gold-400 transition-colors">
                     <Plus className="h-5 w-5" />
                   </button>
                 </div>
@@ -79,7 +79,7 @@ const Store = () => {
         </div>
         
         <div className="mt-12 text-center">
-          <button className="bg-amber-500 text-gray-900 px-8 py-3 rounded-md font-medium hover:bg-amber-400 transition-colors inline-flex items-center">
+          <button className="bg-gold-500 text-gray-900 px-8 py-3 rounded-md font-medium hover:bg-gold-400 transition-colors inline-flex items-center">
             <ShoppingCart className="h-5 w-5 mr-2" />
             View Full Store
           </button>

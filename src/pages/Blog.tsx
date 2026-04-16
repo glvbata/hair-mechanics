@@ -70,7 +70,7 @@ const BlogPage = () => {
         <section className="py-12 bg-dark-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-4xl font-bold text-center mb-4">
-              <span className="text-amber-500">Hair Mechanics Blog</span>
+              <span className="text-gold-500">Hair Mechanics Blog</span>
             </h1>
             <p className="text-gray-300 text-center max-w-3xl mx-auto mb-12">
               Expert tips, style guides, and grooming advice from Auburn's premier barbershop professionals
@@ -96,14 +96,14 @@ const BlogPage = () => {
                       {post.tags.map((tag, i) => (
                         <span 
                           key={i}
-                          className="text-xs bg-gray-800 text-amber-500 px-2 py-1 rounded-full"
+                          className="text-xs bg-gray-800 text-gold-500 px-2 py-1 rounded-full"
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
                     
-                    <h2 className="text-xl font-bold mb-3 hover:text-amber-500 transition-colors">
+                    <h2 className="text-xl font-bold mb-3 hover:text-gold-500 transition-colors">
                       <a href={`/blog/${post.slug}`}>
                         {post.title}
                       </a>
@@ -122,7 +122,7 @@ const BlogPage = () => {
                     
                     <a 
                       href={`/blog/${post.slug}`}
-                      className="text-amber-500 hover:text-amber-400 font-medium inline-flex items-center"
+                      className="text-gold-500 hover:text-gold-400 font-medium inline-flex items-center"
                     >
                       Read More
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">

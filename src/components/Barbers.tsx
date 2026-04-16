@@ -39,7 +39,7 @@ const Barbers = ({ onBook }: { onBook: (barber: string) => void }) => {
     <section id="barbers" className="py-24 bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold text-center mb-12">
-          <span className="text-amber-500">Meet Our Expert Barbers</span>
+          <span className="text-gold-500">Meet Our Expert Barbers</span>
         </h2>
         
         <div className="grid md:grid-cols-3 gap-8">
@@ -58,18 +58,18 @@ const Barbers = ({ onBook }: { onBook: (barber: string) => void }) => {
                     href={`https://instagram.com/${barber.instagram}`} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-amber-500 hover:text-amber-400"
+                    className="text-gold-500 hover:text-gold-400"
                   >
                     <Instagram className="h-5 w-5" />
                   </a>
                 </div>
                 
-                <p className="text-amber-500 font-medium mb-2">{barber.title}</p>
+                <p className="text-gold-500 font-medium mb-2">{barber.title}</p>
                 <p className="text-gray-400 mb-4">{barber.experience} Experience</p>
                 
                 <div className="mb-4">
                   <div className="flex items-center mb-2">
-                    <Star className="h-5 w-5 text-amber-500 fill-current" />
+                    <Star className="h-5 w-5 text-gold-500 fill-current" />
                     <span className="ml-2">{barber.rating} ({barber.reviews} reviews)</span>
                   </div>
                 </div>
@@ -90,7 +90,7 @@ const Barbers = ({ onBook }: { onBook: (barber: string) => void }) => {
                 
                 <button
                   onClick={() => onBook(barber.name)}
-                  className="w-full bg-amber-500 text-gray-900 px-4 py-2 rounded-md font-medium hover:bg-amber-400 transition-colors flex items-center justify-center"
+                  className="w-full bg-gold-500 text-gray-900 px-4 py-2 rounded-md font-medium hover:bg-gold-400 transition-colors flex items-center justify-center"
                 >
                   <Calendar className="h-5 w-5 mr-2" />
                   Book with {barber.name.split(' ')[0]}

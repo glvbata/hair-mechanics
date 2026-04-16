@@ -43,7 +43,7 @@ const StyleGuide = () => {
     <section id="styles" className="py-24 bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold text-center mb-12">
-          <span className="text-amber-500">Style Guide</span>
+          <span className="text-gold-500">Style Guide</span>
         </h2>
         
         <div className="mb-8">
@@ -53,7 +53,7 @@ const StyleGuide = () => {
               <input
                 type="text"
                 placeholder="Search styles..."
-                className="w-full pl-10 pr-4 py-2 bg-gray-900 rounded-md focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                className="w-full pl-10 pr-4 py-2 bg-gray-900 rounded-md focus:ring-2 focus:ring-gold-500 focus:outline-none"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -65,7 +65,7 @@ const StyleGuide = () => {
                   key={category}
                   className={`px-4 py-2 rounded-md ${
                     selectedCategory === category
-                      ? 'bg-amber-500 text-gray-900'
+                      ? 'bg-gold-500 text-gray-900'
                       : 'bg-gray-900 text-gray-300 hover:bg-gray-700'
                   }`}
                   onClick={() => setSelectedCategory(category)}
@@ -87,7 +87,7 @@ const StyleGuide = () => {
                   className="w-full h-64 object-cover"
                 />
                 <div className="absolute top-2 right-2">
-                  <span className="bg-amber-500 text-gray-900 px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="bg-gold-500 text-gray-900 px-3 py-1 rounded-full text-sm font-medium">
                     {style.category}
                   </span>
                 </div>
@@ -108,7 +108,7 @@ const StyleGuide = () => {
                   </div>
                 </div>
                 
-                <button className="w-full bg-amber-500 text-gray-900 px-4 py-2 rounded-md font-medium hover:bg-amber-400 transition-colors flex items-center justify-center">
+                <button className="w-full bg-gold-500 text-gray-900 px-4 py-2 rounded-md font-medium hover:bg-gold-400 transition-colors flex items-center justify-center">
                   <Camera className="h-5 w-5 mr-2" />
                   Try Virtual Style
                 </button>
