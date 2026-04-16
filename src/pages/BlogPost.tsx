@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Calendar, Clock, ArrowLeft, Share2, Facebook, Twitter } from 'lucide-react';
 import Navbar from '../components/Navbar';
@@ -270,6 +270,11 @@ const blogPostsData = {
   }
 };
 
+const toISODate = (dateStr: string): string => {
+  const d = new Date(dateStr);
+  return isNaN(d.getTime()) ? dateStr : d.toISOString().split('T')[0];
+};
+
 const BlogPost = () => {
   const { slug } = useParams();
   const post = blogPostsData[slug as keyof typeof blogPostsData];
@@ -278,7 +283,51 @@ const BlogPost = () => {
     title: post ? `${post.title} | Hair Mechanics Auburn WA` : 'Post Not Found | Hair Mechanics',
     description: post ? post.excerpt : 'Hair Mechanics barbershop blog — haircut tips, grooming guides, and style trends.',
     canonical: slug ? `https://hairmechanics.net/blog/${slug}` : 'https://hairmechanics.net/blog',
+    ogImage: post ? post.image : undefined,
   });
+
+  useEffect(() => {
+    if (!post || !slug) return;
+
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: post.title,
+      description: post.excerpt,
+      image: post.image,
+      datePublished: toISODate(post.date),
+      dateModified: toISODate(post.date),
+      author: {
+        '@type': 'Organization',
+        name: 'Hair Mechanics',
+        url: 'https://hairmechanics.net',
+      },
+      publisher: {
+        '@type': 'LocalBusiness',
+        name: 'Hair Mechanics',
+        url: 'https://hairmechanics.net',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://hairmechanics.net/assets/Logo.png',
+        },
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': `https://hairmechanics.net/blog/${slug}`,
+      },
+      url: `https://hairmechanics.net/blog/${slug}`,
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'blog-post-schema';
+    script.textContent = JSON.stringify(schema);
+    document.head.appendChild(script);
+
+    return () => {
+      document.getElementById('blog-post-schema')?.remove();
+    };
+  }, [slug, post]);
 
   const handleBooking = () => {
     window.location.href = 'tel:+1-206-399-9288';
