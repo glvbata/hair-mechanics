@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Phone, MapPin, Clock, Star, CheckCircle } from 'lucide-react';
 import { useSEO } from '../utils/useSEO';
 import { trackSMSClick, trackReviewClick, handleCall } from '../utils/analytics';
@@ -16,12 +17,76 @@ const reviews = [
   { name: 'khon meckdara', text: "Glen is a great barber, he's been cutting my hair for years. The shop is very modern and clean. I'm glad that I found a barber that can cut my type of hair." },
 ];
 
+const bookFAQSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Do I need an appointment at Hair Mechanics?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No appointment needed. Hair Mechanics is a walk-in barber shop open 7 days a week. Just show up — Mon–Fri 10am–8pm, Sat–Sun 8am–8pm.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does a haircut cost at Hair Mechanics?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Haircut is $40, Haircut & Beard Trim is $50, Kids Cut (12 & under) is $35, and a Line Up / Trim is $20.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does a haircut take?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Most haircuts take 30–45 minutes. A haircut and beard trim together typically takes 45–60 minutes.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What payment methods does Hair Mechanics accept?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Hair Mechanics accepts all major credit and debit cards, as well as cash.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does Hair Mechanics cut kids\' hair?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Kids cuts (12 & under) are $35. Walk-ins welcome for all ages.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Where is Hair Mechanics located?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Hair Mechanics is at 1251 A Street NE, Auburn, WA 98002. Free parking is available out front.',
+      },
+    },
+  ],
+};
+
 const BookPage = () => {
   useSEO({
     title: 'Book a Haircut | Hair Mechanics Barber Shop Auburn, WA | (206) 399-9288',
     description: 'Book your haircut at Hair Mechanics, Auburn\'s top barber shop. Walk-ins welcome. Haircuts, fades, beard trims for men, women, and kids. Open 7 days. Call (206) 399-9288.',
     canonical: 'https://hairmechanics.net/book',
   });
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'book-faq-schema';
+    script.textContent = JSON.stringify(bookFAQSchema);
+    document.head.appendChild(script);
+    return () => { document.getElementById('book-faq-schema')?.remove(); };
+  }, []);
 
   return (
     <div className="min-h-screen bg-dark-800 text-white">

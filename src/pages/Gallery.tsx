@@ -82,6 +82,24 @@ const galleryImages = [
   "/assets/haircuts/120502941_188273952898324_4665440233750489347_n.jpg",
 ];
 
+const altDescriptions = [
+  'Fade haircut by Hair Mechanics Auburn WA',
+  'Clean skin fade with lineup',
+  "Men's haircut and beard trim Auburn",
+  'Taper fade haircut Auburn WA',
+  'Fresh cut and style by Hair Mechanics',
+  'Mid fade with textured top',
+  'Precision haircut Auburn barber',
+  'Beard trim and lineup Auburn WA',
+  'Bald fade haircut Auburn',
+  "Men's grooming Hair Mechanics Auburn",
+  'High fade with hard part Auburn WA',
+  'Low fade haircut and beard shape',
+  'Classic taper cut Hair Mechanics',
+  'Drop fade haircut Auburn barber',
+  'Textured crop with fade Auburn WA',
+];
+
 const GalleryPage = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [visibleCount, setVisibleCount] = useState(16);
@@ -148,7 +166,7 @@ const GalleryPage = () => {
                   <source srcSet={image.replace(/\.(jpg|jpeg|png)$/i, '.webp')} type="image/webp" />
                   <img
                     src={image}
-                    alt={`Haircut by Hair Mechanics ${index + 1}`}
+                    alt={altDescriptions[index % altDescriptions.length]}
                     className="w-full h-auto block transform transition-all duration-700 group-hover:scale-105"
                     loading="lazy"
                     decoding="async"

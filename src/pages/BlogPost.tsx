@@ -58,7 +58,7 @@ const blogPostsData = {
       <h2 class="text-2xl font-bold mt-8 mb-4 text-amber-500">Serving Auburn and the Surrounding Area</h2>
       <p class="mb-4">Hair Mechanics is the go-to walk-in barber for customers coming from all over the South King County area — Auburn, Kent, Federal Way, Renton, Sumner, and Puyallup. We're centrally located with easy access from Highway 18 and Auburn Way.</p>
 
-      <p class="mt-8 mb-4">Ready for a cut? Just show up. We'll handle the rest.</p>
+      <p class="mt-8 mb-4">Ready for a cut? Just show up. Check out our <a href="/services/haircut" class="text-amber-500 hover:text-amber-400 underline">haircut</a> and <a href="/services/fade" class="text-amber-500 hover:text-amber-400 underline">fade services</a> — then walk in whenever you're ready. We'll handle the rest.</p>
     `,
     relatedPosts: [
       {
@@ -109,7 +109,7 @@ const blogPostsData = {
       <p class="mb-4">Why it's trending: The movement toward authenticity in personal style has made natural textures more appreciated than ever before.</p>
       
       <h2 class="text-2xl font-bold mt-8 mb-4 text-amber-500">How to Choose the Right Trend for You</h2>
-      <p class="mb-4">While these trends are popular, it's important to consider your hair type, face shape, and lifestyle when choosing a new style. At Hair Mechanics, our expert barbers can help you find the perfect trend-inspired cut that suits your individual needs.</p>
+      <p class="mb-4">While these trends are popular, it's important to consider your hair type, face shape, and lifestyle when choosing a new style. At Hair Mechanics, our expert barbers can help you find the perfect trend-inspired cut that suits your individual needs — whether that's a <a href="/services/fade" class="text-amber-500 hover:text-amber-400 underline">clean fade</a> or a precision <a href="/services/haircut" class="text-amber-500 hover:text-amber-400 underline">haircut</a>.</p>
       
       <p class="mt-8 mb-4">Ready to try one of these trending styles? Book an appointment with us today and stay ahead of the curve!</p>
     `,
@@ -159,8 +159,8 @@ const blogPostsData = {
   <p class="mb-4">Use a small amount of pomade, clay, or cream (depending on your hair type) to keep the top styled. Ask your barber what product works best for your texture — they'll know exactly what to recommend.</p>
 
   <h2 class="text-2xl font-bold mt-8 mb-4 text-amber-500">4. Get a Line-Up Between Full Cuts</h2>
-  <p class="mb-4">If you're on a 3–4 week schedule between full cuts, consider coming in at the halfway point for a line-up. A line-up cleans up your hairline, temple fade, and neckline for $20 — and it resets how sharp the whole cut looks without a full session.</p>
-  <p class="mb-4">A lot of our regulars at Hair Mechanics do a full cut every 3–4 weeks and a line-up in between. It's the most cost-effective way to always look clean.</p>
+  <p class="mb-4">If you're on a 3–4 week schedule between full cuts, consider coming in at the halfway point for a <a href="/services/line-up" class="text-amber-500 hover:text-amber-400 underline">line-up</a>. A line-up cleans up your hairline, temple fade, and neckline for $20 — and it resets how sharp the whole cut looks without a full session.</p>
+  <p class="mb-4">A lot of our regulars at Hair Mechanics do a <a href="/services/fade" class="text-amber-500 hover:text-amber-400 underline">full fade cut</a> every 3–4 weeks and a line-up in between. It's the most cost-effective way to always look clean.</p>
 
   <h2 class="text-2xl font-bold mt-8 mb-4 text-amber-500">When to Come Back for a Full Cut</h2>
   <p class="mb-4">Here's a simple guide by fade type:</p>
@@ -249,7 +249,7 @@ const blogPostsData = {
       </ul>
       
       <h2 class="text-2xl font-bold mt-8 mb-4 text-amber-500">Professional Beard Care</h2>
-      <p class="mb-4">While daily maintenance can be done at home, visiting a professional barber every 4-6 weeks for a beard trim and shape-up can help maintain your beard's health and appearance. At Hair Mechanics, our barbers are experts in beard care and can provide personalized advice for your specific beard type and style goals.</p>
+      <p class="mb-4">While daily maintenance can be done at home, visiting a professional barber every 4-6 weeks for a <a href="/services/beard-trim" class="text-amber-500 hover:text-amber-400 underline">beard trim and shape-up</a> can help maintain your beard's health and appearance. At Hair Mechanics, our barbers are experts in beard care and can provide personalized advice for your specific beard type and style goals.</p>
       
       <p class="mt-8 mb-4">Ready to take your beard to the next level? Book an appointment with us today for a professional beard trim and personalized maintenance plan!</p>
     `,
