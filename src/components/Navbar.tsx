@@ -29,7 +29,7 @@ const Navbar = ({ onBook }: NavbarProps) => {
   };
 
   return (
-    <nav className="fixed w-full z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-700">
+    <nav className="fixed w-full z-50 bg-dark-900/95 backdrop-blur-sm border-b-2 border-gold-500/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">

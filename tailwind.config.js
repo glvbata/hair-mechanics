@@ -3,6 +3,9 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      fontFamily: {
+        display: ['Oswald', 'sans-serif'],
+      },
       colors: {
         // Primary gold shades (meets AA and AAA contrast requirements)
         gold: {

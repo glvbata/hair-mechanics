@@ -1,11 +1,16 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Marquee from './components/Marquee';
+import Stats from './components/Stats';
 import About from './components/About';
 import Services from './components/Services';
+import PhotoStrip from './components/PhotoStrip';
 import Reviews from './components/Reviews';
+import CallToAction from './components/CallToAction';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import MobileCTA from './components/MobileCTA';
 import { handleCall } from './utils/analytics';
 import { useSEO } from './utils/useSEO';
 
@@ -21,12 +26,17 @@ function App() {
       <Navbar onBook={handleCall} />
       <main>
         <Hero onBook={handleCall} />
+        <Marquee />
+        <Stats />
         <About />
         <Services />
+        <PhotoStrip />
         <Reviews />
+        <CallToAction />
         <Contact />
       </main>
       <Footer />
+      <MobileCTA />
     </div>
   );
 }

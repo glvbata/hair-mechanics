@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
+import { useScrollAnimation } from '../utils/useScrollAnimation';
 
 const services = [
   {
@@ -58,6 +59,7 @@ const FAQ = [
 
 const Services = () => {
   const [openFAQ, setOpenFAQ] = React.useState<number | null>(null);
+  const ref = useScrollAnimation<HTMLElement>();
 
   // FAQ Schema for Google rich results
   const faqSchema = {
@@ -74,75 +76,87 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="py-24 bg-gray-900">
+    <section id="services" ref={ref} className="py-24 bg-dark-800">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center mb-12">
-          <span className="text-amber-500">Haircut Services & Pricing</span>
+
+        {/* Section header */}
+        <div className="fade-up flex items-center gap-3 mb-4">
+          <span className="block w-10 h-0.5 bg-gold-500"></span>
+          <span className="font-display text-gold-500 text-sm tracking-[0.3em] uppercase">What We Offer</span>
+        </div>
+        <h2 className="font-display font-bold uppercase leading-none text-white mb-16"
+          style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>
+          Services <span className="text-gold-500">&</span> Pricing
         </h2>
-        
-        <div className="grid md:grid-cols-3 gap-8 mb-24">
+
+        {/* Editorial service cards — gold left border, large price */}
+        <div className="grid md:grid-cols-2 gap-4 mb-24">
           {services.map((service, index) => (
-            <div 
-              key={index} 
-              className="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors relative overflow-hidden group"
+            <div
+              key={index}
+              className={`fade-up fade-up-delay-${Math.min(index + 1, 4)} border-l-4 border-gold-500 bg-dark-900 pl-6 pr-6 py-6 hover:bg-dark-900/80 transition-colors group`}
             >
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-xl font-bold">{service.title}</h3>
-                <div className="text-right">
-                  <span className="text-2xl font-bold text-amber-500">{service.price}</span>
-                </div>
+              <div className="flex justify-between items-start">
+                <h3 className="font-display font-bold uppercase tracking-wider text-white text-2xl">
+                  {service.title}
+                </h3>
+                <span className="font-display font-bold text-gold-500 text-4xl leading-none">{service.price}</span>
               </div>
-              
-              <p className="text-gray-400 mb-4">{service.description}</p>
-              
-              <ul className="space-y-2">
+
+              <p className="text-gray-400 text-sm mt-2 mb-4">{service.description}</p>
+
+              <div className="flex flex-wrap gap-2 mb-4">
                 {service.includes.map((item, i) => (
-                  <li key={i} className="flex items-center text-sm text-gray-300">
-                    <span className="w-1.5 h-1.5 bg-amber-500 rounded-full mr-2"></span>
+                  <span key={i} className="text-xs text-gray-400 bg-dark-700 px-3 py-1 rounded-full">
                     {item}
-                  </li>
+                  </span>
                 ))}
-              </ul>
-              <Link to={service.link} className="inline-block mt-4 text-amber-500 hover:text-amber-400 text-sm font-medium transition-colors">
-                Learn more →
+              </div>
+
+              <Link to={service.link} className="text-gold-500 hover:text-gold-400 text-xs font-display uppercase tracking-widest transition-colors">
+                Details →
               </Link>
             </div>
           ))}
         </div>
 
-        <div className="mt-24">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            <span className="text-amber-500">Frequently Asked Questions</span>
-          </h2>
-          
-          <div className="max-w-3xl mx-auto space-y-4">
-            {FAQ.map((item, index) => (
-              <div 
-                key={index}
-                className="bg-gray-800 rounded-lg overflow-hidden"
+        {/* FAQ */}
+        <div className="flex items-center gap-3 mb-4">
+          <span className="block w-10 h-0.5 bg-gold-500"></span>
+          <span className="font-display text-gold-500 text-sm tracking-[0.3em] uppercase">Got Questions?</span>
+        </div>
+        <h2 className="font-display font-bold uppercase leading-none text-white mb-10"
+          style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>
+          Frequently Asked <span className="text-gold-500">Questions</span>
+        </h2>
+
+        <div className="max-w-3xl space-y-2">
+          {FAQ.map((item, index) => (
+            <div
+              key={index}
+              className="border-l-2 border-dark-700 hover:border-gold-500 bg-dark-900 overflow-hidden transition-colors"
+            >
+              <button
+                className="w-full px-6 py-4 text-left flex justify-between items-center"
+                onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
               >
-                <button
-                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-700"
-                  onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
-                >
-                  <span className="font-medium">{item.question}</span>
-                  <ChevronDown 
-                    className={`h-5 w-5 text-amber-500 transform transition-transform ${
-                      openFAQ === index ? 'rotate-180' : ''
-                    }`}
-                  />
-                </button>
-                <div 
-                  className={`px-6 transition-all duration-200 ease-in-out ${
-                    openFAQ === index ? 'py-4' : 'py-0 h-0'
+                <span className="font-medium text-white text-sm">{item.question}</span>
+                <ChevronDown
+                  className={`h-4 w-4 text-gold-500 flex-shrink-0 ml-4 transform transition-transform ${
+                    openFAQ === index ? 'rotate-180' : ''
                   }`}
-                >
-                  <p className="text-gray-400">{item.answer}</p>
-                </div>
+                />
+              </button>
+              <div
+                className={`px-6 transition-all duration-200 ease-in-out ${
+                  openFAQ === index ? 'py-4' : 'py-0 h-0'
+                }`}
+              >
+                <p className="text-gray-400 text-sm">{item.answer}</p>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

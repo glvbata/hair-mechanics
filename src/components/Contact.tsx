@@ -8,25 +8,30 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12">
           <div>
-            <h2 className="text-3xl font-bold mb-8">
-              <span className="text-amber-500">Get in Touch</span>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="block w-10 h-0.5 bg-gold-500"></span>
+              <span className="font-display text-gold-500 text-sm tracking-[0.3em] uppercase">Visit Us</span>
+            </div>
+            <h2 className="font-display font-bold uppercase leading-none text-white mb-8"
+              style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>
+              Find <span className="text-gold-500">Us</span>
             </h2>
             
             <div className="space-y-6">
               <div className="flex items-center">
-                <MapPin className="h-6 w-6 text-amber-500 mr-4" />
+                <MapPin className="h-6 w-6 text-gold-500 mr-4" />
                 <p itemProp="address">1251 A Street NE, Auburn, WA 98002, United States</p>
               </div>
               <div className="flex items-center">
-                <Phone className="h-6 w-6 text-amber-500 mr-4" />
+                <Phone className="h-6 w-6 text-gold-500 mr-4" />
                 <p itemProp="telephone">(206) 399-9288</p>
               </div>
               <div className="flex items-center">
-                <Mail className="h-6 w-6 text-amber-500 mr-4" />
+                <Mail className="h-6 w-6 text-gold-500 mr-4" />
                 <p itemProp="email">Hairmechanicsllc@yahoo.com</p>
               </div>
               <div className="flex items-center">
-                <Clock className="h-6 w-6 text-amber-500 mr-4" />
+                <Clock className="h-6 w-6 text-gold-500 mr-4" />
                 <div itemProp="openingHours">
                   <p>Weekdays: 10am - 8pm</p>
                   <p>Weekends: 8am - 8pm</p>
@@ -35,13 +40,13 @@ const Contact = () => {
             </div>
 
             <div className="flex space-x-4 mt-8">
-              <a href="https://www.instagram.com/hairmechanics1997" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-amber-500" aria-label="Follow us on Instagram">
+              <a href="https://www.instagram.com/hairmechanics1997" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-gold-500" aria-label="Follow us on Instagram">
                 <Instagram className="h-6 w-6" />
               </a>
-              <a href="https://www.facebook.com/hairmechanics1997" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-amber-500" aria-label="Like us on Facebook">
+              <a href="https://www.facebook.com/hairmechanics1997" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-gold-500" aria-label="Like us on Facebook">
                 <Facebook className="h-6 w-6" />
               </a>
-              <a href="https://www.tiktok.com/@glencelestial" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-amber-500" aria-label="Follow us on TikTok">
+              <a href="https://www.tiktok.com/@glencelestial" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-gold-500" aria-label="Follow us on TikTok">
 
                 <svg 
                   xmlns="http://www.w3.org/2000/svg" 
@@ -78,7 +83,7 @@ const Contact = () => {
                 href="https://g.page/r/Cc2wjU_thhsrEAI/review"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center bg-amber-500 hover:bg-amber-400 text-gray-900 px-5 py-2.5 rounded-md text-sm font-medium transition-colors"
+                className="inline-flex items-center justify-center bg-gold-500 hover:bg-gold-400 text-dark-900 px-5 py-2.5 rounded-md text-sm font-medium transition-colors"
                 onClick={trackReviewClick}
               >
                 ⭐ Leave Us a Review

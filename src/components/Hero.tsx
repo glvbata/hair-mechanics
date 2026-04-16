@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone } from 'lucide-react';
+import { Phone, ArrowDown } from 'lucide-react';
 import { trackSMSClick } from '../utils/analytics';
 
 interface HeroProps {
@@ -8,7 +8,8 @@ interface HeroProps {
 
 const Hero = ({ onBook }: HeroProps) => {
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center">
+    <section id="home" className="relative min-h-screen flex flex-col justify-end">
+      {/* Full-bleed background photo */}
       <picture className="absolute inset-0">
         <source srcSet="/assets/HeroImage.webp" type="image/webp" />
         {/* eslint-disable-next-line */}
@@ -21,38 +22,51 @@ const Hero = ({ onBook }: HeroProps) => {
           decoding="async"
         />
       </picture>
-      <div className="absolute inset-0 bg-dark-900/80"></div>
-      
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
-          <span className="block text-white">Auburn's Favorite</span>
-          <span className="block text-gold-500 mt-2">Barber Shop</span>
-        </h1>
-        <p className="mt-6 text-xl sm:text-2xl max-w-lg mx-auto text-gray-300">
-          Expert haircuts, clean fades, and beard trims — walk-ins welcome
-        </p>
-        <div className="mt-10 space-y-4">
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <button 
-              onClick={onBook}
-              className="btn-primary text-lg inline-flex items-center justify-center"
-              aria-label="Call to book your appointment"
-            >
-              <Phone className="h-5 w-5 mr-2" />
-              Call: (206) 399-9288
-            </button>
-            <a
-              href="sms:+12063999288?body=Hi, I'd like to book a haircut at Hair Mechanics"
-              onClick={trackSMSClick}
-              className="border-2 border-gold-500 text-gold-500 px-6 py-3 rounded-md font-medium hover:bg-gold-500 hover:text-dark-900 transition-colors text-lg inline-flex items-center justify-center"
-            >
-              💬 Text to Book
-            </a>
-          </div>
-          <p className="text-sm text-gray-400">
-            Weekdays: 10am - 8pm, Weekends: 8am - 8pm
-          </p>
+
+      {/* Gradient overlay — fades from transparent at top to near-black at bottom */}
+      <div className="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/70 to-dark-900/20"></div>
+
+      {/* Content — pinned to bottom of viewport */}
+      <div className="relative z-10 px-4 sm:px-6 lg:px-8 pb-16 pt-32 max-w-7xl mx-auto w-full">
+
+        {/* Eyebrow line */}
+        <div className="flex items-center gap-3 mb-4">
+          <span className="block w-10 h-0.5 bg-gold-500"></span>
+          <span className="font-display text-gold-500 text-sm tracking-[0.3em] uppercase">Auburn, Washington</span>
         </div>
+
+        {/* Main headline — massive editorial typography */}
+        <h1 className="font-display font-bold uppercase leading-none">
+          <span className="block text-white" style={{ fontSize: 'clamp(3.5rem, 12vw, 9rem)' }}>Auburn's</span>
+          <span className="block text-gold-500" style={{ fontSize: 'clamp(3.5rem, 12vw, 9rem)' }}>Favorite</span>
+          <span className="block text-white" style={{ fontSize: 'clamp(2.5rem, 8vw, 6rem)' }}>Barber Shop</span>
+        </h1>
+
+        {/* Subline + CTAs */}
+        <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <button
+            onClick={onBook}
+            className="btn-primary text-base inline-flex items-center"
+            aria-label="Call to book your appointment"
+          >
+            <Phone className="h-4 w-4 mr-2" />
+            Call: (206) 399-9288
+          </button>
+          <a
+            href="sms:+12063999288?body=Hi, I'd like to book a haircut at Hair Mechanics"
+            onClick={trackSMSClick}
+            className="text-gray-300 hover:text-gold-500 transition-colors text-sm font-medium inline-flex items-center gap-2"
+          >
+            💬 Or text us to book
+          </a>
+          <span className="hidden sm:block text-dark-600">|</span>
+          <span className="text-gray-400 text-sm">Walk-ins welcome · Open 7 days</span>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-gray-500 animate-bounce">
+        <ArrowDown className="h-5 w-5" />
       </div>
     </section>
   );

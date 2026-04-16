@@ -1,22 +1,30 @@
 import React from 'react';
 import { Award, Clock, Scissors, Users, Accessibility } from 'lucide-react';
+import { useScrollAnimation } from '../utils/useScrollAnimation';
 
 const About = () => {
+  const ref = useScrollAnimation<HTMLElement>();
+
   return (
-    <section id="about" className="py-24 bg-gray-800">
+    <section id="about" ref={ref} className="py-24 bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl font-bold">
-              <span className="text-amber-500">Auburn's Go-To Barber Shop</span>
+          <div className="fade-up">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="block w-10 h-0.5 bg-gold-500"></span>
+              <span className="font-display text-gold-500 text-sm tracking-[0.3em] uppercase">Our Story</span>
+            </div>
+            <h2 className="font-display font-bold uppercase leading-none text-white"
+              style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>
+              Auburn's Go-To <span className="text-gold-500">Barber Shop</span>
             </h2>
-            <p className="mt-4 text-gray-300 text-lg">
+            <p className="mt-6 text-gray-300 text-lg">
               Looking for a great haircut near Auburn? Hair Mechanics is more than just a barbershop — we're a neighborhood spot where you get expert cuts, clean fades, and quality beard work every time. Men, women, and kids welcome.
             </p>
             
             <div className="mt-8 space-y-6">
               <div className="flex items-start">
-                <div className="flex-shrink-0 bg-amber-500 rounded-md p-2">
+                <div className="flex-shrink-0 bg-gold-500 rounded-md p-2">
                   <Award className="h-6 w-6 text-gray-900" />
                 </div>
                 <div className="ml-4">
@@ -26,7 +34,7 @@ const About = () => {
               </div>
               
               <div className="flex items-start">
-                <div className="flex-shrink-0 bg-amber-500 rounded-md p-2">
+                <div className="flex-shrink-0 bg-gold-500 rounded-md p-2">
                   <Scissors className="h-6 w-6 text-gray-900" />
                 </div>
                 <div className="ml-4">
@@ -36,7 +44,7 @@ const About = () => {
               </div>
               
               <div className="flex items-start">
-                <div className="flex-shrink-0 bg-amber-500 rounded-md p-2">
+                <div className="flex-shrink-0 bg-gold-500 rounded-md p-2">
                   <Clock className="h-6 w-6 text-gray-900" />
                 </div>
                 <div className="ml-4">
@@ -46,7 +54,7 @@ const About = () => {
               </div>
               
               <div className="flex items-start">
-                <div className="flex-shrink-0 bg-amber-500 rounded-md p-2">
+                <div className="flex-shrink-0 bg-gold-500 rounded-md p-2">
                   <Users className="h-6 w-6 text-gray-900" />
                 </div>
                 <div className="ml-4">
@@ -56,7 +64,7 @@ const About = () => {
               </div>
 
               <div className="flex items-start">
-                <div className="flex-shrink-0 bg-amber-500 rounded-md p-2">
+                <div className="flex-shrink-0 bg-gold-500 rounded-md p-2">
                   <Accessibility className="h-6 w-6 text-gray-900" />
                 </div>
                 <div className="ml-4">
@@ -66,7 +74,7 @@ const About = () => {
               </div>
             </div>
           </div>
-          <div className="group relative cursor-pointer overflow-hidden rounded-lg">
+          <div className="fade-up fade-up-delay-2 group relative cursor-pointer overflow-hidden rounded-lg">
             <img 
               src="/assets/haircuts/118583704_178697420522644_9112869283729704689_n.jpg"
               alt="Professional Haircut"
