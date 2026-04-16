@@ -85,6 +85,13 @@ const galleryImages = [
 const GalleryPage = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [visibleCount, setVisibleCount] = useState(16);
+  const [showStickyBar, setShowStickyBar] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setShowStickyBar(window.scrollY > 320);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const visibleImages = galleryImages.slice(0, visibleCount);
   const hasMore = visibleCount < galleryImages.length;
@@ -176,6 +183,22 @@ const GalleryPage = () => {
         </div>
       </section>
 
+      {/* Sticky CTA bar */}
+      <div className={`fixed bottom-0 left-0 right-0 z-40 transition-transform duration-300 ${showStickyBar && selectedIndex === null ? 'translate-y-0' : 'translate-y-full'}`}>
+        <div className="bg-amber-500 px-4 py-3 flex items-center justify-between max-w-lg mx-auto rounded-t-2xl shadow-2xl">
+          <div>
+            <p className="text-gray-900 font-bold text-sm leading-tight">Like what you see?</p>
+            <p className="text-gray-800 text-xs">Walk-ins welcome · Open 7 days</p>
+          </div>
+          <button
+            onClick={handleCall}
+            className="bg-gray-900 text-white px-5 py-2.5 rounded-full font-bold text-sm flex items-center gap-2 hover:bg-gray-800 transition-colors shrink-0"
+          >
+            <Phone className="h-4 w-4" /> Call Now
+          </button>
+        </div>
+      </div>
+
       {/* Lightbox */}
       {selectedIndex !== null && (
         <div
@@ -218,9 +241,17 @@ const GalleryPage = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
               </button>
             )}
-            <p className="absolute bottom-3 left-1/2 -translate-x-1/2 text-white/40 text-xs bg-black/50 px-4 py-1.5 rounded-full">
-              {selectedIndex + 1} / {galleryImages.length}
-            </p>
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-3">
+              <p className="text-white/40 text-xs bg-black/50 px-3 py-1.5 rounded-full">
+                {selectedIndex + 1} / {galleryImages.length}
+              </p>
+              <button
+                onClick={(e) => { e.stopPropagation(); handleCall(); }}
+                className="bg-amber-500 text-gray-900 text-xs font-bold px-4 py-1.5 rounded-full flex items-center gap-1.5 hover:bg-amber-400 transition-colors"
+              >
+                <Phone className="h-3 w-3" /> Get This Cut
+              </button>
+            </div>
           </div>
         </div>
       )}
