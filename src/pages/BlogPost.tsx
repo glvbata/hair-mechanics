@@ -122,9 +122,9 @@ const blogPostsData = {
       },
       {
         id: 3,
-        title: "How to Choose the Right Haircut for Your Face Shape",
-        slug: "haircut-for-your-face-shape",
-        image: "https://images.unsplash.com/photo-1619625506362-608ea7e91054?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+        title: "How to Maintain a Fade Between Cuts",
+        slug: "how-to-maintain-a-fade",
+        image: "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
       }
     ]
   },
@@ -262,9 +262,9 @@ const blogPostsData = {
       },
       {
         id: 4,
-        title: "The Ultimate Hair Product Guide: Which One Is Right for You?",
-        slug: "ultimate-hair-product-guide",
-        image: "https://images.unsplash.com/photo-1581674210501-c760093514f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+        title: "How to Maintain a Fade Between Cuts",
+        slug: "how-to-maintain-a-fade",
+        image: "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
       }
     ]
   }

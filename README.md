@@ -43,7 +43,6 @@ React 18 + TypeScript + Vite + Tailwind CSS 3 + React Router v6. Deployed on **N
 | `/services/beard-trim` | Beard Trim | SEO service page |
 | `/services/haircut` | Haircut | SEO service page |
 | `/services/kids-cut` | Kids Cut | SEO service page |
-| `/services/womens-cut` | Women's Cut | SEO service page |
 | `/services/line-up` | Line Up | SEO service page |
 | `/auburn-barber` | Auburn area page | Local SEO |
 | `/kent-barber` | Kent area page | Local SEO |
@@ -145,7 +144,7 @@ src/
 │   ├── Gallery.tsx           # Masonry gallery + lightbox
 │   ├── Barber.tsx            # Barber profile (draft)
 │   ├── NotFound.tsx          # 404 page
-│   ├── services/             # 6 service landing pages (Fade, BeardTrim, Haircut, KidsCut, WomensCut, LineUp)
+│   ├── services/             # 5 service landing pages (Fade, BeardTrim, Haircut, KidsCut, LineUp)
 │   └── areas/                # 6 area pages (Auburn, Kent, FederalWay, Sumner, Puyallup, Renton)
 ├── utils/
 │   ├── useSEO.ts             # Dynamic SEO hook (title, meta, OG, Twitter, canonical)

@@ -16,7 +16,7 @@ import { useSEO } from './utils/useSEO';
 
 function App() {
   useSEO({
-    title: 'Hair Mechanics | Auburn Barber Shop & Haircuts Near Me | (206) 399-9288',
+    title: 'Hair Mechanics | Barbershop in Auburn, WA | Walk-Ins Welcome',
     description: "Hair Mechanics is Auburn's top-rated barber shop. Expert barbers specializing in haircuts, fades, beard trims, and styling for men, women, and kids. Walk-ins welcome. Open 7 days. Call (206) 399-9288.",
     canonical: 'https://hairmechanics.net',
   });
