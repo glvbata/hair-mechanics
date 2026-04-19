@@ -10,7 +10,7 @@ const BarberAkshatPage = () => (
   >
     {/* Hero */}
     <section className="relative py-20 sm:py-28">
-      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/assets/HeroImage.jpg")' }}>
+      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'image-set(url("/assets/HeroImage.webp") type("image/webp"), url("/assets/HeroImage.jpg") type("image/jpeg"))' }}>
         <div className="absolute inset-0 bg-dark-900/85"></div>
       </div>
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
@@ -29,12 +29,17 @@ const BarberAkshatPage = () => (
         <div className="bg-gray-800 rounded-lg overflow-hidden">
           {/* Photo */}
           <div className="aspect-[4/3] bg-dark-700 overflow-hidden">
-            <img
-              src="/assets/akshat.jpg"
-              alt="Akshat Rait — Barber at Hair Mechanics"
-              className="w-full h-full object-cover object-center"
-              decoding="async"
-            />
+            <picture>
+              <source srcSet="/assets/akshat.webp" type="image/webp" />
+              <img
+                src="/assets/akshat.jpg"
+                alt="Akshat Rait — Barber at Hair Mechanics"
+                className="w-full h-full object-cover object-center"
+                decoding="async"
+                width="800"
+                height="600"
+              />
+            </picture>
           </div>
 
           <div className="p-8 sm:p-10">

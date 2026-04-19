@@ -12,7 +12,7 @@ const FadePage = () => (
     <ServiceSchema name="Fade Haircut" description="Precision fade haircut including skin fades, mid fades, and taper fades with consultation and styling." price="40.00" url="https://hairmechanics.net/services/fade" />
     {/* Hero */}
     <section className="relative py-20 sm:py-28">
-      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/assets/HeroImage.jpg")' }}>
+      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'image-set(url("/assets/HeroImage.webp") type("image/webp"), url("/assets/HeroImage.jpg") type("image/jpeg"))' }}>
         <div className="absolute inset-0 bg-dark-900/85"></div>
       </div>
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">

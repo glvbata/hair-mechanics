@@ -44,12 +44,18 @@ const PhotoStrip = () => {
             key={i}
             className="relative flex-none w-56 sm:w-72 h-80 sm:h-96 snap-start overflow-hidden group"
           >
-            <img
-              src={photo.src}
-              alt={photo.alt}
-              className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-              loading="lazy"
-            />
+            <picture>
+              <source srcSet={photo.src.replace('.jpg', '.webp')} type="image/webp" />
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+                width="288"
+                height="384"
+              />
+            </picture>
             {/* Subtle hover overlay */}
             <div className="absolute inset-0 bg-dark-900/0 group-hover:bg-dark-900/20 transition-colors duration-300" />
           </div>

@@ -33,7 +33,7 @@ const TeamPage = () => (
   >
     {/* Hero */}
     <section className="relative py-20 sm:py-28">
-      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("/assets/HeroImage.jpg")' }}>
+      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'image-set(url("/assets/HeroImage.webp") type("image/webp"), url("/assets/HeroImage.jpg") type("image/jpeg"))' }}>
         <div className="absolute inset-0 bg-dark-900/85"></div>
       </div>
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
@@ -57,16 +57,22 @@ const TeamPage = () => (
               className="group bg-gray-800 rounded-lg overflow-hidden hover:ring-2 hover:ring-gold-500 transition-all duration-200"
             >
               <div className={`${barber.aspect} overflow-hidden bg-dark-700`}>
-                <img
-                  src={barber.image}
-                  alt={barber.name}
-                  className={`w-full h-full object-cover ${barber.objectPosition} group-hover:scale-105 transition-transform duration-500`}
-                  loading="lazy"
-                  decoding="async"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = 'none';
-                  }}
-                />
+                <picture>
+                  <source
+                    srcSet={barber.image.replace(/\.(png|jpg|jpeg)$/i, '.webp')}
+                    type="image/webp"
+                  />
+                  <img
+                    src={barber.image}
+                    alt={barber.name}
+                    className={`w-full h-full object-cover ${barber.objectPosition} group-hover:scale-105 transition-transform duration-500`}
+                    loading="lazy"
+                    decoding="async"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = 'none';
+                    }}
+                  />
+                </picture>
               </div>
               <div className="p-6">
                 <h2 className="text-xl font-bold text-gold-500">{barber.name}</h2>

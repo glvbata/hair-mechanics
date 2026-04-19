@@ -111,7 +111,7 @@ const BookPage = () => {
       <section className="relative pt-20">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: 'url("/assets/HeroImage.jpg")' }}
+          style={{ backgroundImage: 'image-set(url("/assets/HeroImage.webp") type("image/webp"), url("/assets/HeroImage.jpg") type("image/jpeg"))' }}
         >
           <div className="absolute inset-0 bg-dark-900/85"></div>
         </div>
