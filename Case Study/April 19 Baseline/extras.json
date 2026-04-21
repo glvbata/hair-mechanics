@@ -1,0 +1,47 @@
+{
+  "label": "April 19 Baseline",
+  "captured_at": "2026-04-21T04:38:33.425Z",
+  "pagespeed": {
+    "mobile": {
+      "strategy": "mobile",
+      "score": 96,
+      "lcp": "2.8 s",
+      "cls": "1.721\nS",
+      "tbt": "160 ms",
+      "inp": null,
+      "screenshot": "screenshots/pagespeed-mobile.png",
+      "fetched_at": "2026-04-21T04:38:56.009Z"
+    },
+    "desktop": {
+      "strategy": "desktop",
+      "score": 96,
+      "lcp": "0.8 s",
+      "cls": "0.349\nS",
+      "tbt": "540 ms",
+      "inp": null,
+      "screenshot": "screenshots/pagespeed-desktop.png",
+      "fetched_at": "2026-04-21T04:39:01.241Z"
+    }
+  },
+  "maps": {
+    "screenshot": "screenshots/local-pack-maps.png",
+    "query": "barbershop Auburn WA"
+  },
+  "ga4": {
+    "screenshot": "screenshots/ga4-home.png",
+    "users_guess": null,
+    "sessions_guess": 100,
+    "note": "GA4 SPA DOM is unstable — numbers above are best-effort regex from visible text. Screenshot is the source of truth.",
+    "fetched_at": "2026-04-21T04:43:19.737Z"
+  },
+  "gsc": {
+    "property": "https://hairmechanics.net/",
+    "screenshot": "screenshots/gsc-performance.png",
+    "clicks": 12,
+    "impressions": 785,
+    "ctr_pct": 1.5,
+    "avg_position": 11.2,
+    "note": "Numbers parsed from rendered text. Screenshot is the source of truth.",
+    "fetched_at": "2026-04-21T04:45:19.365Z"
+  }
+}

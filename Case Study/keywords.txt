@@ -1,0 +1,19 @@
+# Hair Mechanics — Locked Baseline Keywords
+# Source: docs/hair-mechanics-seo-audit.md (April 18, 2026)
+# Locked: 2026-04-19
+#
+# Rule: Order is load-bearing. Do NOT reorder, add, or remove keywords mid-series
+# — it breaks month-over-month comparability in the seo-local-baseline skill.
+# If the list genuinely needs to change, start a new baseline series with a new label.
+#
+# Parser: lines starting with '#' are comments; blank lines are ignored.
+
+barbershop Auburn WA
+haircut Auburn WA
+barber near me Auburn
+fade haircut Auburn WA
+men's haircut Auburn WA
+beard trim Auburn WA
+walk-in barber Auburn WA
+barber open late Auburn WA
+best barber Auburn WA

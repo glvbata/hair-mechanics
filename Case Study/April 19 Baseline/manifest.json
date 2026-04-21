@@ -1,0 +1,210 @@
+{
+  "business": "Hair Mechanics",
+  "label": "April 19 Baseline",
+  "captured_at": "2026-04-20T23:25:31.340Z",
+  "finished_at": "2026-04-20T23:27:43.855Z",
+  "intended_location": "Auburn, WA",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "locale": "en-US",
+  "timezone": "America/Los_Angeles",
+  "browser": "chromium (Playwright, fresh context, logged-out)",
+  "keywords": [
+    {
+      "n": "01",
+      "slug": "barbershop-auburn-wa",
+      "query": "barbershop Auburn WA"
+    },
+    {
+      "n": "02",
+      "slug": "haircut-auburn-wa",
+      "query": "haircut Auburn WA"
+    },
+    {
+      "n": "03",
+      "slug": "barber-near-me-auburn",
+      "query": "barber near me Auburn"
+    },
+    {
+      "n": "04",
+      "slug": "fade-haircut-auburn-wa",
+      "query": "fade haircut Auburn WA"
+    },
+    {
+      "n": "05",
+      "slug": "mens-haircut-auburn-wa",
+      "query": "men's haircut Auburn WA"
+    },
+    {
+      "n": "06",
+      "slug": "beard-trim-auburn-wa",
+      "query": "beard trim Auburn WA"
+    },
+    {
+      "n": "07",
+      "slug": "walk-in-barber-auburn-wa",
+      "query": "walk-in barber Auburn WA"
+    },
+    {
+      "n": "08",
+      "slug": "barber-open-late-auburn-wa",
+      "query": "barber open late Auburn WA"
+    },
+    {
+      "n": "09",
+      "slug": "best-barber-auburn-wa",
+      "query": "best barber Auburn WA"
+    }
+  ],
+  "captures": [
+    {
+      "n": "01",
+      "slug": "barbershop-auburn-wa",
+      "query": "barbershop Auburn WA",
+      "page": "p1",
+      "file": "01-barbershop-auburn-wa-p1.png",
+      "url": "https://www.google.com/search?q=barbershop%20Auburn%20WA"
+    },
+    {
+      "n": "01",
+      "slug": "barbershop-auburn-wa",
+      "query": "barbershop Auburn WA",
+      "page": "p2",
+      "file": "01-barbershop-auburn-wa-p2.png",
+      "url": "https://www.google.com/search?q=barbershop%20Auburn%20WA&start=10"
+    },
+    {
+      "n": "02",
+      "slug": "haircut-auburn-wa",
+      "query": "haircut Auburn WA",
+      "page": "p1",
+      "file": "02-haircut-auburn-wa-p1.png",
+      "url": "https://www.google.com/search?q=haircut%20Auburn%20WA"
+    },
+    {
+      "n": "02",
+      "slug": "haircut-auburn-wa",
+      "query": "haircut Auburn WA",
+      "page": "p2",
+      "file": "02-haircut-auburn-wa-p2.png",
+      "url": "https://www.google.com/search?q=haircut%20Auburn%20WA&start=10"
+    },
+    {
+      "n": "03",
+      "slug": "barber-near-me-auburn",
+      "query": "barber near me Auburn",
+      "page": "p1",
+      "file": "03-barber-near-me-auburn-p1.png",
+      "url": "https://www.google.com/search?q=barber%20near%20me%20Auburn"
+    },
+    {
+      "n": "03",
+      "slug": "barber-near-me-auburn",
+      "query": "barber near me Auburn",
+      "page": "p2",
+      "file": "03-barber-near-me-auburn-p2.png",
+      "url": "https://www.google.com/search?q=barber%20near%20me%20Auburn&start=10"
+    },
+    {
+      "n": "04",
+      "slug": "fade-haircut-auburn-wa",
+      "query": "fade haircut Auburn WA",
+      "page": "p1",
+      "file": "04-fade-haircut-auburn-wa-p1.png",
+      "url": "https://www.google.com/search?q=fade%20haircut%20Auburn%20WA"
+    },
+    {
+      "n": "04",
+      "slug": "fade-haircut-auburn-wa",
+      "query": "fade haircut Auburn WA",
+      "page": "p2",
+      "file": "04-fade-haircut-auburn-wa-p2.png",
+      "url": "https://www.google.com/search?q=fade%20haircut%20Auburn%20WA&start=10"
+    },
+    {
+      "n": "05",
+      "slug": "mens-haircut-auburn-wa",
+      "query": "men's haircut Auburn WA",
+      "page": "p1",
+      "file": "05-mens-haircut-auburn-wa-p1.png",
+      "url": "https://www.google.com/search?q=men's%20haircut%20Auburn%20WA"
+    },
+    {
+      "n": "05",
+      "slug": "mens-haircut-auburn-wa",
+      "query": "men's haircut Auburn WA",
+      "page": "p2",
+      "file": "05-mens-haircut-auburn-wa-p2.png",
+      "url": "https://www.google.com/search?q=men's%20haircut%20Auburn%20WA&start=10"
+    },
+    {
+      "n": "06",
+      "slug": "beard-trim-auburn-wa",
+      "query": "beard trim Auburn WA",
+      "page": "p1",
+      "file": "06-beard-trim-auburn-wa-p1.png",
+      "url": "https://www.google.com/search?q=beard%20trim%20Auburn%20WA"
+    },
+    {
+      "n": "06",
+      "slug": "beard-trim-auburn-wa",
+      "query": "beard trim Auburn WA",
+      "page": "p2",
+      "file": "06-beard-trim-auburn-wa-p2.png",
+      "url": "https://www.google.com/search?q=beard%20trim%20Auburn%20WA&start=10"
+    },
+    {
+      "n": "07",
+      "slug": "walk-in-barber-auburn-wa",
+      "query": "walk-in barber Auburn WA",
+      "page": "p1",
+      "file": "07-walk-in-barber-auburn-wa-p1.png",
+      "url": "https://www.google.com/search?q=walk-in%20barber%20Auburn%20WA"
+    },
+    {
+      "n": "07",
+      "slug": "walk-in-barber-auburn-wa",
+      "query": "walk-in barber Auburn WA",
+      "page": "p2",
+      "file": "07-walk-in-barber-auburn-wa-p2.png",
+      "url": "https://www.google.com/search?q=walk-in%20barber%20Auburn%20WA&start=10"
+    },
+    {
+      "n": "08",
+      "slug": "barber-open-late-auburn-wa",
+      "query": "barber open late Auburn WA",
+      "page": "p1",
+      "file": "08-barber-open-late-auburn-wa-p1.png",
+      "url": "https://www.google.com/search?q=barber%20open%20late%20Auburn%20WA"
+    },
+    {
+      "n": "08",
+      "slug": "barber-open-late-auburn-wa",
+      "query": "barber open late Auburn WA",
+      "page": "p2",
+      "file": "08-barber-open-late-auburn-wa-p2.png",
+      "url": "https://www.google.com/search?q=barber%20open%20late%20Auburn%20WA&start=10"
+    },
+    {
+      "n": "09",
+      "slug": "best-barber-auburn-wa",
+      "query": "best barber Auburn WA",
+      "page": "p1",
+      "file": "09-best-barber-auburn-wa-p1.png",
+      "url": "https://www.google.com/search?q=best%20barber%20Auburn%20WA"
+    },
+    {
+      "n": "09",
+      "slug": "best-barber-auburn-wa",
+      "query": "best barber Auburn WA",
+      "page": "p2",
+      "file": "09-best-barber-auburn-wa-p2.png",
+      "url": "https://www.google.com/search?q=best%20barber%20Auburn%20WA&start=10"
+    }
+  ],
+  "anomalies": [
+    "barbershop Auburn WA (p1): CAPTCHA detected — manual solve required"
+  ]
+}

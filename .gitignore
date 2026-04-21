@@ -25,3 +25,18 @@ dist-ssr
 
 # Bolt (no longer used)
 .bolt
+
+# SEO baseline screenshots — large binaries, NOT regenerable.
+# Track baseline.md / manifest.json / keywords.txt; back screenshots up
+# to cloud storage (Drive/iCloud) since git won't have them.
+Case Study/**/screenshots/
+
+# Signed-in Chrome profile for extras.js (cookies + local state).
+# NEVER commit — treat as a password. Also large (~100MB).
+Case Study/.auth/
+
+# Legacy (pre-Playwright extras.js): service-account JSON + env vars. Kept
+# gitignored so stale files on disk can't leak.
+Case Study/.credentials/
+Case Study/.env
+Case Study/.env.local

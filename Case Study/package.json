@@ -1,0 +1,15 @@
+{
+  "name": "hair-mechanics-baseline",
+  "private": true,
+  "version": "2.0.0",
+  "description": "Monthly SEO baseline capture for Hair Mechanics. Playwright-only — no API keys, no service accounts.",
+  "scripts": {
+    "baseline": "node baseline.js",
+    "extras": "node extras.js",
+    "login": "node extras.js --login",
+    "postinstall": "playwright install chromium"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
+  }
+}
