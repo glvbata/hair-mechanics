@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Scissors } from 'lucide-react';
 import PageLayout from '../components/PageLayout';
+import HeroSection from '../components/HeroSection';
+import { SITE_URL } from '../constants/business';
 
 const barbers = [
   {
@@ -29,22 +31,14 @@ const TeamPage = () => (
   <PageLayout
     title="Meet the Team | Hair Mechanics Auburn WA"
     description="Meet the barbers at Hair Mechanics in Auburn, WA — Glen Celestial and Akshat Rait. Experienced, skilled, and ready to make you look your best."
-    canonical="https://hairmechanics.net/team"
+    canonical={`${SITE_URL}/team`}
   >
-    {/* Hero */}
-    <section className="relative py-20 sm:py-28">
-      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'image-set(url("/assets/HeroImage.webp") type("image/webp"), url("/assets/HeroImage.jpg") type("image/jpeg"))' }}>
-        <div className="absolute inset-0 bg-dark-900/85"></div>
-      </div>
-      <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-        <h1 className="text-3xl sm:text-5xl font-bold">
-          <span className="text-gold-500">Our Team</span>
-        </h1>
-        <p className="mt-4 text-lg text-gray-300 max-w-xl mx-auto">
-          Skilled barbers, consistent cuts, and a shop that treats you like a regular — every time.
-        </p>
-      </div>
-    </section>
+    <HeroSection
+      eyebrow="Our Team"
+      subhead={null}
+      description="Skilled barbers, consistent cuts, and a shop that treats you like a regular — every time."
+      hideCta
+    />
 
     {/* Barber cards */}
     <section className="py-16 bg-dark-900">

@@ -1,32 +1,29 @@
 import PageLayout from '../../components/PageLayout';
 import ServiceSchema from '../../components/ServiceSchema';
-import { Phone } from 'lucide-react';
-import { handleCall } from '../../utils/analytics';
+import HeroSection from '../../components/HeroSection';
+import CTABand from '../../components/CTABand';
+import { PHONE_DISPLAY, SITE_URL, getService } from '../../constants/business';
+
+const svc = getService('kids-cut')!;
+const url = `${SITE_URL}/services/kids-cut`;
 
 const KidsCutPage = () => (
   <PageLayout
-    title="Kids Haircuts Auburn WA | $35 Ages 12 & Under | Hair Mechanics"
-    description="Affordable kids haircuts at Hair Mechanics in Auburn, WA. Patient barbers, fun atmosphere. Ages 12 and under just $35. Walk-ins welcome. Call (206) 399-9288."
-    canonical="https://hairmechanics.net/services/kids-cut"
+    title={`Kids Haircuts Auburn WA | $${svc.price} Ages 12 & Under | Hair Mechanics`}
+    description={`Affordable kids haircuts at Hair Mechanics in Auburn, WA. Patient barbers, fun atmosphere. Ages 12 and under just $${svc.price}. Walk-ins welcome. Call ${PHONE_DISPLAY}.`}
+    canonical={url}
   >
-    <ServiceSchema name="Kids Haircut" description="Affordable kids haircuts for ages 12 and under at Hair Mechanics in Auburn, WA." price="35.00" url="https://hairmechanics.net/services/kids-cut" />
-    <section className="relative py-20 sm:py-28">
-      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'image-set(url("/assets/HeroImage.webp") type("image/webp"), url("/assets/HeroImage.jpg") type("image/jpeg"))' }}>
-        <div className="absolute inset-0 bg-dark-900/85"></div>
-      </div>
-      <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-        <h1 className="text-3xl sm:text-5xl font-bold">
-          <span className="text-gold-500">Kids Haircuts</span>
-          <span className="block text-white mt-2">in Auburn, WA</span>
-        </h1>
-        <p className="mt-4 text-lg text-gray-300 max-w-xl mx-auto">
-          Patient, friendly barbers who make haircuts fun. Ages 12 and under — walk-ins welcome.
-        </p>
-        <button onClick={handleCall} className="mt-8 bg-gold-500 text-gray-900 px-8 py-4 rounded-md font-bold text-lg hover:bg-gold-400 transition-colors inline-flex items-center">
-          <Phone className="h-5 w-5 mr-2" /> Book a Kids Cut: (206) 399-9288
-        </button>
-      </div>
-    </section>
+    <ServiceSchema
+      name="Kids Haircut"
+      description="Affordable kids haircuts for ages 12 and under at Hair Mechanics in Auburn, WA."
+      price={svc.price.toFixed(2)}
+      url={url}
+    />
+    <HeroSection
+      eyebrow="Kids Haircuts"
+      description="Patient, friendly barbers who make haircuts fun. Ages 12 and under — walk-ins welcome."
+      ctaLabel={`Book a Kids Cut: ${PHONE_DISPLAY}`}
+    />
 
     <section className="py-16 bg-dark-900">
       <div className="max-w-4xl mx-auto px-4">
@@ -45,22 +42,14 @@ const KidsCutPage = () => (
         </div>
         <div className="text-center mt-10">
           <div className="bg-gray-800 rounded-lg p-6 inline-block">
-            <p className="text-4xl font-bold text-gold-500">$35</p>
+            <p className="text-4xl font-bold text-gold-500">${svc.price}</p>
             <p className="text-gray-400 mt-2">Ages 12 & under</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section className="py-16 bg-gold-500">
-      <div className="max-w-3xl mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Bring the Kids In</h2>
-        <p className="text-gray-800 mb-6">Walk-ins welcome — open 7 days a week in Auburn.</p>
-        <button onClick={handleCall} className="bg-gray-900 text-white px-8 py-4 rounded-md font-bold text-lg hover:bg-gray-800 transition-colors inline-flex items-center">
-          <Phone className="h-5 w-5 mr-2" /> (206) 399-9288
-        </button>
-      </div>
-    </section>
+    <CTABand heading="Bring the Kids In" subtext="Walk-ins welcome — open 7 days a week in Auburn." />
   </PageLayout>
 );
 

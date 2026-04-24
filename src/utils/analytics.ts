@@ -1,9 +1,7 @@
 /**
  * GA4 custom event tracking + centralized call handler for Hair Mechanics.
  */
-
-const PHONE_NUMBER = '+1-206-399-9288';
-const ADS_CONVERSION = 'AW-17956338356/ONVqCLjl6IgcELT1n_JC';
+import { PHONE_TEL, ADS_CONVERSION } from '../constants/business';
 
 const track = (eventName: string, params?: Record<string, string>) => {
   if (typeof window.gtag === 'function') {
@@ -21,7 +19,7 @@ export const handleCall = () => {
     });
   }
   track('phone_call', { method: 'click_to_call' });
-  window.location.href = `tel:${PHONE_NUMBER}`;
+  window.location.href = `tel:${PHONE_TEL}`;
 };
 
 export const trackSMSClick = () => track('sms_click', { method: 'sms' });

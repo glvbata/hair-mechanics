@@ -59,14 +59,19 @@ body {
          focus:ring-offset-2 focus:ring-offset-dark-800 transition-all;
 }
 
-/* Marquee ticker animation */
+/* Marquee ticker animation — track contains 2 identical copies, so shifting
+   by -50% brings the second copy exactly where the first started → seamless. */
 @keyframes marquee {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-25%); }
+  100% { transform: translateX(-50%); }
 }
 
 .animate-marquee {
   animation: marquee 30s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee { animation: none; }
 }
 
 /* Scroll-in fade-up animations */

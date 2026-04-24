@@ -1,6 +1,7 @@
 import React from 'react';
 import { MapPin, Phone, Mail, Clock, Instagram, Facebook } from 'lucide-react';
 import { trackDirectionsClick, trackReviewClick } from '../utils/analytics';
+import { ADDRESS, EMAIL, HOURS, PHONE_DISPLAY, SOCIAL } from '../constants/business';
 
 const Contact = () => {
   return (
@@ -20,33 +21,33 @@ const Contact = () => {
             <div className="space-y-6">
               <div className="flex items-center">
                 <MapPin className="h-6 w-6 text-gold-500 mr-4" />
-                <p itemProp="address">1251 A Street NE, Auburn, WA 98002, United States</p>
+                <p itemProp="address">{ADDRESS.full}, United States</p>
               </div>
               <div className="flex items-center">
                 <Phone className="h-6 w-6 text-gold-500 mr-4" />
-                <p itemProp="telephone">(206) 399-9288</p>
+                <p itemProp="telephone">{PHONE_DISPLAY}</p>
               </div>
               <div className="flex items-center">
                 <Mail className="h-6 w-6 text-gold-500 mr-4" />
-                <p itemProp="email">Hairmechanicsllc@yahoo.com</p>
+                <p itemProp="email">{EMAIL}</p>
               </div>
               <div className="flex items-center">
                 <Clock className="h-6 w-6 text-gold-500 mr-4" />
                 <div itemProp="openingHours">
-                  <p>Weekdays: 10am - 8pm</p>
-                  <p>Weekends: 8am - 8pm</p>
+                  <p>Weekdays: {HOURS.weekday.replace('Mon–Fri ', '')}</p>
+                  <p>Weekends: {HOURS.weekend.replace('Sat–Sun ', '')}</p>
                 </div>
               </div>
             </div>
 
             <div className="flex space-x-4 mt-8">
-              <a href="https://www.instagram.com/hairmechanics1997" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-gold-500" aria-label="Follow us on Instagram">
+              <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-gold-500" aria-label="Follow us on Instagram">
                 <Instagram className="h-6 w-6" />
               </a>
-              <a href="https://www.facebook.com/hairmechanics1997" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-gold-500" aria-label="Like us on Facebook">
+              <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-gold-500" aria-label="Like us on Facebook">
                 <Facebook className="h-6 w-6" />
               </a>
-              <a href="https://www.tiktok.com/@glencelestial" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-gold-500" aria-label="Follow us on TikTok">
+              <a href={SOCIAL.tiktok} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-gold-500" aria-label="Follow us on TikTok">
 
                 <svg 
                   xmlns="http://www.w3.org/2000/svg" 
@@ -70,7 +71,7 @@ const Contact = () => {
 
             <div className="flex flex-col sm:flex-row gap-3 mt-8">
               <a
-                href="https://www.google.com/maps/dir//Hair+Mechanics+LLC,+1251+A+St+NE,+Auburn,+WA+98002"
+                href={SOCIAL.directions}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center bg-gray-700 hover:bg-gray-600 text-white px-5 py-2.5 rounded-md text-sm font-medium transition-colors"
@@ -80,7 +81,7 @@ const Contact = () => {
                 Get Directions
               </a>
               <a
-                href="https://g.page/r/Cc2wjU_thhsrEAI/review"
+                href={SOCIAL.review}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center bg-gold-500 hover:bg-gold-400 text-dark-900 px-5 py-2.5 rounded-md text-sm font-medium transition-colors"

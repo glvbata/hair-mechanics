@@ -13,12 +13,13 @@ import Footer from './components/Footer';
 import MobileCTA from './components/MobileCTA';
 import { handleCall } from './utils/analytics';
 import { useSEO } from './utils/useSEO';
+import { PHONE_DISPLAY, SITE_URL } from './constants/business';
 
 function App() {
   useSEO({
     title: 'Hair Mechanics | Barbershop in Auburn, WA | Walk-Ins Welcome',
-    description: "Hair Mechanics is Auburn's top-rated barber shop. Expert barbers specializing in haircuts, fades, beard trims, and styling for men, women, and kids. Walk-ins welcome. Open 7 days. Call (206) 399-9288.",
-    canonical: 'https://hairmechanics.net',
+    description: `Hair Mechanics is Auburn's top-rated barber shop. Expert barbers specializing in haircuts, fades, beard trims, and styling for men, women, and kids. Walk-ins welcome. Open 7 days. Call ${PHONE_DISPLAY}.`,
+    canonical: SITE_URL,
   });
 
   return (

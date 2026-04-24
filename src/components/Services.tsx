@@ -2,36 +2,40 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 import { useScrollAnimation } from '../utils/useScrollAnimation';
+import { getService } from '../constants/business';
 
-const services = [
+// Homepage service cards — price comes from business.ts SERVICES; `includes`
+// and short descriptions stay local to this component.
+const SERVICE_CARDS: readonly {
+  slug: string;
+  title: string;
+  shortDescription: string;
+  includes: string[];
+}[] = [
   {
-    title: "Haircut",
-    price: "$40",
-    description: "Precision haircut with styling",
-    includes: ["Consultation", "Precision Cut", "Style"],
-    link: "/services/haircut",
+    slug: 'haircut',
+    title: 'Haircut',
+    shortDescription: 'Precision haircut with styling',
+    includes: ['Consultation', 'Precision Cut', 'Style'],
   },
   {
-    title: "Haircut & Beard",
-    price: "$50",
-    description: "Complete grooming experience",
-    includes: ["Haircut", "Beard Trim & Shape", "Line Up", "Style"],
-    link: "/services/beard-trim",
+    slug: 'beard-trim',
+    title: 'Haircut & Beard',
+    shortDescription: 'Complete grooming experience',
+    includes: ['Haircut', 'Beard Trim & Shape', 'Line Up', 'Style'],
   },
   {
-    title: "Kids Cut",
-    price: "$35",
-    description: "Ages 12 and under",
-    includes: ["Consultation", "Cut", "Style"],
-    link: "/services/kids-cut",
+    slug: 'kids-cut',
+    title: 'Kids Cut',
+    shortDescription: 'Ages 12 and under',
+    includes: ['Consultation', 'Cut', 'Style'],
   },
   {
-    title: "Line Up / Trim",
-    price: "$20",
-    description: "Quick touch-up between cuts",
-    includes: ["Neck Trim", "Line Up", "Light Styling"],
-    link: "/services/line-up",
-  }
+    slug: 'line-up',
+    title: 'Line Up / Trim',
+    shortDescription: 'Quick touch-up between cuts',
+    includes: ['Neck Trim', 'Line Up', 'Light Styling'],
+  },
 ];
 
 const FAQ = [
@@ -92,33 +96,36 @@ const Services = () => {
 
         {/* Editorial service cards — gold left border, large price */}
         <div className="grid md:grid-cols-2 gap-4 mb-24">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className={`fade-up fade-up-delay-${Math.min(index + 1, 4)} border-l-4 border-gold-500 bg-dark-900 pl-6 pr-6 py-6 hover:bg-dark-900/80 transition-colors group`}
-            >
-              <div className="flex justify-between items-start">
-                <h3 className="font-display font-bold uppercase tracking-wider text-white text-2xl">
-                  {service.title}
-                </h3>
-                <span className="font-display font-bold text-gold-500 text-4xl leading-none">{service.price}</span>
+          {SERVICE_CARDS.map((card, index) => {
+            const svc = getService(card.slug);
+            return (
+              <div
+                key={card.slug}
+                className={`fade-up fade-up-delay-${Math.min(index + 1, 4)} border-l-4 border-gold-500 bg-dark-900 pl-6 pr-6 py-6 hover:bg-dark-900/80 transition-colors group`}
+              >
+                <div className="flex justify-between items-start">
+                  <h3 className="font-display font-bold uppercase tracking-wider text-white text-2xl">
+                    {card.title}
+                  </h3>
+                  <span className="font-display font-bold text-gold-500 text-4xl leading-none">${svc?.price}</span>
+                </div>
+
+                <p className="text-gray-400 text-sm mt-2 mb-4">{card.shortDescription}</p>
+
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {card.includes.map((item, i) => (
+                    <span key={i} className="text-xs text-gray-400 bg-dark-700 px-3 py-1 rounded-full">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+
+                <Link to={`/services/${card.slug}`} className="text-gold-500 hover:text-gold-400 text-xs font-display uppercase tracking-widest transition-colors">
+                  Details →
+                </Link>
               </div>
-
-              <p className="text-gray-400 text-sm mt-2 mb-4">{service.description}</p>
-
-              <div className="flex flex-wrap gap-2 mb-4">
-                {service.includes.map((item, i) => (
-                  <span key={i} className="text-xs text-gray-400 bg-dark-700 px-3 py-1 rounded-full">
-                    {item}
-                  </span>
-                ))}
-              </div>
-
-              <Link to={service.link} className="text-gold-500 hover:text-gold-400 text-xs font-display uppercase tracking-widest transition-colors">
-                Details →
-              </Link>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* FAQ */}

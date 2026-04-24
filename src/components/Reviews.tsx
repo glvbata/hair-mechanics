@@ -2,15 +2,18 @@ import React from 'react';
 import { Star } from 'lucide-react';
 import { trackReviewClick } from '../utils/analytics';
 import { useScrollAnimation } from '../utils/useScrollAnimation';
+import { RATING, REVIEWS_COUNT, SOCIAL } from '../constants/business';
 
+// Full review quotes live here rather than in business constants — they're
+// display copy specific to this block.
 const reviews = [
   {
-    name: "Ricky M.",
+    name: 'Ricky M.',
     rating: 5,
     text: "I've been bouncing around looking for someone who can really cut my hair and do a really good job. Glen, the owner, is absolutely amazing with what he does. He really puts a lot of effort into making sure that you like what he's doing. The place is nice, clean, and roomy!",
   },
   {
-    name: "khon meckdara",
+    name: 'khon meckdara',
     rating: 5,
     text: "Glen is a great barber, he's been cutting my hair for years. The shop is very modern and clean. I'm glad that I found a barber that can cut my type of hair.",
   },
@@ -32,7 +35,7 @@ const Reviews = () => {
           style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>
           What Our <span className="text-gold-500">Clients Say</span>
         </h2>
-        <p className="text-gray-500 mb-14 text-sm tracking-wider">4.5 OUT OF 5 · 83 REVIEWS ON GOOGLE</p>
+        <p className="text-gray-500 mb-14 text-sm tracking-wider">{RATING} OUT OF 5 · {REVIEWS_COUNT} REVIEWS ON GOOGLE</p>
 
         {/* Editorial pull-quote cards */}
         <div className="grid md:grid-cols-2 gap-6 max-w-5xl">
@@ -57,7 +60,7 @@ const Reviews = () => {
 
         <div className="mt-12 flex flex-col sm:flex-row items-start gap-4">
           <a
-            href="https://g.page/r/Cc2wjU_thhsrEAI/review"
+            href={SOCIAL.review}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary inline-flex items-center gap-2"
@@ -67,13 +70,13 @@ const Reviews = () => {
             Leave a Review
           </a>
           <a
-            href="https://g.page/r/Cc2wjU_thhsrEAI/review"
+            href={SOCIAL.review}
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-gold-500 transition-colors text-sm underline underline-offset-4 self-center"
             onClick={trackReviewClick}
           >
-            See all 83 reviews on Google
+            See all {REVIEWS_COUNT} reviews on Google
           </a>
         </div>
       </div>

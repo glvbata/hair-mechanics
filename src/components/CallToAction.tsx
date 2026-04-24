@@ -1,7 +1,7 @@
 import React from 'react';
 import { Phone } from 'lucide-react';
-import { trackSMSClick } from '../utils/analytics';
-import { handleCall } from '../utils/analytics';
+import { handleCall, trackSMSClick } from '../utils/analytics';
+import { ADDRESS, HOURS, PHONE_DISPLAY, PHONE_SMS } from '../constants/business';
 
 const CallToAction = () => {
   return (
@@ -44,10 +44,10 @@ const CallToAction = () => {
             className="btn-primary text-lg inline-flex items-center gap-3 px-10 py-4"
           >
             <Phone className="h-5 w-5" />
-            (206) 399-9288
+            {PHONE_DISPLAY}
           </button>
           <a
-            href="sms:+12063999288?body=Hi, I'd like to book a haircut at Hair Mechanics"
+            href={`sms:${PHONE_SMS}?body=Hi, I'd like to book a haircut at Hair Mechanics`}
             onClick={trackSMSClick}
             className="btn-secondary text-base inline-flex items-center gap-2 px-8 py-4"
           >
@@ -56,7 +56,7 @@ const CallToAction = () => {
         </div>
 
         <p className="mt-6 text-gray-600 text-sm tracking-wider">
-          MON–FRI 10AM–8PM · SAT–SUN 8AM–8PM · 1251 A STREET NE, AUBURN WA
+          {HOURS.weekday.toUpperCase()} · {HOURS.weekend.toUpperCase()} · {ADDRESS.street.toUpperCase()}, {ADDRESS.city.toUpperCase()} {ADDRESS.region}
         </p>
       </div>
     </section>

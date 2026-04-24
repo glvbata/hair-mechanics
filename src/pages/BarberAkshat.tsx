@@ -1,27 +1,21 @@
 import PageLayout from '../components/PageLayout';
+import HeroSection from '../components/HeroSection';
+import CTABand from '../components/CTABand';
 import { Phone, Scissors, Clock, MapPin } from 'lucide-react';
-import { handleCall } from '../utils/analytics';
+import { SITE_URL } from '../constants/business';
 
 const BarberAkshatPage = () => (
   <PageLayout
     title="Akshat Rait | Barber at Hair Mechanics Auburn WA"
     description="Meet Akshat Rait, barber at Hair Mechanics in Auburn, WA. Specializing in tapers, skin fades, and modern styles. Walk-ins welcome, open 7 days a week."
-    canonical="https://hairmechanics.net/barber/akshat"
+    canonical={`${SITE_URL}/barber/akshat`}
   >
-    {/* Hero */}
-    <section className="relative py-20 sm:py-28">
-      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'image-set(url("/assets/HeroImage.webp") type("image/webp"), url("/assets/HeroImage.jpg") type("image/jpeg"))' }}>
-        <div className="absolute inset-0 bg-dark-900/85"></div>
-      </div>
-      <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-        <h1 className="text-3xl sm:text-5xl font-bold">
-          <span className="text-gold-500">Meet Akshat</span>
-        </h1>
-        <p className="mt-4 text-lg text-gray-300 max-w-xl mx-auto">
-          Barber at Hair Mechanics — Auburn, WA.
-        </p>
-      </div>
-    </section>
+    <HeroSection
+      eyebrow="Meet Akshat"
+      subhead={null}
+      description="Barber at Hair Mechanics — Auburn, WA."
+      hideCta
+    />
 
     {/* Profile */}
     <section className="py-16 bg-dark-900">
@@ -89,19 +83,7 @@ const BarberAkshatPage = () => (
       </div>
     </section>
 
-    {/* CTA */}
-    <section className="py-16 bg-gold-500">
-      <div className="max-w-3xl mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready for a Cut?</h2>
-        <p className="text-gray-800 mb-6">Walk in or call — open 7 days a week.</p>
-        <button
-          onClick={handleCall}
-          className="bg-gray-900 text-white px-8 py-4 rounded-md font-bold text-lg hover:bg-gray-800 transition-colors inline-flex items-center"
-        >
-          <Phone className="h-5 w-5 mr-2" /> (206) 399-9288
-        </button>
-      </div>
-    </section>
+    <CTABand heading="Ready for a Cut?" subtext="Walk in or call — open 7 days a week." />
   </PageLayout>
 );
 

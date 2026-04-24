@@ -1,6 +1,7 @@
 import React from 'react';
 import { Phone, ArrowDown } from 'lucide-react';
 import { trackSMSClick } from '../utils/analytics';
+import { PHONE_DISPLAY, PHONE_SMS } from '../constants/business';
 
 interface HeroProps {
   onBook: () => void;
@@ -50,10 +51,10 @@ const Hero = ({ onBook }: HeroProps) => {
             aria-label="Call to book your appointment"
           >
             <Phone className="h-4 w-4 mr-2" />
-            Call: (206) 399-9288
+            Call: {PHONE_DISPLAY}
           </button>
           <a
-            href="sms:+12063999288?body=Hi, I'd like to book a haircut at Hair Mechanics"
+            href={`sms:${PHONE_SMS}?body=Hi, I'd like to book a haircut at Hair Mechanics`}
             onClick={trackSMSClick}
             className="text-gray-300 hover:text-gold-500 transition-colors text-sm font-medium inline-flex items-center gap-2"
           >

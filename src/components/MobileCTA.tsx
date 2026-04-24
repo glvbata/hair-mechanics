@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Phone } from 'lucide-react';
 import { handleCall, trackSMSClick } from '../utils/analytics';
+import { PHONE_SMS } from '../constants/business';
 
 const MobileCTA = () => {
   const [visible, setVisible] = useState(false);
@@ -30,7 +31,7 @@ const MobileCTA = () => {
           Call Now
         </button>
         <a
-          href="sms:+12063999288?body=Hi, I'd like to book a haircut at Hair Mechanics"
+          href={`sms:${PHONE_SMS}?body=Hi, I'd like to book a haircut at Hair Mechanics`}
           onClick={trackSMSClick}
           className="flex-1 inline-flex items-center justify-center gap-2 border-2 border-gold-500 text-gold-500 font-display font-bold uppercase tracking-wider text-sm py-3.5 rounded-lg"
         >

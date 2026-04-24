@@ -1,3 +1,5 @@
+import { ADDRESS, BUSINESS_LEGAL_NAME, PHONE_TEL, SITE_URL } from '../constants/business';
+
 interface ServiceSchemaProps {
   name: string;
   description: string;
@@ -10,35 +12,35 @@ const ServiceSchema = ({ name, description, price, url }: ServiceSchemaProps) =>
     type="application/ld+json"
     dangerouslySetInnerHTML={{
       __html: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "name": name,
-        "description": description,
-        "provider": {
-          "@type": "BarberShop",
-          "name": "Hair Mechanics LLC",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "1251 A Street Northeast",
-            "addressLocality": "Auburn",
-            "addressRegion": "WA",
-            "postalCode": "98002",
-            "addressCountry": "US"
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name,
+        description,
+        provider: {
+          '@type': 'BarberShop',
+          name: BUSINESS_LEGAL_NAME,
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: ADDRESS.street,
+            addressLocality: ADDRESS.city,
+            addressRegion: ADDRESS.region,
+            postalCode: ADDRESS.postal,
+            addressCountry: ADDRESS.country,
           },
-          "telephone": "+1-206-399-9288",
-          "url": "https://hairmechanics.net"
+          telephone: PHONE_TEL,
+          url: SITE_URL,
         },
-        "areaServed": {
-          "@type": "City",
-          "name": "Auburn, WA"
+        areaServed: {
+          '@type': 'City',
+          name: `${ADDRESS.city}, ${ADDRESS.region}`,
         },
-        "offers": {
-          "@type": "Offer",
-          "price": price,
-          "priceCurrency": "USD"
+        offers: {
+          '@type': 'Offer',
+          price,
+          priceCurrency: 'USD',
         },
-        "url": url
-      })
+        url,
+      }),
     }}
   />
 );

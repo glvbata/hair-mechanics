@@ -1,8 +1,11 @@
 import React from 'react';
+import { RATING, SERVICES } from '../constants/business';
+
+const lowestPrice = Math.min(...SERVICES.map((s) => s.price));
 
 const stats = [
-  { value: '$40', label: 'HAIRCUTS FROM' },
-  { value: '4.5★', label: 'GOOGLE RATING' },
+  { value: `$${lowestPrice}`, label: 'HAIRCUTS FROM' },
+  { value: `${RATING}★`, label: 'GOOGLE RATING' },
   { value: '7 DAYS', label: 'OPEN EVERY WEEK' },
   { value: '5+ YRS', label: 'IN BUSINESS' },
 ];

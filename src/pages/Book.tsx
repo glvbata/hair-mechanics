@@ -1,16 +1,19 @@
-import { useEffect } from 'react';
 import { Phone, MapPin, Clock, Star, CheckCircle } from 'lucide-react';
 import { useSEO } from '../utils/useSEO';
 import { trackSMSClick, trackReviewClick, handleCall } from '../utils/analytics';
+import {
+  ADDRESS,
+  HOURS,
+  PHONE_DISPLAY,
+  PHONE_SMS,
+  PHONE_TEL,
+  RATING,
+  SERVICES,
+  SITE_URL,
+  SOCIAL,
+} from '../constants/business';
 
-const PHONE_DISPLAY = '(206) 399-9288';
-
-const services = [
-  { name: 'Haircut', price: '$40' },
-  { name: 'Haircut & Beard', price: '$50' },
-  { name: 'Kids Cut (12 & under)', price: '$35' },
-  { name: 'Line Up / Trim', price: '$20' },
-];
+const smsHref = `sms:${PHONE_SMS}?body=Hi, I'd like to book a haircut at Hair Mechanics`;
 
 const reviews = [
   { name: 'Ricky M.', text: "I've been bouncing around looking for someone who can really cut my hair and do a really good job. Glen, the owner, is absolutely amazing with what he does. He really puts a lot of effort into making sure that you like what he's doing. The place is nice, clean, and roomy!" },
@@ -26,7 +29,7 @@ const bookFAQSchema = {
       name: 'Do I need an appointment at Hair Mechanics?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'No appointment needed. Hair Mechanics is a walk-in barber shop open 7 days a week. Just show up — Mon–Fri 10am–8pm, Sat–Sun 8am–8pm.',
+        text: `No appointment needed. Hair Mechanics is a walk-in barber shop open 7 days a week. Just show up — ${HOURS.weekday}, ${HOURS.weekend}.`,
       },
     },
     {
@@ -34,7 +37,7 @@ const bookFAQSchema = {
       name: 'How much does a haircut cost at Hair Mechanics?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Haircut is $40, Haircut & Beard Trim is $50, Kids Cut (12 & under) is $35, and a Line Up / Trim is $20.',
+        text: SERVICES.map((s) => `${s.name} $${s.price}`).join(', ') + '.',
       },
     },
     {
@@ -58,7 +61,7 @@ const bookFAQSchema = {
       name: 'Does Hair Mechanics cut kids\' hair?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. Kids cuts (12 & under) are $35. Walk-ins welcome for all ages.',
+        text: `Yes. Kids cuts (12 & under) are $${SERVICES.find((s) => s.slug === 'kids-cut')?.price}. Walk-ins welcome for all ages.`,
       },
     },
     {
@@ -66,7 +69,7 @@ const bookFAQSchema = {
       name: 'Where is Hair Mechanics located?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Hair Mechanics is at 1251 A Street NE, Auburn, WA 98002. Free parking is available out front.',
+        text: `Hair Mechanics is at ${ADDRESS.full}. Free parking is available out front.`,
       },
     },
   ],
@@ -74,19 +77,12 @@ const bookFAQSchema = {
 
 const BookPage = () => {
   useSEO({
-    title: 'Book a Haircut | Hair Mechanics Barber Shop Auburn, WA | (206) 399-9288',
-    description: 'Book your haircut at Hair Mechanics, Auburn\'s top barber shop. Walk-ins welcome. Haircuts, fades, beard trims for men, women, and kids. Open 7 days. Call (206) 399-9288.',
-    canonical: 'https://hairmechanics.net/book',
+    title: `Book a Haircut | Hair Mechanics Barber Shop Auburn, WA | ${PHONE_DISPLAY}`,
+    description: `Book your haircut at Hair Mechanics, Auburn's top barber shop. Walk-ins welcome. Haircuts, fades, beard trims for men, women, and kids. Open 7 days. Call ${PHONE_DISPLAY}.`,
+    canonical: `${SITE_URL}/book`,
+    schema: bookFAQSchema,
+    schemaId: 'book-faq-schema',
   });
-
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.id = 'book-faq-schema';
-    script.textContent = JSON.stringify(bookFAQSchema);
-    document.head.appendChild(script);
-    return () => { document.getElementById('book-faq-schema')?.remove(); };
-  }, []);
 
   return (
     <div className="min-h-screen bg-dark-800 text-white">
@@ -131,7 +127,7 @@ const BookPage = () => {
           </button>
           <div className="mt-3">
             <a
-              href="sms:+12063999288?body=Hi, I'd like to book a haircut at Hair Mechanics"
+              href={smsHref}
               onClick={trackSMSClick}
               className="inline-flex items-center text-gold-500 hover:text-gold-400 font-medium text-lg"
             >
@@ -152,7 +148,7 @@ const BookPage = () => {
             {[
               { label: 'Years in Business', value: '5+' },
               { label: 'Happy Clients', value: '2K+' },
-              { label: 'Google Rating', value: '4.5 ★' },
+              { label: 'Google Rating', value: `${RATING} ★` },
               { label: 'Open 7 Days', value: '✓' },
             ].map((stat, i) => (
               <div key={i}>
@@ -171,10 +167,10 @@ const BookPage = () => {
             <span className="text-gold-500">Services & Pricing</span>
           </h2>
           <div className="space-y-3">
-            {services.map((s, i) => (
-              <div key={i} className="flex justify-between items-center bg-gray-800 px-5 py-4 rounded-lg">
+            {SERVICES.map((s) => (
+              <div key={s.slug} className="flex justify-between items-center bg-gray-800 px-5 py-4 rounded-lg">
                 <span className="font-medium">{s.name}</span>
-                <span className="text-gold-500 font-bold text-lg">{s.price}</span>
+                <span className="text-gold-500 font-bold text-lg">${s.price}</span>
               </div>
             ))}
           </div>
@@ -211,7 +207,7 @@ const BookPage = () => {
           </div>
           <div className="text-center mt-6">
             <a
-              href="https://g.page/r/Cc2wjU_thhsrEAI/review"
+              href={SOCIAL.review}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gold-500 hover:text-gold-400 text-sm underline"
@@ -234,19 +230,19 @@ const BookPage = () => {
               <div className="flex items-start">
                 <MapPin className="h-5 w-5 text-gold-500 mr-3 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="font-medium">1251 A Street NE</p>
-                  <p className="text-gray-400">Auburn, WA 98002</p>
+                  <p className="font-medium">{ADDRESS.street}</p>
+                  <p className="text-gray-400">{ADDRESS.city}, {ADDRESS.region} {ADDRESS.postal}</p>
                 </div>
               </div>
               <div className="flex items-start">
                 <Phone className="h-5 w-5 text-gold-500 mr-3 mt-0.5 flex-shrink-0" />
-                <a href={`tel:+1-206-399-9288`} className="hover:text-gold-500 transition-colors">{PHONE_DISPLAY}</a>
+                <a href={`tel:${PHONE_TEL}`} className="hover:text-gold-500 transition-colors">{PHONE_DISPLAY}</a>
               </div>
               <div className="flex items-start">
                 <Clock className="h-5 w-5 text-gold-500 mr-3 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p>Mon–Fri: 10am – 8pm</p>
-                  <p>Sat–Sun: 8am – 8pm</p>
+                  <p>{HOURS.weekday}</p>
+                  <p>{HOURS.weekend}</p>
                 </div>
               </div>
               <div className="mt-4 space-y-2">
@@ -294,7 +290,7 @@ const BookPage = () => {
           </button>
           <div className="mt-3">
             <a
-              href="sms:+12063999288?body=Hi, I'd like to book a haircut at Hair Mechanics"
+              href={smsHref}
               onClick={trackSMSClick}
               className="text-gray-900 hover:text-gray-700 font-medium underline"
             >

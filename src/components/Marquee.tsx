@@ -12,8 +12,8 @@ const items = [
   'WEEKENDS 8AM–8PM',
 ];
 
-const MarqueeContent = () => (
-  <div className="flex items-center shrink-0">
+const MarqueeContent = ({ ariaHidden = false }: { ariaHidden?: boolean }) => (
+  <div className="flex items-center shrink-0" aria-hidden={ariaHidden || undefined}>
     {items.map((item, i) => (
       <React.Fragment key={i}>
         <span className="font-display font-bold uppercase tracking-widest text-sm text-dark-900 whitespace-nowrap px-2">
@@ -25,18 +25,15 @@ const MarqueeContent = () => (
   </div>
 );
 
-const Marquee = () => {
-  return (
-    <div className="bg-gold-500 py-3 overflow-hidden">
-      <div className="flex animate-marquee">
-        {/* Duplicate 4x so the loop is seamless at any screen size */}
-        <MarqueeContent />
-        <MarqueeContent />
-        <MarqueeContent />
-        <MarqueeContent />
-      </div>
+// Two copies is enough for a seamless loop when the keyframe translates -50%.
+// Second copy is aria-hidden so screen readers don't announce items twice.
+const Marquee = () => (
+  <div className="bg-gold-500 py-3 overflow-hidden">
+    <div className="flex animate-marquee">
+      <MarqueeContent />
+      <MarqueeContent ariaHidden />
     </div>
-  );
-};
+  </div>
+);
 
 export default Marquee;

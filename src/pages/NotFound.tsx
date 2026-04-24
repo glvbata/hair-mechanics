@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Home, Phone } from 'lucide-react';
 import { useSEO } from '../utils/useSEO';
+import { PHONE_TEL } from '../constants/business';
 
 const NotFound = () => {
   useSEO({
@@ -24,7 +25,7 @@ const NotFound = () => {
             Back to Home
           </Link>
           <a
-            href="tel:+1-206-399-9288"
+            href={`tel:${PHONE_TEL}`}
             className="inline-flex items-center justify-center border-2 border-gold-500 text-gold-500 px-6 py-3 rounded-md font-medium hover:bg-gold-500 hover:text-gray-900 transition-colors"
           >
             <Phone className="h-5 w-5 mr-2" />
