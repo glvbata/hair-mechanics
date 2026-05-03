@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { Phone } from 'lucide-react';
-import { handleCall, trackSMSClick } from '../utils/analytics';
-import { PHONE_SMS } from '../constants/business';
+import { useEffect, useState } from 'react';
+import { Phone, MessageCircle, MapPin } from 'lucide-react';
+import { handleCall, trackSMSClick, trackDirectionsClick } from '../utils/analytics';
+import { PHONE_SMS, SOCIAL } from '../constants/business';
 
 const MobileCTA = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
-      // Show after scrolling past ~100vh
-      setVisible(window.scrollY > window.innerHeight * 0.8);
+      // Show after a short scroll so the bar appears almost immediately on mobile.
+      setVisible(window.scrollY > 240);
     };
+    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -21,21 +22,34 @@ const MobileCTA = () => {
         visible ? 'translate-y-0' : 'translate-y-full'
       }`}
     >
-      {/* Safe area padding for notched phones */}
-      <div className="bg-dark-900 border-t border-dark-700 px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] flex gap-3">
+      <div className="bg-dark-900 border-t border-dark-700 px-3 pt-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom))] flex gap-2">
         <button
           onClick={handleCall}
-          className="flex-1 inline-flex items-center justify-center gap-2 bg-gold-500 text-dark-900 font-display font-bold uppercase tracking-wider text-sm py-3.5 rounded-lg"
+          className="flex-[1.4] inline-flex items-center justify-center gap-1.5 bg-gold-500 text-dark-900 font-display font-bold uppercase tracking-wider text-xs py-3 rounded-lg"
+          aria-label="Call Hair Mechanics now"
         >
           <Phone className="h-4 w-4" />
-          Call Now
+          Call
         </button>
         <a
           href={`sms:${PHONE_SMS}?body=Hi, I'd like to book a haircut at Hair Mechanics`}
           onClick={trackSMSClick}
-          className="flex-1 inline-flex items-center justify-center gap-2 border-2 border-gold-500 text-gold-500 font-display font-bold uppercase tracking-wider text-sm py-3.5 rounded-lg"
+          className="flex-1 inline-flex items-center justify-center gap-1.5 border border-gold-500 text-gold-500 font-display font-bold uppercase tracking-wider text-xs py-3 rounded-lg"
+          aria-label="Text Hair Mechanics"
         >
-          💬 Text Us
+          <MessageCircle className="h-4 w-4" />
+          Text
+        </a>
+        <a
+          href={SOCIAL.directions}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={trackDirectionsClick}
+          className="flex-1 inline-flex items-center justify-center gap-1.5 border border-gold-500 text-gold-500 font-display font-bold uppercase tracking-wider text-xs py-3 rounded-lg"
+          aria-label="Get directions to Hair Mechanics"
+        >
+          <MapPin className="h-4 w-4" />
+          Map
         </a>
       </div>
     </div>

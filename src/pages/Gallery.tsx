@@ -82,22 +82,40 @@ const galleryImages = [
   "/assets/haircuts/120502941_188273952898324_4665440233750489347_n.jpg",
 ];
 
+// 30 varied descriptions cycled across 76+ photos. Each emphasizes a different
+// long-tail image-search term ("low fade auburn", "kids cut auburn wa", etc.)
+// so we capture more of Google Images' indexable keyword space.
 const altDescriptions = [
-  'Fade haircut by Hair Mechanics Auburn WA',
-  'Clean skin fade with lineup',
-  "Men's haircut and beard trim Auburn",
-  'Taper fade haircut Auburn WA',
-  'Fresh cut and style by Hair Mechanics',
-  'Mid fade with textured top',
-  'Precision haircut Auburn barber',
-  'Beard trim and lineup Auburn WA',
-  'Bald fade haircut Auburn',
-  "Men's grooming Hair Mechanics Auburn",
-  'High fade with hard part Auburn WA',
-  'Low fade haircut and beard shape',
-  'Classic taper cut Hair Mechanics',
+  'Skin fade haircut by Hair Mechanics in Auburn WA',
+  'Clean low fade with sharp line up Auburn barber',
+  "Men's haircut and beard trim — Auburn WA barbershop",
+  'Taper fade haircut by Hair Mechanics Auburn',
+  'Fresh precision cut and style — Hair Mechanics',
+  'Mid fade with textured top — Auburn WA barber',
+  'Precision men\'s haircut, Auburn barber shop',
+  'Beard trim, line up, and shape Auburn WA',
+  'Bald fade haircut — Hair Mechanics Auburn',
+  "Men's grooming and haircut Auburn WA",
+  'High fade with hard part — Auburn barbershop',
+  'Low fade haircut and beard shape Auburn WA',
+  'Classic taper haircut by Hair Mechanics',
   'Drop fade haircut Auburn barber',
-  'Textured crop with fade Auburn WA',
+  'Textured crop with fade — Auburn WA',
+  'Pompadour with skin fade Auburn barbershop',
+  'Buzz cut with line up — Hair Mechanics Auburn',
+  'Curly hair fade Auburn WA barber',
+  'Side part with mid fade by Hair Mechanics',
+  'Caesar cut with low taper Auburn',
+  'Long top with skin fade — Auburn WA',
+  'Beard line up and neck shape Hair Mechanics',
+  'Comb-over fade — Auburn barbershop',
+  'Kids haircut and fade Auburn WA',
+  'Burst fade hairstyle Hair Mechanics Auburn',
+  'Crew cut by Auburn WA barber',
+  'Slick back with fade — Hair Mechanics',
+  'Taper haircut with beard combo Auburn',
+  'Modern men\'s style — Auburn barbershop',
+  'Sharp hairline detail and fade by Hair Mechanics Auburn WA',
 ];
 
 const GalleryPage = () => {
@@ -246,7 +264,7 @@ const GalleryPage = () => {
               <source srcSet={galleryImages[selectedIndex].replace(/\.(jpg|jpeg|png)$/i, '.webp')} type="image/webp" />
               <img
                 src={galleryImages[selectedIndex]}
-                alt={`Haircut by Hair Mechanics ${selectedIndex + 1}`}
+                alt={altDescriptions[selectedIndex % altDescriptions.length]}
                 className="w-full h-auto max-h-[85vh] object-contain shadow-2xl"
               />
             </picture>

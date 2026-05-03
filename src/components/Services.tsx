@@ -36,16 +36,34 @@ const SERVICE_CARDS: readonly {
     shortDescription: 'Quick touch-up between cuts',
     includes: ['Neck Trim', 'Line Up', 'Light Styling'],
   },
+  {
+    slug: 'fade',
+    title: 'Fade',
+    shortDescription: 'Skin, mid, and taper fades',
+    includes: ['Consultation', 'Precision Blend', 'Line Up', 'Style'],
+  },
 ];
 
 const FAQ = [
   {
-    question: "How often should I get a haircut?",
-    answer: "For most styles, we recommend every 3-4 weeks to maintain the shape and look. However, this can vary based on your hair type and desired style."
+    question: "Where is Hair Mechanics located?",
+    answer: "We're at 1251 A Street NE, Auburn, WA 98002 — free parking right out front. Easy stop for clients from Auburn, Kent, Federal Way, Renton, Sumner, and Puyallup."
   },
   {
-    question: "Do you take walk-ins?",
-    answer: "Yes! Both walk-ins and appointments are welcome. While we do our best to accommodate everyone, we recommend booking an appointment to ensure availability and minimize wait times."
+    question: "What hours are you open?",
+    answer: "Monday–Friday 10am–8pm, Saturday–Sunday 8am–8pm. We stay open until 8pm every single night so you can come in after work."
+  },
+  {
+    question: "Do you take walk-ins or do I need an appointment?",
+    answer: "Walk-ins are welcome 7 days a week — no appointment required. If you want a wait-time estimate or to lock in a specific barber, just call (206) 399-9288."
+  },
+  {
+    question: "How much does a haircut cost?",
+    answer: "Precision haircut $40, fade $40, haircut + beard combo $50, kids cuts (12 & under) $35, line-up / trim $20."
+  },
+  {
+    question: "How often should I get a haircut?",
+    answer: "Most styles look their best with a fresh cut every 3–4 weeks. Skin fades soften faster and benefit from a $20 line-up at the halfway point to keep them sharp."
   },
   {
     question: "What payment methods do you accept?",
@@ -53,11 +71,11 @@ const FAQ = [
   },
   {
     question: "Is parking available?",
-    answer: "Yes, we have free parking available at the side of the shop and additional street parking nearby."
+    answer: "Yes — free parking right out front of the shop on A Street NE, plus additional street parking nearby."
   },
   {
     question: "Is the shop wheelchair accessible?",
-    answer: "Yes! We have a wheelchair accessible entrance and parking lot. A restroom is also available on-site."
+    answer: "Yes — wheelchair accessible entrance and parking. Restroom available on-site."
   }
 ];
 
