@@ -29,6 +29,184 @@ const AUTHOR = {
 } as const;
 
 export const BLOG_POSTS: Record<string, BlogPost> = {
+  'best-barber-auburn-wa': {
+    slug: 'best-barber-auburn-wa',
+    title: 'How to Find the Best Barber in Auburn, WA (And What to Look For)',
+    excerpt:
+      "Looking for the best barber in Auburn? Here's what actually separates a great shop from an average one — and why locals pick Hair Mechanics.",
+    image: '/assets/HeroImage.jpg',
+    ...AUTHOR,
+    date: 'May 1, 2026',
+    readTime: '5 min read',
+    tags: ['Auburn WA', 'Choosing a Barber', 'Local'],
+    content: `
+      <p class="mb-4">Search "best barber Auburn WA" and Google hands you a wall of star ratings. But star averages don't tell you who's actually going to give you a clean fade or remember how you like your sides. After running Hair Mechanics in Auburn for years and watching people walk in from every neighborhood — Lea Hill, Lakeland Hills, West Hill, downtown — here's what actually separates a great barber from an average one.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">1. Consistency Beats Hype</h2>
+      <p class="mb-4">A great cut once doesn't matter. A great cut <strong>every time</strong> matters. The mark of a real barber is that the second cut looks like the first, and the tenth cut looks like the second. That's why our regulars come back every 2–4 weeks — they know what they're getting.</p>
+      <p class="mb-4">When you're picking a shop, scroll the most recent reviews — not just the overall rating. Look for words like "every time," "always," or "for years." Those tell you the cut quality holds up.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">2. Walk-Ins Welcome (Without Being a Free-for-All)</h2>
+      <p class="mb-4">A great Auburn barbershop should be flexible without being chaotic. <a href="/blog/walk-in-barber-auburn-wa-open-late" class="text-gold-500 hover:text-gold-400 underline">Walk-ins should be welcome any day</a>, but the wait should be predictable, the chairs should be clean, and you shouldn't feel like you got rushed because someone else was waiting.</p>
+      <p class="mb-4">At Hair Mechanics we take walk-ins 7 days a week — but we also encourage you to call ahead at <a href="tel:+12063999288" class="text-gold-500 hover:text-gold-400 underline">(206) 399-9288</a> if you want a real wait estimate before you head over.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">3. They Actually Talk to You First</h2>
+      <p class="mb-4">A consultation isn't a formality. It's the difference between leaving the chair happy and leaving frustrated. A barber should ask:</p>
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li>How short do you want the sides?</li>
+        <li>How are you styling the top day-to-day?</li>
+        <li>What didn't you like about your last cut?</li>
+        <li>Are we doing a beard line-up or just the haircut?</li>
+      </ul>
+      <p class="mb-4">If they just point at the chair and start clipping — that's a red flag. Every <a href="/services/haircut" class="text-gold-500 hover:text-gold-400 underline">haircut at Hair Mechanics</a> includes a real consultation. It's part of the price, not an upsell.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">4. They Cut Your Hair Type</h2>
+      <p class="mb-4">Auburn is diverse — straight, wavy, curly, coily, fine, thick. Not every barber is good with every texture. The best barbers are honest about what they do well, and they adjust their technique (different blade work, different blending approach) for each hair type instead of running the same routine on everyone.</p>
+      <p class="mb-4">Look at the shop's <a href="/gallery" class="text-gold-500 hover:text-gold-400 underline">work gallery</a> — does it show a range of textures and styles, or only one type of cut? At Hair Mechanics we've got 76+ real cuts on our gallery from every kind of client.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">5. Hours That Match Your Life</h2>
+      <p class="mb-4">A lot of Auburn barbershops close at 5 or 6pm on weekdays. That doesn't work if you have a full-time job. We stay open until <strong>8pm every single night</strong> — Monday through Sunday — so you can walk in after work without rushing.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">6. Pricing You Can Read Before You Sit Down</h2>
+      <p class="mb-4">Hidden fees and surprise upsells kill trust. Here's what we charge — same posted everywhere:</p>
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li><strong>Haircut:</strong> $40 (consultation + cut + style)</li>
+        <li><strong>Haircut + Beard:</strong> $50</li>
+        <li><strong>Kids Cut (12 & under):</strong> $35</li>
+        <li><strong>Line Up / Trim:</strong> $20</li>
+        <li><strong>Fade:</strong> $40</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">Why Hair Mechanics Is Auburn's Pick</h2>
+      <p class="mb-4">We've earned a 4.5-star Google rating from 83+ reviews because we treat every cut like it's our first chance. We see clients from <a href="/auburn-barber" class="text-gold-500 hover:text-gold-400 underline">all over Auburn</a>, plus <a href="/kent-barber" class="text-gold-500 hover:text-gold-400 underline">Kent</a>, <a href="/federal-way-barber" class="text-gold-500 hover:text-gold-400 underline">Federal Way</a>, <a href="/renton-barber" class="text-gold-500 hover:text-gold-400 underline">Renton</a>, <a href="/sumner-barber" class="text-gold-500 hover:text-gold-400 underline">Sumner</a>, and <a href="/puyallup-barber" class="text-gold-500 hover:text-gold-400 underline">Puyallup</a> — and the bar stays the same regardless.</p>
+
+      <p class="mt-8 mb-4">Walk in any day at 1251 A Street NE in Auburn, or call <a href="tel:+12063999288" class="text-gold-500 hover:text-gold-400 underline">(206) 399-9288</a>. Free parking out front.</p>
+    `,
+    related: [
+      { slug: 'walk-in-barber-auburn-wa-open-late' },
+      { slug: 'best-fade-auburn-wa' },
+    ],
+  },
+
+  'best-fade-auburn-wa': {
+    slug: 'best-fade-auburn-wa',
+    title: 'Where to Get the Best Fade in Auburn, WA',
+    excerpt:
+      "A great fade comes down to blade work, blending, and patience. Here's what makes a fade actually clean — and where Auburn locals go for one.",
+    image: '/assets/haircuts/cut_1-2.jpg',
+    ...AUTHOR,
+    date: 'April 28, 2026',
+    readTime: '5 min read',
+    tags: ['Fade', 'Auburn WA', 'Skin Fade'],
+    content: `
+      <p class="mb-4">A bad fade is obvious from across the room — harsh lines, uneven blend, sides that don't match. A great fade looks like the hair was always meant to grow that way: a smooth gradient with no visible transition. The difference comes down to three things: blade work, blending technique, and patience.</p>
+
+      <p class="mb-4">If you're looking for the best fade in Auburn, WA, here's what to look for — and why our regulars from Auburn, Kent, Federal Way, and beyond keep coming back to <a href="/services/fade" class="text-gold-500 hover:text-gold-400 underline">Hair Mechanics for fades</a>.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">Know What Fade You Actually Want</h2>
+      <p class="mb-4">"I want a fade" is a starting point — but a barber needs more. The basic options:</p>
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li><strong>Skin fade (bald fade):</strong> Goes all the way to the skin for max contrast. Sharpest look, fastest grow-out.</li>
+        <li><strong>Mid fade:</strong> Starts around the temples — versatile, professional, balanced.</li>
+        <li><strong>Low fade:</strong> Starts just above the ear — subtle and conservative.</li>
+        <li><strong>High fade:</strong> Starts higher up the head — maximizes contrast with the top.</li>
+        <li><strong>Taper fade:</strong> The most gradual — keeps more length on the sides for a softer look.</li>
+        <li><strong>Drop fade:</strong> Curves down behind the ear, great for pairing with longer styles on top.</li>
+      </ul>
+      <p class="mb-4">Not sure which? Tell your barber the vibe ("clean and modern", "low maintenance", "professional but not boring") and let them recommend the height. That's part of why we include a real consultation with every fade.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">What Separates a Clean Fade from a Bad One</h2>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2 text-gold-400">1. Multiple Guard Lengths</h3>
+      <p class="mb-4">A real fade uses 3–5 different guard lengths to build the gradient. A rushed fade uses 2 — and you can see the line. Watch your barber's hands. If they switch guards multiple times during the cut, you're in good hands.</p>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2 text-gold-400">2. Clipper-Over-Comb Work</h3>
+      <p class="mb-4">The smoothest blends require freehand clipper-over-comb technique to soften the transitions between guard lengths. This is where experience shows. Cheap shops skip this step — and you can tell.</p>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2 text-gold-400">3. Symmetry Check</h3>
+      <p class="mb-4">A great barber will spin you to check both sides match — usually multiple times. If you leave the chair without that, your fade probably isn't even.</p>
+
+      <h3 class="text-xl font-semibold mt-6 mb-2 text-gold-400">4. The Line-Up at the End</h3>
+      <p class="mb-4">A clean fade ends with a sharp line up at the hairline, temples, and neck. A great barber takes time on this — it's the part everyone sees first.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">How Often to Get a Fade Touched Up</h2>
+      <p class="mb-4">Fades grow out fast. Here's the realistic schedule:</p>
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li><strong>Skin fade:</strong> Full cut every 2–3 weeks, or a $20 line-up at the halfway point</li>
+        <li><strong>Mid fade:</strong> Every 3 weeks</li>
+        <li><strong>Taper fade:</strong> Every 3–4 weeks</li>
+      </ul>
+      <p class="mb-4">A lot of our regulars do a full <a href="/services/fade" class="text-gold-500 hover:text-gold-400 underline">fade ($40)</a> on a 3-week cycle and a <a href="/services/line-up" class="text-gold-500 hover:text-gold-400 underline">line-up ($20)</a> in between. It's the cheapest way to always look fresh. Read more in our <a href="/blog/how-to-maintain-a-fade" class="text-gold-500 hover:text-gold-400 underline">fade maintenance guide</a>.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">Why Auburn Comes to Hair Mechanics for Fades</h2>
+      <p class="mb-4">We've been cutting fades in Auburn for years. The reason clients drive in from <a href="/kent-barber" class="text-gold-500 hover:text-gold-400 underline">Kent</a>, <a href="/federal-way-barber" class="text-gold-500 hover:text-gold-400 underline">Federal Way</a>, and <a href="/puyallup-barber" class="text-gold-500 hover:text-gold-400 underline">Puyallup</a> isn't because we're closest — it's because the fade comes out clean every visit.</p>
+
+      <p class="mb-4">$40 for the cut, walk-ins welcome 7 days a week, open until 8pm every night. Browse our <a href="/gallery" class="text-gold-500 hover:text-gold-400 underline">gallery</a> for examples — every fade you see was cut in our chairs.</p>
+
+      <p class="mt-8 mb-4">Walk in at 1251 A Street NE in Auburn, or call <a href="tel:+12063999288" class="text-gold-500 hover:text-gold-400 underline">(206) 399-9288</a> first if you want a wait estimate.</p>
+    `,
+    related: [
+      { slug: 'how-to-maintain-a-fade' },
+      { slug: 'best-barber-auburn-wa' },
+    ],
+  },
+
+  'kids-haircuts-auburn-wa': {
+    slug: 'kids-haircuts-auburn-wa',
+    title: "Kids Haircuts in Auburn, WA — A Parent's Honest Guide",
+    excerpt:
+      "Finding a barber who's actually patient with kids is hard. Here's what to look for in Auburn — and what makes a kids cut go well (or terribly).",
+    image: '/assets/haircuts/cut_1-3.jpg',
+    ...AUTHOR,
+    date: 'April 24, 2026',
+    readTime: '4 min read',
+    tags: ['Kids Cuts', 'Auburn WA', 'Family'],
+    content: `
+      <p class="mb-4">Kids haircuts are different. The cut itself isn't the hard part — keeping a 4-year-old still for 20 minutes is. After cutting hundreds of kids' cuts in Auburn, here's what actually matters when you're choosing a barbershop for your kid.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">Patience Beats Speed</h2>
+      <p class="mb-4">A barber who rushes a kid will give you a fast cut and a kid who never wants a haircut again. The good ones take their time — pause when needed, let the kid look in the mirror mid-cut, talk to them while they work.</p>
+      <p class="mb-4">At <a href="/services/kids-cut" class="text-gold-500 hover:text-gold-400 underline">Hair Mechanics</a>, we treat kids cuts the same way we treat adult cuts — full consultation, real precision, no rushing. Just at a slower pace when it helps.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">It's a Real Cut, Not a "Kids Menu"</h2>
+      <p class="mb-4">Some shops have a "kids cut" that's basically a buzz with a cape on. Your kid deserves better. We do <strong>fades, tapers, line-ups, scissor cuts, mohawks, designs</strong> — whatever your kid wants. Same skill, just $35 instead of $40.</p>
+      <p class="mb-4">If your son wants a skin fade like dad's? We'll do it clean. If your daughter wants a sharp line on the side? Done. Kids deserve to feel cool walking out of a barbershop.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">The Shop Atmosphere Matters</h2>
+      <p class="mb-4">Sterile, quiet shops are tough for kids. So are loud, chaotic ones. The sweet spot is friendly and busy enough to feel normal — with something to keep them interested if there's a wait.</p>
+      <p class="mb-4">We've got a pool table in the shop. Kids love it. Parents love that it keeps them off your phone screen for a few minutes.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">First Haircut Tips for Auburn Parents</h2>
+      <p class="mb-4">If it's your kid's first cut, here's what helps:</p>
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li><strong>Come in early or mid-morning weekdays.</strong> Slowest part of our week — easier to focus on your kid without other distractions.</li>
+        <li><strong>Bring a snack or a favorite toy.</strong> Distraction is your friend.</li>
+        <li><strong>Sit close, or hold them in the chair.</strong> We're set up for both — whatever works for your kid.</li>
+        <li><strong>Talk it up beforehand.</strong> "We're going to the cool barber shop" lands better than "we have to get you a haircut."</li>
+        <li><strong>Bring a photo of what you want.</strong> Easier than describing it on the spot.</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">Pricing & What's Included</h2>
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li><strong>Kids Cut (12 & under):</strong> $35 — consultation, precision cut, styling</li>
+        <li><strong>Line Up / Trim:</strong> $20 if they just need the edges cleaned up between cuts</li>
+        <li>Walk-ins welcome 7 days a week — open until 8pm every night</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">Bring the Whole Family</h2>
+      <p class="mb-4">A lot of dads come in with their kids and get cut on the same trip. Easy stop, two cuts done, everyone leaves looking sharp. Add a <a href="/services/beard-trim" class="text-gold-500 hover:text-gold-400 underline">haircut + beard combo ($50)</a> for dad and a kids cut ($35) for the little one — done in under an hour.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">Auburn Families Trust Hair Mechanics</h2>
+      <p class="mb-4">We've been the family barbershop for kids across <a href="/auburn-barber" class="text-gold-500 hover:text-gold-400 underline">Auburn</a>, <a href="/kent-barber" class="text-gold-500 hover:text-gold-400 underline">Kent</a>, <a href="/federal-way-barber" class="text-gold-500 hover:text-gold-400 underline">Federal Way</a>, <a href="/sumner-barber" class="text-gold-500 hover:text-gold-400 underline">Sumner</a>, and beyond for years. Patient barbers, real cuts, friendly shop.</p>
+
+      <p class="mt-8 mb-4">Walk in at 1251 A Street NE in Auburn, WA, or call <a href="tel:+12063999288" class="text-gold-500 hover:text-gold-400 underline">(206) 399-9288</a>. Free parking out front.</p>
+    `,
+    related: [
+      { slug: 'best-barber-auburn-wa' },
+      { slug: 'walk-in-barber-auburn-wa-open-late' },
+    ],
+  },
+
   'walk-in-barber-auburn-wa-open-late': {
     slug: 'walk-in-barber-auburn-wa-open-late',
     title: 'Best Walk-In Barber in Auburn, WA — Open Late 7 Days a Week',

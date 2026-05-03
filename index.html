@@ -8,7 +8,21 @@
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Async font load — print/onload trick avoids render-blocking the CSS -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" />
+    </noscript>
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C82GRQVLDF"></script>
@@ -223,9 +237,9 @@
     }
     </script>
 
-    <!-- Preload critical assets — WebP for modern browsers, JPG fallback for old -->
-    <link rel="preload" as="image" href="/assets/HeroImage.webp" type="image/webp">
-    <link rel="preload" as="image" href="/assets/HeroImage.jpg" media="not (type: 'image/webp')">
+    <!-- Preload hero — WebP only; <picture> handles JPG fallback for ancient browsers
+         (the prior jpg preload used invalid media syntax and double-fetched the hero) -->
+    <link rel="preload" as="image" href="/assets/HeroImage.webp" type="image/webp" fetchpriority="high">
     
     <!-- Meta tags for mobile -->
     <meta name="theme-color" content="#1A1A1A">
