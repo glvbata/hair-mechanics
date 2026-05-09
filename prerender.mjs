@@ -29,6 +29,7 @@ const ROUTES = [
   '/team',
   '/barber',
   '/barber/akshat',
+  '/filipino-barber-auburn',
 ];
 
 function routeToFilePath(route, distDir) {

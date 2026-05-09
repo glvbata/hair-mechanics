@@ -133,6 +133,15 @@ async function main() {
 }
 
 main().catch((e) => {
-  console.error('Pull failed:', e.message);
+  const msg = e.message || String(e);
+  // Common Google failure: refresh token expired (Testing-mode OAuth apps
+  // get 7-day tokens). Surface a clear next step instead of a stack trace.
+  if (/invalid_grant|invalid_token|expired|unauthorized/i.test(msg)) {
+    console.error('Pull failed: GSC token rejected (likely expired).');
+    console.error('Re-authenticate with: npm run seo:auth');
+    console.error('Original error:', msg);
+  } else {
+    console.error('Pull failed:', msg);
+  }
   process.exit(1);
 });

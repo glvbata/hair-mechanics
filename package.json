@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "node scripts/optimize-images.mjs && vite build && node prerender.mjs",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "seo:auth": "node scripts/seo/gsc-auth.mjs",
+    "seo:pull": "node scripts/seo/gsc-pull-queries.mjs",
+    "seo:diff": "node scripts/seo/gsc-diff.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",

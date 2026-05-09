@@ -26,6 +26,8 @@ const FederalWayPage   = lazy(() => import('./pages/areas/FederalWay.tsx'));
 const SumnerPage       = lazy(() => import('./pages/areas/Sumner.tsx'));
 const PuyallupPage     = lazy(() => import('./pages/areas/Puyallup.tsx'));
 const RentonPage       = lazy(() => import('./pages/areas/Renton.tsx'));
+// Community / niche pages
+const FilipinoBarberPage = lazy(() => import('./pages/FilipinoBarber.tsx'));
 // Internal — hidden, noindex'd, not in sitemap or prerender list
 const InternalSEOPage  = lazy(() => import('./pages/InternalSEO.tsx'));
 
@@ -75,6 +77,8 @@ const AppWithScrollRestoration = () => (
         <Route path="/team" element={<TeamPage />} />
         <Route path="/barber" element={<BarberPage />} />
         <Route path="/barber/akshat" element={<BarberAkshatPage />} />
+        {/* Community / niche pages */}
+        <Route path="/filipino-barber-auburn" element={<FilipinoBarberPage />} />
         {/* Internal SEO dashboard — hidden URL, noindex, not in sitemap */}
         <Route path="/_internal/seo" element={<InternalSEOPage />} />
         {/* 404 */}

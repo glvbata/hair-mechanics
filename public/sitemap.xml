@@ -113,4 +113,10 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <!-- Community / niche pages -->
+  <url>
+    <loc>https://hairmechanics.net/filipino-barber-auburn</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

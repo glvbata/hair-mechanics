@@ -24,6 +24,13 @@ const keywordMaps = import.meta.glob('../../docs/seo-reports/*/keyword-map.md', 
   import: 'default',
 }) as Record<string, () => Promise<string>>;
 
+// Diff files are written by `npm run seo:diff` — one per dated folder
+// (e.g. diff-vs-2026-04-15.md). Show the freshest one for the active date.
+const diffFiles = import.meta.glob('../../docs/seo-reports/*/diff-vs-*.md', {
+  query: '?raw',
+  import: 'default',
+}) as Record<string, () => Promise<string>>;
+
 interface GscRow {
   keys: string[];
   clicks: number;
@@ -50,6 +57,18 @@ const keywordMapLoaders: Record<string, () => Promise<string>> = Object.fromEntr
   Object.entries(keywordMaps).map(([path, loader]) => [dateFromPath(path), loader]),
 );
 
+// Group diff loaders by their containing date — there can be multiple diffs
+// per folder (e.g. diff-vs-A.md and diff-vs-B.md). Pick the most recent.
+const diffLoadersByDate: Record<string, { older: string; load: () => Promise<string> }> = {};
+for (const [path, load] of Object.entries(diffFiles)) {
+  const date = dateFromPath(path);
+  const older = path.match(/diff-vs-([\d-]+)\.md/)?.[1] || 'previous';
+  // Keep the diff that compares against the most recent older date.
+  if (!diffLoadersByDate[date] || diffLoadersByDate[date].older < older) {
+    diffLoadersByDate[date] = { older, load };
+  }
+}
+
 const allDates = Object.keys(reportsByDate).sort().reverse();
 
 type SortKey = 'query' | 'clicks' | 'impressions' | 'ctr' | 'position';
@@ -68,6 +87,7 @@ const InternalSEO = () => {
   const [sortDir, setSortDir] = useState<'asc' | 'desc'>('desc');
   const [filter, setFilter] = useState('');
   const [keywordMapHtml, setKeywordMapHtml] = useState<string>('Loading…');
+  const [diffHtml, setDiffHtml] = useState<string>('');
 
   // Lazy-load the keyword map markdown when the active date changes.
   useMemo(() => {
@@ -79,6 +99,19 @@ const InternalSEO = () => {
     loader().then((md) => {
       const html = marked.parse(md, { gfm: true, breaks: false }) as string;
       setKeywordMapHtml(html);
+    });
+  }, [activeDate]);
+
+  // Lazy-load the diff (if one exists) for the active date.
+  useMemo(() => {
+    const entry = diffLoadersByDate[activeDate];
+    if (!entry) {
+      setDiffHtml('');
+      return;
+    }
+    entry.load().then((md) => {
+      const html = marked.parse(md, { gfm: true, breaks: false }) as string;
+      setDiffHtml(html);
     });
   }, [activeDate]);
 
@@ -160,6 +193,17 @@ const InternalSEO = () => {
           </div>
           <p className="mt-3 text-xs text-gray-500">Site: <code>{report.siteUrl}</code></p>
         </section>
+
+        {/* Diff vs previous report (only renders if one exists) */}
+        {diffHtml && (
+          <section>
+            <h2 className="text-lg font-semibold text-gray-300 mb-3">What Moved Since Last Report</h2>
+            <div
+              className="prose prose-invert prose-sm max-w-none prose-headings:text-gold-500 prose-a:text-gold-400 prose-table:text-xs"
+              dangerouslySetInnerHTML={{ __html: diffHtml }}
+            />
+          </section>
+        )}
 
         {/* Keyword map (rendered markdown) */}
         <section>
