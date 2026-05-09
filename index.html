@@ -94,28 +94,6 @@
         "https://www.tiktok.com/@glencelestial",
         "https://www.google.com/maps/place/Hair+Mechanics+LLC"
       ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.5",
-        "reviewCount": "83",
-        "bestRating": "5"
-      },
-      "review": [
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Ricky M." },
-          "datePublished": "2023-08-15",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" },
-          "reviewBody": "I've been bouncing around looking for someone who can really cut my hair and do a really good job. Glen, the owner, is absolutely amazing with what he does. He really puts a lot of effort into making sure that you like what he's doing. The place is nice, clean, and roomy!"
-        },
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Khon Meckdara" },
-          "datePublished": "2023-06-10",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" },
-          "reviewBody": "Glen is a great barber, he's been cutting my hair for years. The shop is very modern and clean. I'm glad that I found a barber that can cut my type of hair."
-        }
-      ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Hair Services",
@@ -165,63 +143,9 @@
     }
     </script>
 
-    <!-- FAQ Schema — targets Google People Also Ask boxes -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Do you take walk-ins?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes! Hair Mechanics welcomes walk-ins anytime during business hours. No appointment needed — just stop by at 1251 A Street NE, Auburn, WA 98002."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What are your hours?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We're open Monday through Friday 10am–8pm, and Saturday through Sunday 8am–8pm. Open 7 days a week."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How much does a haircut cost?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Haircuts start at $40. Haircut & Beard is $50. Kids Cut (12 & under) is $35. Line Up / Trim is $20. All cuts include consultation and styling."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Where is Hair Mechanics located?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Hair Mechanics is located at 1251 A Street NE, Auburn, WA 98002. Free parking available. We serve Auburn, Kent, Federal Way, Renton, Puyallup, and Sumner."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What haircuts do you specialize in?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We specialize in fades (skin, mid, and taper), classic cuts, beard trims, kids cuts, and line ups. Our barbers work with all hair types including straight, wavy, curly, and textured hair."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Are you open on weekends?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes! We're open Saturday and Sunday from 8am to 8pm — earlier and later than most barbershops in Auburn. Walk-ins always welcome on weekends."
-          }
-        }
-      ]
-    }
-    </script>
+    <!-- FAQ schema lives in src/components/Services.tsx where it's tied to
+         the visible accordion. Two FAQPage schemas on one URL = "invalid items"
+         in GSC, so the static one was removed. Don't re-add it here. -->
 
     <!-- Preload critical assets — WebP for modern browsers, JPG fallback for old -->
     <link rel="preload" as="image" href="/assets/HeroImage.webp" type="image/webp">
