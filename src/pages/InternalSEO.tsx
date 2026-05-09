@@ -31,6 +31,12 @@ const diffFiles = import.meta.glob('../../docs/seo-reports/*/diff-vs-*.md', {
   import: 'default',
 }) as Record<string, () => Promise<string>>;
 
+// Optional GBP post drafts per report — drops into a dedicated section.
+const gbpPosts = import.meta.glob('../../docs/seo-reports/*/gbp-posts.md', {
+  query: '?raw',
+  import: 'default',
+}) as Record<string, () => Promise<string>>;
+
 interface GscRow {
   keys: string[];
   clicks: number;
@@ -69,6 +75,10 @@ for (const [path, load] of Object.entries(diffFiles)) {
   }
 }
 
+const gbpLoadersByDate: Record<string, () => Promise<string>> = Object.fromEntries(
+  Object.entries(gbpPosts).map(([path, load]) => [dateFromPath(path), load]),
+);
+
 const allDates = Object.keys(reportsByDate).sort().reverse();
 
 type SortKey = 'query' | 'clicks' | 'impressions' | 'ctr' | 'position';
@@ -88,6 +98,7 @@ const InternalSEO = () => {
   const [filter, setFilter] = useState('');
   const [keywordMapHtml, setKeywordMapHtml] = useState<string>('Loading…');
   const [diffHtml, setDiffHtml] = useState<string>('');
+  const [gbpHtml, setGbpHtml] = useState<string>('');
 
   // Lazy-load the keyword map markdown when the active date changes.
   useMemo(() => {
@@ -112,6 +123,19 @@ const InternalSEO = () => {
     entry.load().then((md) => {
       const html = marked.parse(md, { gfm: true, breaks: false }) as string;
       setDiffHtml(html);
+    });
+  }, [activeDate]);
+
+  // Lazy-load GBP post drafts (if any) for the active date.
+  useMemo(() => {
+    const loader = gbpLoadersByDate[activeDate];
+    if (!loader) {
+      setGbpHtml('');
+      return;
+    }
+    loader().then((md) => {
+      const html = marked.parse(md, { gfm: true, breaks: false }) as string;
+      setGbpHtml(html);
     });
   }, [activeDate]);
 
@@ -213,6 +237,17 @@ const InternalSEO = () => {
             dangerouslySetInnerHTML={{ __html: keywordMapHtml }}
           />
         </section>
+
+        {/* GBP post drafts (renders only if gbp-posts.md exists for this date) */}
+        {gbpHtml && (
+          <section>
+            <h2 className="text-lg font-semibold text-gray-300 mb-3">GBP Post Drafts</h2>
+            <div
+              className="prose prose-invert prose-sm max-w-none prose-headings:text-gold-500 prose-a:text-gold-400 prose-code:text-gold-400 prose-pre:bg-dark-800 prose-pre:border prose-pre:border-gray-800"
+              dangerouslySetInnerHTML={{ __html: gbpHtml }}
+            />
+          </section>
+        )}
 
         {/* Query table */}
         <section>
