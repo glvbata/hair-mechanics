@@ -7,11 +7,14 @@ interface PageLayoutProps {
   title: string;
   description: string;
   canonical?: string;
+  /** Optional JSON-LD schema (FAQPage, BreadcrumbList, etc.) — forwarded to useSEO. */
+  schema?: object | object[];
+  schemaId?: string;
   children: React.ReactNode;
 }
 
-const PageLayout = ({ title, description, canonical, children }: PageLayoutProps) => {
-  useSEO({ title, description, canonical });
+const PageLayout = ({ title, description, canonical, schema, schemaId, children }: PageLayoutProps) => {
+  useSEO({ title, description, canonical, schema, schemaId });
 
   return (
     <div className="min-h-screen bg-dark-800 text-white">

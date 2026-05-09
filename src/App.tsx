@@ -16,9 +16,12 @@ import { useSEO } from './utils/useSEO';
 import { PHONE_DISPLAY, SITE_URL } from './constants/business';
 
 function App() {
+  // Title leads with the highest-volume queries from GSC ("haircut near me",
+  // "barbershop near me", "barber Auburn WA") rather than brand. Brand awareness
+  // is fine — branded clicks already convert. Cold-search clicks are the gap.
   useSEO({
-    title: 'Hair Mechanics | Barbershop in Auburn, WA | Walk-Ins Welcome',
-    description: `Hair Mechanics is Auburn's top-rated barber shop. Expert barbers specializing in haircuts, fades, beard trims, and styling for men, women, and kids. Walk-ins welcome. Open 7 days. Call ${PHONE_DISPLAY}.`,
+    title: 'Haircut Near Me | Barbershop in Auburn, WA | Hair Mechanics',
+    description: `Looking for a haircut near you in Auburn, WA? Hair Mechanics is Auburn's top-rated barber shop — expert haircuts, fades, beard trims, and kids' cuts. Walk-ins welcome, open 7 days. Call ${PHONE_DISPLAY}.`,
     canonical: SITE_URL,
   });
 

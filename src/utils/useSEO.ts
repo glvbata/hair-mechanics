@@ -10,6 +10,8 @@ interface SEOProps {
   schema?: object | object[];
   /** Stable id used on the injected <script> tag — lets cleanup target the right node. */
   schemaId?: string;
+  /** When true, emit <meta name="robots" content="noindex,nofollow"> for hidden routes. */
+  noindex?: boolean;
 }
 
 // Home-page defaults restored when a page unmounts.
@@ -31,9 +33,12 @@ const setMetaTag = (property: string, content: string, isProperty = false) => {
   }
 };
 
-export const useSEO = ({ title, description, canonical, ogImage, schema, schemaId }: SEOProps) => {
+export const useSEO = ({ title, description, canonical, ogImage, schema, schemaId, noindex }: SEOProps) => {
   useEffect(() => {
     document.title = title;
+
+    // Robots — noindex on hidden routes (dashboards, admin). Default removes the tag.
+    setMetaTag('robots', noindex ? 'noindex,nofollow' : 'index,follow');
 
     // Meta description
     setMetaTag('description', description);
@@ -82,10 +87,11 @@ export const useSEO = ({ title, description, canonical, ogImage, schema, schemaI
       setMetaTag('og:title', DEFAULT_OG_TITLE, true);
       setMetaTag('og:description', DEFAULT_OG_DESCRIPTION, true);
       setMetaTag('og:image', HERO_IMAGE, true);
+      setMetaTag('robots', 'index,follow');
       if (link) link.href = SITE_URL;
       if (schemaNode && schemaNode.parentNode) {
         schemaNode.parentNode.removeChild(schemaNode);
       }
     };
-  }, [title, description, canonical, ogImage, schema, schemaId]);
+  }, [title, description, canonical, ogImage, schema, schemaId, noindex]);
 };

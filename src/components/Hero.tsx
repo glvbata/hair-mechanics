@@ -33,15 +33,23 @@ const Hero = ({ onBook }: HeroProps) => {
         {/* Eyebrow line */}
         <div className="flex items-center gap-3 mb-4">
           <span className="block w-10 h-0.5 bg-gold-500"></span>
-          <span className="font-display text-gold-500 text-sm tracking-[0.3em] uppercase">Auburn, Washington</span>
+          <span className="font-display text-gold-500 text-sm tracking-[0.3em] uppercase">Auburn, Washington · Haircut Near Me</span>
         </div>
 
-        {/* Main headline — massive editorial typography */}
+        {/* Main headline — massive editorial typography. Keeps the "Auburn's
+            Favorite Barber Shop" cadence (gold-on-white-on-gold rhythm) but
+            picks up the highest-volume search phrase as a visible H1 tier. */}
         <h1 className="font-display font-bold uppercase leading-none">
           <span className="block text-white" style={{ fontSize: 'clamp(3.5rem, 12vw, 9rem)' }}>Auburn's</span>
           <span className="block text-gold-500" style={{ fontSize: 'clamp(3.5rem, 12vw, 9rem)' }}>Favorite</span>
           <span className="block text-white" style={{ fontSize: 'clamp(2.5rem, 8vw, 6rem)' }}>Barber Shop</span>
         </h1>
+
+        {/* Search-friendly subhead — high-volume queries as natural prose so
+            Google sees the phrase match without making the design shouty. */}
+        <p className="mt-6 max-w-2xl text-gray-200 text-lg sm:text-xl leading-relaxed">
+          Looking for a <strong className="text-white">haircut near me</strong> in <strong className="text-white">Auburn, WA</strong>? Hair Mechanics is the top-rated <strong className="text-white">barbershop in Auburn</strong> — fresh fades, classic cuts, beard trims, and kids' haircuts. Walk in or call.
+        </p>
 
         {/* Subline + CTAs */}
         <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">

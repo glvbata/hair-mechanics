@@ -38,3 +38,10 @@
   for = "/robots.txt"
   [headers.values]
     Cache-Control = "public, max-age=3600"
+
+# Hidden internal routes — block search indexing at the HTTP level too,
+# in case a crawler ignores robots.txt or follows a leaked link.
+[[headers]]
+  for = "/_internal/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive, nosnippet"
