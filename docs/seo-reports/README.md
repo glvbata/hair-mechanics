@@ -53,22 +53,39 @@ in the Google Cloud Console (project `robust-charge-495814-v8`). Both
 scopes are "sensitive" — Google may require app verification — skip this
 until automation actually matters. Manual weekly pulls are fine.
 
-## First-time GBP setup
+## First-time GBP setup — and the reality check
 
-Before `npm run gbp:pull` works, you need to enable three Google APIs in
-the same Cloud project that's already running GSC:
+The `npm run gbp:pull` script and dashboard sections are wired up and ready,
+**but they don't work out of the box.** All three Google Business Profile
+APIs are invitation-only — even after you "enable" them in the Cloud
+Console, your project's quota stays at 0/min until Google manually approves
+your Cloud project. This is Google's gate to prevent spam tooling.
 
-1. https://console.cloud.google.com/apis/library/mybusinessaccountmanagement.googleapis.com
-2. https://console.cloud.google.com/apis/library/mybusinessbusinessinformation.googleapis.com
-3. https://console.cloud.google.com/apis/library/businessprofileperformance.googleapis.com
+### Status as of 2026-05-09
 
-Click **Enable** on each. Then re-auth (`npm run seo:auth`) so the token
-picks up the `business.manage` scope. The first `gbp:pull` discovers your
-account + location and caches the location name to `.secrets/gbp-location.json`
-— subsequent runs skip discovery.
+- ✅ APIs enabled in Cloud project `robust-charge-495814-v8`
+- ✅ OAuth scope `business.manage` granted to the token
+- ❌ Cloud project NOT approved for Business Profile API access — pending
+  application
 
-If you get a `SERVICE_DISABLED` error, an API isn't enabled yet — the error
-message includes which one.
+### To enable the GBP pull
+
+1. Apply via Google's gating form:
+   https://docs.google.com/forms/d/e/1FAIpQLSfBjmoYJTM1KYxhy4yepSDJjwAj02hSXakvqIumTLqZqGTn-Q/viewform
+2. Provide:
+   - Cloud project ID: `robust-charge-495814-v8`
+   - OAuth client ID: `441303402741-fou3nekl3jl8p5j0v9fjs07u349jhace.apps.googleusercontent.com`
+   - Single-client read-only SEO use case (see commit message of this
+     change for the canned description)
+3. Wait. Google review is 2 days to 4 weeks with no SLA.
+4. Once approved, `npm run gbp:pull` works as designed — no code changes.
+
+### Fallback while waiting
+
+GBP keyword data comes out of the GBP UI manually. Export the search-terms
+list from your Business Profile dashboard (or just paste it into the
+keyword-map analysis like we did the first time). Manual cadence is fine
+for a single-shop client — 5 minutes / month.
 
 ## Future automation
 
