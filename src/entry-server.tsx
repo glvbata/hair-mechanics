@@ -23,6 +23,8 @@ import FederalWayPage from './pages/areas/FederalWay';
 import SumnerPage from './pages/areas/Sumner';
 import PuyallupPage from './pages/areas/Puyallup';
 import RentonPage from './pages/areas/Renton';
+import FilipinoBarberPage from './pages/FilipinoBarber';
+import BarberiaAuburnPage from './pages/BarberiaAuburn';
 import NotFound from './pages/NotFound';
 
 function ServerApp() {
@@ -51,6 +53,9 @@ function ServerApp() {
         <Route path="/team" element={<TeamPage />} />
         <Route path="/barber" element={<BarberPage />} />
         <Route path="/barber/akshat" element={<BarberAkshatPage />} />
+        {/* Community / niche pages */}
+        <Route path="/filipino-barber-auburn" element={<FilipinoBarberPage />} />
+        <Route path="/barberia-auburn-wa" element={<BarberiaAuburnPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>

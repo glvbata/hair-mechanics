@@ -23,6 +23,13 @@ function App() {
     title: 'Haircut Near Me | Barbershop in Auburn, WA | Hair Mechanics',
     description: `Looking for a haircut near you in Auburn, WA? Hair Mechanics is Auburn's top-rated barber shop — expert haircuts, fades, beard trims, and kids' cuts. Walk-ins welcome, open 7 days. Call ${PHONE_DISPLAY}.`,
     canonical: SITE_URL,
+    lang: 'en',
+    // Tell Google about the Spanish alternate at /barberia-auburn-wa.
+    alternates: [
+      { hreflang: 'en', href: SITE_URL },
+      { hreflang: 'es', href: `${SITE_URL}/barberia-auburn-wa` },
+      { hreflang: 'x-default', href: SITE_URL },
+    ],
   });
 
   return (

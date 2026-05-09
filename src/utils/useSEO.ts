@@ -12,6 +12,16 @@ interface SEOProps {
   schemaId?: string;
   /** When true, emit <meta name="robots" content="noindex,nofollow"> for hidden routes. */
   noindex?: boolean;
+  /**
+   * Page language (BCP 47). Drives <html lang> + og:locale. Defaults to 'en' when omitted.
+   * Use 'es' for the Spanish landing, 'en' for English pages.
+   */
+  lang?: string;
+  /**
+   * hreflang alternates — tells Google which URLs serve the same content in other
+   * languages. Both pages should declare each other plus an x-default fallback.
+   */
+  alternates?: Array<{ hreflang: string; href: string }>;
 }
 
 // Home-page defaults restored when a page unmounts.
@@ -33,9 +43,13 @@ const setMetaTag = (property: string, content: string, isProperty = false) => {
   }
 };
 
-export const useSEO = ({ title, description, canonical, ogImage, schema, schemaId, noindex }: SEOProps) => {
+export const useSEO = ({ title, description, canonical, ogImage, schema, schemaId, noindex, lang, alternates }: SEOProps) => {
   useEffect(() => {
     document.title = title;
+
+    // Set <html lang> so screen readers + Google know the page language.
+    const prevLang = document.documentElement.lang;
+    document.documentElement.lang = lang || 'en';
 
     // Robots — noindex on hidden routes (dashboards, admin). Default removes the tag.
     setMetaTag('robots', noindex ? 'noindex,nofollow' : 'index,follow');
@@ -69,6 +83,25 @@ export const useSEO = ({ title, description, canonical, ogImage, schema, schemaI
       }
     }
 
+    // hreflang alternates — clear old ones, then add fresh. Use a data-attribute
+    // so we only remove tags we own (not anything from index.html).
+    document
+      .querySelectorAll('link[rel="alternate"][data-managed="useSEO"]')
+      .forEach((n) => n.remove());
+    if (alternates && alternates.length) {
+      for (const alt of alternates) {
+        const l = document.createElement('link');
+        l.rel = 'alternate';
+        l.hreflang = alt.hreflang;
+        l.href = alt.href;
+        l.dataset.managed = 'useSEO';
+        document.head.appendChild(l);
+      }
+    }
+
+    // og:locale matches the page language (e.g. en_US, es_US).
+    setMetaTag('og:locale', (lang || 'en') === 'es' ? 'es_US' : 'en_US', true);
+
     // Optional JSON-LD injection (keyed by schemaId so we can remove on unmount).
     let schemaNode: HTMLScriptElement | null = null;
     if (schema) {
@@ -83,15 +116,21 @@ export const useSEO = ({ title, description, canonical, ogImage, schema, schemaI
 
     return () => {
       document.title = DEFAULT_TITLE;
+      document.documentElement.lang = prevLang || 'en';
       setMetaTag('description', DEFAULT_DESCRIPTION);
       setMetaTag('og:title', DEFAULT_OG_TITLE, true);
       setMetaTag('og:description', DEFAULT_OG_DESCRIPTION, true);
       setMetaTag('og:image', HERO_IMAGE, true);
+      setMetaTag('og:locale', 'en_US', true);
       setMetaTag('robots', 'index,follow');
       if (link) link.href = SITE_URL;
+      // Strip our hreflang alternates on unmount.
+      document
+        .querySelectorAll('link[rel="alternate"][data-managed="useSEO"]')
+        .forEach((n) => n.remove());
       if (schemaNode && schemaNode.parentNode) {
         schemaNode.parentNode.removeChild(schemaNode);
       }
     };
-  }, [title, description, canonical, ogImage, schema, schemaId, noindex]);
+  }, [title, description, canonical, ogImage, schema, schemaId, noindex, lang, alternates]);
 };

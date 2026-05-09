@@ -2,6 +2,7 @@ import { createServer } from 'vite';
 import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { applyRouteMetadata } from './prerender-metadata.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -30,6 +31,7 @@ const ROUTES = [
   '/barber',
   '/barber/akshat',
   '/filipino-barber-auburn',
+  '/barberia-auburn-wa',
 ];
 
 function routeToFilePath(route, distDir) {
@@ -63,10 +65,15 @@ async function prerender() {
     for (const route of ROUTES) {
       try {
         const appHtml = render(route);
-        const html = asyncCssTemplate.replace(
+        // Body injection
+        let html = asyncCssTemplate.replace(
           `<div id="root"></div>`,
           `<div id="root">${appHtml}</div>`
         );
+        // Per-route head metadata (title, html lang, description, canonical,
+        // hreflang alternates). Falls back to template defaults for routes
+        // without metadata — useSEO still mutates them client-side post-hydration.
+        html = applyRouteMetadata(html, route);
         const filePath = routeToFilePath(route, distDir);
         writeFileSync(filePath, html);
         console.log(`✓ Prerendered: ${route}`);

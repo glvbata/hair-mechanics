@@ -1,10 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Phone, Instagram, Facebook } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { Phone, Instagram, Facebook, Globe } from 'lucide-react';
 import { trackSocialClick } from '../utils/analytics';
 import { ADDRESS, PHONE_DISPLAY, PHONE_TEL, SOCIAL } from '../constants/business';
 
 const Footer = () => {
+  // Toggle target depends on which language the visitor is currently on.
+  // Spanish landing is the only ES page right now — everything else is EN.
+  const { pathname } = useLocation();
+  const isSpanish = pathname.startsWith('/barberia-auburn-wa');
+  const langTarget = isSpanish ? '/' : '/barberia-auburn-wa';
+  const langLabel = isSpanish ? 'English' : 'Español';
+
   return (
     <footer className="bg-gray-900 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -66,10 +73,19 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-6 text-center">
+        <div className="border-t border-gray-800 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-center sm:text-left">
           <p className="text-gray-400 text-sm">
             © {new Date().getFullYear()} Hair Mechanics. All rights reserved.
           </p>
+          <Link
+            to={langTarget}
+            hrefLang={isSpanish ? 'en' : 'es'}
+            className="text-gray-400 hover:text-gold-500 transition-colors text-sm inline-flex items-center"
+            aria-label={isSpanish ? 'Switch to English' : 'Cambiar a Español'}
+          >
+            <Globe className="h-4 w-4 mr-1.5" />
+            {langLabel}
+          </Link>
         </div>
       </div>
     </footer>
