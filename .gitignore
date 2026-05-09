@@ -26,6 +26,11 @@ dist-ssr
 # Bolt (no longer used)
 .bolt
 
+# Secrets — OAuth client JSONs, refresh tokens, .env.local. Never commit.
+.secrets/
+.env.local
+.env
+
 # SEO baseline screenshots — large binaries, NOT regenerable.
 # Track baseline.md / manifest.json / keywords.txt; back screenshots up
 # to cloud storage (Drive/iCloud) since git won't have them.
