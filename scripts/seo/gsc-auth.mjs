@@ -21,7 +21,13 @@ import open from 'open';
 
 const CLIENT_PATH = '.secrets/gsc-oauth-client.json';
 const TOKEN_PATH = '.secrets/gsc-token.json';
-const SCOPES = ['https://www.googleapis.com/auth/webmasters.readonly'];
+// Single token covers both Search Console (read-only) and Business Profile
+// (manage). Both APIs are read by our pull scripts; business.manage is the
+// only scope Google offers — there's no business.readonly equivalent.
+const SCOPES = [
+  'https://www.googleapis.com/auth/webmasters.readonly',
+  'https://www.googleapis.com/auth/business.manage',
+];
 const PORT = 53682; // unprivileged, unlikely to clash
 
 async function main() {

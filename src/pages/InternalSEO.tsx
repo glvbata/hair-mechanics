@@ -37,6 +37,16 @@ const gbpPosts = import.meta.glob('../../docs/seo-reports/*/gbp-posts.md', {
   import: 'default',
 }) as Record<string, () => Promise<string>>;
 
+// GBP search keywords + performance metrics, written by `npm run gbp:pull`.
+const gbpKeywords = import.meta.glob('../../docs/seo-reports/*/gbp-keywords.md', {
+  query: '?raw',
+  import: 'default',
+}) as Record<string, () => Promise<string>>;
+const gbpPerformance = import.meta.glob('../../docs/seo-reports/*/gbp-performance.md', {
+  query: '?raw',
+  import: 'default',
+}) as Record<string, () => Promise<string>>;
+
 interface GscRow {
   keys: string[];
   clicks: number;
@@ -78,6 +88,12 @@ for (const [path, load] of Object.entries(diffFiles)) {
 const gbpLoadersByDate: Record<string, () => Promise<string>> = Object.fromEntries(
   Object.entries(gbpPosts).map(([path, load]) => [dateFromPath(path), load]),
 );
+const gbpKwLoadersByDate: Record<string, () => Promise<string>> = Object.fromEntries(
+  Object.entries(gbpKeywords).map(([path, load]) => [dateFromPath(path), load]),
+);
+const gbpPerfLoadersByDate: Record<string, () => Promise<string>> = Object.fromEntries(
+  Object.entries(gbpPerformance).map(([path, load]) => [dateFromPath(path), load]),
+);
 
 const allDates = Object.keys(reportsByDate).sort().reverse();
 
@@ -99,6 +115,8 @@ const InternalSEO = () => {
   const [keywordMapHtml, setKeywordMapHtml] = useState<string>('Loading…');
   const [diffHtml, setDiffHtml] = useState<string>('');
   const [gbpHtml, setGbpHtml] = useState<string>('');
+  const [gbpKwHtml, setGbpKwHtml] = useState<string>('');
+  const [gbpPerfHtml, setGbpPerfHtml] = useState<string>('');
 
   // Lazy-load the keyword map markdown when the active date changes.
   useMemo(() => {
@@ -137,6 +155,23 @@ const InternalSEO = () => {
       const html = marked.parse(md, { gfm: true, breaks: false }) as string;
       setGbpHtml(html);
     });
+  }, [activeDate]);
+
+  // Lazy-load GBP search keywords + performance for the active date.
+  useMemo(() => {
+    const kwLoader = gbpKwLoadersByDate[activeDate];
+    if (kwLoader) {
+      kwLoader().then((md) => {
+        setGbpKwHtml(marked.parse(md, { gfm: true, breaks: false }) as string);
+      });
+    } else setGbpKwHtml('');
+
+    const perfLoader = gbpPerfLoadersByDate[activeDate];
+    if (perfLoader) {
+      perfLoader().then((md) => {
+        setGbpPerfHtml(marked.parse(md, { gfm: true, breaks: false }) as string);
+      });
+    } else setGbpPerfHtml('');
   }, [activeDate]);
 
   const report = reportsByDate[activeDate];
@@ -225,6 +260,28 @@ const InternalSEO = () => {
             <div
               className="prose prose-invert prose-sm max-w-none prose-headings:text-gold-500 prose-a:text-gold-400 prose-table:text-xs"
               dangerouslySetInnerHTML={{ __html: diffHtml }}
+            />
+          </section>
+        )}
+
+        {/* GBP performance — business outcomes (calls, directions, clicks). */}
+        {gbpPerfHtml && (
+          <section>
+            <h2 className="text-lg font-semibold text-gray-300 mb-3">GBP Business Performance</h2>
+            <div
+              className="prose prose-invert prose-sm max-w-none prose-headings:text-gold-500 prose-a:text-gold-400 prose-table:text-xs"
+              dangerouslySetInnerHTML={{ __html: gbpPerfHtml }}
+            />
+          </section>
+        )}
+
+        {/* GBP search keywords — what people typed to find the listing on Maps. */}
+        {gbpKwHtml && (
+          <section>
+            <h2 className="text-lg font-semibold text-gray-300 mb-3">GBP Search Keywords</h2>
+            <div
+              className="prose prose-invert prose-sm max-w-none prose-headings:text-gold-500 prose-a:text-gold-400 prose-table:text-xs"
+              dangerouslySetInnerHTML={{ __html: gbpKwHtml }}
             />
           </section>
         )}
