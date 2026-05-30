@@ -65,6 +65,29 @@ interface GscReport {
 // Path looks like ../../docs/seo-reports/2026-05-09/gsc-queries.json — pull the date.
 const dateFromPath = (p: string): string => p.match(/seo-reports\/([^/]+)\//)?.[1] || p;
 
+// --- Date helpers for the Action Center ---
+const fmtDate = (d: Date): string => d.toISOString().slice(0, 10);
+const daysSince = (iso: string, now: Date): number =>
+  Math.floor((now.getTime() - new Date(`${iso}T00:00:00Z`).getTime()) / 86_400_000);
+const addDays = (iso: string, n: number): Date =>
+  new Date(new Date(`${iso}T00:00:00Z`).getTime() + n * 86_400_000);
+
+// How long Google typically takes to recrawl + rerank after on-page changes.
+const RERANK_WINDOW_DAYS = 14;
+
+// External dependencies we're tracking. Edit these as state changes — they
+// drive the Setup Status board. Keeping it here (not in a report file) since
+// it's project-level state, not per-pull data.
+type SetupState = 'done' | 'waiting' | 'todo';
+const SETUP_STATUS: { label: string; status: SetupState; note: string }[] = [
+  { label: 'Google Search Console API', status: 'done', note: 'Connected — npm run seo:pull' },
+  { label: 'Indexing requested (5 priority URLs)', status: 'done', note: 'Submitted 2026-05-09 via GSC URL Inspection' },
+  { label: 'Homepage schema errors', status: 'done', note: 'FAQ duplicate + self-serving reviews removed' },
+  { label: 'Spanish + Filipino landing pages', status: 'done', note: 'Live, in sitemap, hreflang wired' },
+  { label: 'Google Business Profile API', status: 'waiting', note: 'Code shipped — pending Google project approval (2d–4wk)' },
+  { label: 'GA4 calls/bookings → dashboard', status: 'todo', note: 'Wire analytics.readonly pull once GA4 account access is settled' },
+];
+
 const reportsByDate: Record<string, GscReport> = Object.fromEntries(
   Object.entries(queryJsons).map(([path, report]) => [dateFromPath(path), report]),
 );
@@ -208,6 +231,62 @@ const InternalSEO = () => {
   const totalClk = report.rows.reduce((a, r) => a + r.clicks, 0);
   const totalCtr = totalImp ? (totalClk / totalImp) * 100 : 0;
 
+  // --- Action Center: derive "what to do next" from real state ---
+  const now = new Date();
+  const latestDate = allDates[0];
+  const sincePull = daysSince(latestDate, now);
+  const reportCount = allDates.length;
+  const hasGbpDrafts = Boolean(gbpLoadersByDate[latestDate]);
+  const nextMeasure = addDays(latestDate, RERANK_WINDOW_DAYS);
+  const daysToMeasure = Math.max(0, daysSince(fmtDate(nextMeasure), now) * -1);
+
+  type Action = { priority: 'now' | 'weekly' | 'waiting'; title: string; detail: string };
+  const actions: Action[] = [];
+
+  // Data-pull cadence.
+  if (sincePull >= 7) {
+    actions.push({
+      priority: 'now',
+      title: 'Pull fresh search data',
+      detail: `Last pull was ${sincePull} days ago. Run: npm run seo:pull && npm run seo:diff`,
+    });
+  } else if (reportCount < 2) {
+    actions.push({
+      priority: 'waiting',
+      title: 'Wait to measure impact, then re-pull',
+      detail: `Only one report so far. Google needs ~${RERANK_WINDOW_DAYS} days to recrawl + rerank the changes. Re-pull on/after ${fmtDate(nextMeasure)} (${daysToMeasure} days) to see what moved.`,
+    });
+  }
+
+  // Weekly GBP post (recurring while drafts exist).
+  if (hasGbpDrafts) {
+    actions.push({
+      priority: 'weekly',
+      title: "Post this week's Google Business Profile update",
+      detail: '~2 min. Copy from the GBP Post Drafts section below. One per week: walk-ins → beard combo → Filipino → Spanish.',
+    });
+  }
+
+  // Weekly client update — always on.
+  actions.push({
+    priority: 'weekly',
+    title: 'Send Glen his weekly update',
+    detail:
+      reportCount < 2
+        ? 'Use the baseline + what-shipped template. Real movement numbers land with the 2nd report.'
+        : 'Lead with what moved (from the diff section), then the one ask for the week.',
+  });
+
+  // Retainer milestone — gated on having proof.
+  actions.push({
+    priority: 'waiting',
+    title: 'Retainer conversation with Glen',
+    detail: `Hold until the 2nd report shows movement (~${fmtDate(nextMeasure)}). Then propose $400/mo with the diff report as the proof artifact.`,
+  });
+
+  const priorityRank: Record<Action['priority'], number> = { now: 0, weekly: 1, waiting: 2 };
+  actions.sort((a, b) => priorityRank[a.priority] - priorityRank[b.priority]);
+
   const toggleSort = (k: SortKey) => {
     if (k === sortKey) setSortDir((d) => (d === 'asc' ? 'desc' : 'asc'));
     else {
@@ -240,6 +319,29 @@ const InternalSEO = () => {
       </header>
 
       <main className="max-w-7xl mx-auto px-6 py-8 space-y-10">
+
+        {/* ===== ACTION CENTER — what to do next ===== */}
+        <section className="grid lg:grid-cols-3 gap-6">
+          {/* Next actions (spans 2 cols on desktop) */}
+          <div className="lg:col-span-2">
+            <h2 className="text-lg font-semibold text-gold-500 mb-3">What To Do Next</h2>
+            <div className="space-y-2">
+              {actions.map((a, i) => (
+                <ActionItem key={i} priority={a.priority} title={a.title} detail={a.detail} />
+              ))}
+            </div>
+          </div>
+
+          {/* Setup status board */}
+          <div>
+            <h2 className="text-lg font-semibold text-gray-300 mb-3">Setup Status</h2>
+            <div className="bg-dark-800 border border-gray-800 rounded-lg divide-y divide-gray-800">
+              {SETUP_STATUS.map((s, i) => (
+                <StatusRow key={i} label={s.label} status={s.status} note={s.note} />
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* KPI tiles */}
         <section>
@@ -358,5 +460,53 @@ const Tile = ({ label, value }: { label: string; value: string }) => (
     <div className="text-2xl font-bold text-gold-500 mt-1">{value}</div>
   </div>
 );
+
+const PRIORITY_META: Record<'now' | 'weekly' | 'waiting', { label: string; cls: string }> = {
+  now: { label: 'DO NOW', cls: 'bg-gold-500 text-dark-900' },
+  weekly: { label: 'WEEKLY', cls: 'bg-blue-500/20 text-blue-300 border border-blue-500/40' },
+  waiting: { label: 'WAITING', cls: 'bg-gray-700 text-gray-300' },
+};
+
+const ActionItem = ({
+  priority,
+  title,
+  detail,
+}: {
+  priority: 'now' | 'weekly' | 'waiting';
+  title: string;
+  detail: string;
+}) => {
+  const meta = PRIORITY_META[priority];
+  return (
+    <div className="bg-dark-800 border border-gray-800 rounded-lg p-4 flex gap-3">
+      <span className={`shrink-0 h-fit text-[10px] font-bold tracking-wider px-2 py-1 rounded ${meta.cls}`}>
+        {meta.label}
+      </span>
+      <div>
+        <div className="font-semibold text-gray-100">{title}</div>
+        <div className="text-sm text-gray-400 mt-0.5">{detail}</div>
+      </div>
+    </div>
+  );
+};
+
+const STATUS_META: Record<SetupState, { icon: string; cls: string }> = {
+  done: { icon: '✓', cls: 'text-green-400' },
+  waiting: { icon: '⏳', cls: 'text-gold-500' },
+  todo: { icon: '○', cls: 'text-gray-500' },
+};
+
+const StatusRow = ({ label, status, note }: { label: string; status: SetupState; note: string }) => {
+  const meta = STATUS_META[status];
+  return (
+    <div className="flex items-start gap-3 px-4 py-3">
+      <span className={`shrink-0 ${meta.cls} font-bold`}>{meta.icon}</span>
+      <div>
+        <div className="text-sm font-medium text-gray-200">{label}</div>
+        <div className="text-xs text-gray-500 mt-0.5">{note}</div>
+      </div>
+    </div>
+  );
+};
 
 export default InternalSEO;
