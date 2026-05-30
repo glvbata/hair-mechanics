@@ -112,25 +112,23 @@ async function runReport(auth, propertyId, body) {
   return res.json();
 }
 
-// Two windows: current 28 days, and the 28 days before that.
-const DATE_RANGES = [
-  { startDate: '28daysAgo', endDate: 'yesterday', name: 'current' },
-  { startDate: '56daysAgo', endDate: '29daysAgo', name: 'previous' },
-];
+// Two windows: current 28 days, and the 28 days before that. Queried
+// SEPARATELY (one date range each) — GA4's multi-dateRange response appends
+// an ambiguous `dateRange` dimension that's easy to misparse, so we avoid it.
+const WINDOWS = {
+  current: { startDate: '28daysAgo', endDate: 'yesterday' },
+  previous: { startDate: '56daysAgo', endDate: '29daysAgo' },
+};
 
 function pctDelta(cur, prev) {
   if (!prev) return cur > 0 ? 100 : 0;
   return Math.round(((cur - prev) / prev) * 100);
 }
 
-async function main() {
-  const auth = await authedToken();
-  const info = await getOrDiscoverProperty(auth);
-  const propertyId = info.property;
-
-  // 1. Headline metrics, current vs previous.
-  const totals = await runReport(auth, propertyId, {
-    dateRanges: DATE_RANGES,
+// Pull headline totals + conversion events for a single date range.
+async function fetchWindow(auth, propertyId, range) {
+  const totalsRes = await runReport(auth, propertyId, {
+    dateRanges: [range],
     metrics: [
       { name: 'totalUsers' },
       { name: 'newUsers' },
@@ -138,41 +136,49 @@ async function main() {
       { name: 'screenPageViews' },
     ],
   });
+  const totals = {};
+  const headers = (totalsRes.metricHeaders || []).map((m) => m.name);
+  const row = (totalsRes.rows || [])[0];
+  headers.forEach((m, i) => {
+    totals[m] = Number(row?.metricValues?.[i]?.value || 0);
+  });
 
-  // GA4 returns one row per dateRange, tagged with dimension 'dateRange'.
-  const byRange = { current: {}, previous: {} };
-  const metricHeaders = (totals.metricHeaders || []).map((m) => m.name);
-  for (const row of totals.rows || []) {
-    const rangeName = row.dimensionValues?.[0]?.value === 'date_range_1' ? 'previous' : 'current';
-    metricHeaders.forEach((m, i) => {
-      byRange[rangeName][m] = Number(row.metricValues?.[i]?.value || 0);
-    });
-  }
-
-  // 2. Conversion events, current vs previous.
-  const events = await runReport(auth, propertyId, {
-    dateRanges: DATE_RANGES,
+  const eventsRes = await runReport(auth, propertyId, {
+    dateRanges: [range],
     dimensions: [{ name: 'eventName' }],
     metrics: [{ name: 'eventCount' }],
     dimensionFilter: {
-      filter: {
-        fieldName: 'eventName',
-        inListFilter: { values: CONVERSION_EVENTS },
-      },
+      filter: { fieldName: 'eventName', inListFilter: { values: CONVERSION_EVENTS } },
     },
   });
+  const events = {};
+  for (const ev of CONVERSION_EVENTS) events[ev] = 0;
+  for (const r of eventsRes.rows || []) {
+    const name = r.dimensionValues?.[0]?.value;
+    if (name in events) events[name] = Number(r.metricValues?.[0]?.value || 0);
+  }
 
+  return { totals, events };
+}
+
+async function main() {
+  const auth = await authedToken();
+  const info = await getOrDiscoverProperty(auth);
+  const propertyId = info.property;
+
+  // 1 + 2. Headline metrics + conversion events, each window queried separately.
+  const cur = await fetchWindow(auth, propertyId, WINDOWS.current);
+  const prev = await fetchWindow(auth, propertyId, WINDOWS.previous);
+
+  const byRange = { current: cur.totals, previous: prev.totals };
   const eventCounts = {};
-  for (const ev of CONVERSION_EVENTS) eventCounts[ev] = { current: 0, previous: 0 };
-  for (const row of events.rows || []) {
-    const name = row.dimensionValues?.[0]?.value;
-    const rangeName = row.dimensionValues?.[1]?.value === 'date_range_1' ? 'previous' : 'current';
-    if (eventCounts[name]) eventCounts[name][rangeName] = Number(row.metricValues?.[0]?.value || 0);
+  for (const ev of CONVERSION_EVENTS) {
+    eventCounts[ev] = { current: cur.events[ev], previous: prev.events[ev] };
   }
 
   // 3. Channel breakdown, current window only.
   const channels = await runReport(auth, propertyId, {
-    dateRanges: [DATE_RANGES[0]],
+    dateRanges: [WINDOWS.current],
     dimensions: [{ name: 'sessionDefaultChannelGroup' }],
     metrics: [{ name: 'sessions' }],
     orderBys: [{ metric: { metricName: 'sessions' }, desc: true }],

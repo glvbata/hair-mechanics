@@ -69,19 +69,23 @@ const ClientReport = () => {
     noindex: true,
   });
 
-  const date = latestKey({ ...ga4ByDate, ...gscByDate }) || '';
-  const ga4 = ga4ByDate[date];
-  const gsc = gscByDate[date];
+  // GA4 and GSC update on different cadences and land in different dated
+  // folders — pick the latest of EACH independently, not the latest shared one.
+  const ga4Date = latestKey(ga4ByDate) || '';
+  const gscDate = latestKey(gscByDate) || '';
+  const summaryDate = latestKey(clientSummaryByDate) || '';
+  const ga4 = ga4ByDate[ga4Date];
+  const gsc = gscByDate[gscDate];
 
   const [summaryHtml, setSummaryHtml] = useState('');
   useMemo(() => {
-    const loader = clientSummaryByDate[date];
+    const loader = clientSummaryByDate[summaryDate];
     if (!loader) {
       setSummaryHtml('');
       return;
     }
     loader().then((md) => setSummaryHtml(marked.parse(md, { gfm: true }) as string));
-  }, [date]);
+  }, [summaryDate]);
 
   const searchImpressions = gsc ? gsc.rows.reduce((a, r) => a + r.impressions, 0) : 0;
   const searchClicks = gsc ? gsc.rows.reduce((a, r) => a + r.clicks, 0) : 0;
