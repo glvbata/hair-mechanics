@@ -27,6 +27,8 @@ const TOKEN_PATH = '.secrets/gsc-token.json';
 const SCOPES = [
   'https://www.googleapis.com/auth/webmasters.readonly',
   'https://www.googleapis.com/auth/business.manage',
+  // GA4 — read-only access to traffic + conversion-event data.
+  'https://www.googleapis.com/auth/analytics.readonly',
 ];
 const PORT = 53682; // unprivileged, unlikely to clash
 

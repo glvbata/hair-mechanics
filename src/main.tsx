@@ -31,6 +31,7 @@ const FilipinoBarberPage = lazy(() => import('./pages/FilipinoBarber.tsx'));
 const BarberiaAuburnPage = lazy(() => import('./pages/BarberiaAuburn.tsx'));
 // Internal — hidden, noindex'd, not in sitemap or prerender list
 const InternalSEOPage  = lazy(() => import('./pages/InternalSEO.tsx'));
+const ClientReportPage = lazy(() => import('./pages/ClientReport.tsx'));
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -83,6 +84,8 @@ const AppWithScrollRestoration = () => (
         <Route path="/barberia-auburn-wa" element={<BarberiaAuburnPage />} />
         {/* Internal SEO dashboard — hidden URL, noindex, not in sitemap */}
         <Route path="/_internal/seo" element={<InternalSEOPage />} />
+        {/* Client-facing performance report — shareable, noindex, not in sitemap */}
+        <Route path="/_internal/client-report" element={<ClientReportPage />} />
         {/* 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>

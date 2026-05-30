@@ -11,7 +11,8 @@
     "seo:auth": "node scripts/seo/gsc-auth.mjs",
     "seo:pull": "node scripts/seo/gsc-pull-queries.mjs",
     "seo:diff": "node scripts/seo/gsc-diff.mjs",
-    "gbp:pull": "node scripts/seo/gbp-pull.mjs"
+    "gbp:pull": "node scripts/seo/gbp-pull.mjs",
+    "ga4:pull": "node scripts/seo/ga4-pull.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",
