@@ -41,6 +41,11 @@ interface Ga4Summary {
   };
   events: Record<string, { current: number; previous: number }>;
   channels: { channel: string; sessions: number }[];
+  attribution?: {
+    seo: { total: number; byEvent: Record<string, number> };
+    ads: { total: number; byEvent: Record<string, number> };
+    other: { total: number; byEvent: Record<string, number> };
+  };
 }
 
 const dateFromPath = (p: string): string => p.match(/seo-reports\/([^/]+)\//)?.[1] || p;
@@ -159,6 +164,36 @@ const ClientReport = () => {
           </section>
         )}
 
+        {/* Where calls came from — SEO vs Ads. Honest split. */}
+        {ga4?.attribution && (ga4.attribution.seo.byEvent.phone_call || ga4.attribution.ads.byEvent.phone_call) ? (
+          <section className="mb-10">
+            <h2 className="text-sm uppercase tracking-widest text-gray-500 mb-4">
+              Where your calls came from
+            </h2>
+            <div className="grid grid-cols-3 gap-4">
+              <SourceStat
+                label="Free Google search"
+                sub="(our SEO work)"
+                value={ga4.attribution.seo.byEvent.phone_call || 0}
+              />
+              <SourceStat
+                label="Your paid ads"
+                sub="(Google Ads)"
+                value={ga4.attribution.ads.byEvent.phone_call || 0}
+              />
+              <SourceStat
+                label="Direct & other"
+                sub="(returning, social)"
+                value={ga4.attribution.other.byEvent.phone_call || 0}
+              />
+            </div>
+            <p className="text-xs text-gray-500 mt-3">
+              Most of your calls now come from free Google search — the work we've put into
+              ranking is bringing in customers without ad spend.
+            </p>
+          </section>
+        ) : null}
+
         {/* Search visibility */}
         <section className="mb-10">
           <h2 className="text-sm uppercase tracking-widest text-gray-500 mb-4">
@@ -208,6 +243,14 @@ const ClientReport = () => {
     </div>
   );
 };
+
+const SourceStat = ({ label, sub, value }: { label: string; sub: string; value: number }) => (
+  <div className="bg-dark-800 border border-gray-800 rounded-lg p-4 text-center">
+    <div className="text-3xl font-bold text-gold-500">{value}</div>
+    <div className="text-sm text-gray-200 mt-2 font-medium">{label}</div>
+    <div className="text-xs text-gray-500">{sub}</div>
+  </div>
+);
 
 const BigStat = ({ label, value, delta }: { label: string; value: number; delta?: number }) => (
   <div className="bg-dark-800 border border-gray-800 rounded-lg p-5">

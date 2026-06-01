@@ -125,6 +125,13 @@ function pctDelta(cur, prev) {
   return Math.round(((cur - prev) / prev) * 100);
 }
 
+// Bucket a GA4 channel into the three things Gian cares about.
+function classifyChannel(channel) {
+  if (channel === 'Organic Search') return 'seo';
+  if (/^Paid/.test(channel) || channel === 'Cross-network' || channel === 'Display') return 'ads';
+  return 'other';
+}
+
 // Pull headline totals + conversion events for a single date range.
 async function fetchWindow(auth, propertyId, range) {
   const totalsRes = await runReport(auth, propertyId, {
@@ -188,6 +195,32 @@ async function main() {
     sessions: Number(r.metricValues?.[0]?.value || 0),
   }));
 
+  // 4. Conversions split by source — answers "which calls came from our free
+  //    SEO vs the paid ads Gian runs". Attributed by the session's channel.
+  const convByChannel = await runReport(auth, propertyId, {
+    dateRanges: [WINDOWS.current],
+    dimensions: [{ name: 'sessionDefaultChannelGroup' }, { name: 'eventName' }],
+    metrics: [{ name: 'eventCount' }],
+    dimensionFilter: {
+      filter: { fieldName: 'eventName', inListFilter: { values: CONVERSION_EVENTS } },
+    },
+  });
+  // Roll each channel into SEO (organic search), Ads (paid + cross-network),
+  // or Other (direct, social, referral, email, unassigned).
+  const attribution = {
+    seo: { total: 0, byEvent: {} },
+    ads: { total: 0, byEvent: {} },
+    other: { total: 0, byEvent: {} },
+  };
+  for (const r of convByChannel.rows || []) {
+    const channel = r.dimensionValues?.[0]?.value || '';
+    const event = r.dimensionValues?.[1]?.value || '';
+    const count = Number(r.metricValues?.[0]?.value || 0);
+    const bucket = classifyChannel(channel);
+    attribution[bucket].total += count;
+    attribution[bucket].byEvent[event] = (attribution[bucket].byEvent[event] || 0) + count;
+  }
+
   const result = {
     property: info.property,
     displayName: info.displayName,
@@ -196,6 +229,7 @@ async function main() {
     totals: byRange,
     events: eventCounts,
     channels: channelRows,
+    attribution,
   };
 
   const stamp = new Date().toISOString().slice(0, 10);
@@ -248,6 +282,19 @@ function toMarkdown(r) {
   lines.push('| Channel | Sessions |');
   lines.push('|---|---:|');
   for (const ch of r.channels) lines.push(`| ${ch.channel} | ${ch.sessions.toLocaleString()} |`);
+
+  // SEO vs Ads — where the conversions actually came from.
+  if (r.attribution) {
+    const a = r.attribution;
+    const calls = (b) => a[b].byEvent.phone_call || 0;
+    lines.push('\n## SEO vs Ads — where conversions came from (last 28d)');
+    lines.push('| Source | Phone calls | All conversions |');
+    lines.push('|---|---:|---:|');
+    lines.push(`| Free Google search (SEO) | ${calls('seo')} | ${a.seo.total} |`);
+    lines.push(`| Paid ads | ${calls('ads')} | ${a.ads.total} |`);
+    lines.push(`| Other (direct, social, etc.) | ${calls('other')} | ${a.other.total} |`);
+    lines.push('\n_Add your monthly ad spend to compute cost-per-call from ads._');
+  }
 
   return lines.join('\n');
 }

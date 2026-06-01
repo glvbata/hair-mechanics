@@ -47,6 +47,12 @@ const gbpPerformance = import.meta.glob('../../docs/seo-reports/*/gbp-performanc
   import: 'default',
 }) as Record<string, () => Promise<string>>;
 
+// GA4 traffic + conversions + SEO-vs-Ads split, written by `npm run ga4:pull`.
+const ga4Summaries = import.meta.glob('../../docs/seo-reports/*/ga4-summary.md', {
+  query: '?raw',
+  import: 'default',
+}) as Record<string, () => Promise<string>>;
+
 interface GscRow {
   keys: string[];
   clicks: number;
@@ -117,6 +123,9 @@ const gbpKwLoadersByDate: Record<string, () => Promise<string>> = Object.fromEnt
 const gbpPerfLoadersByDate: Record<string, () => Promise<string>> = Object.fromEntries(
   Object.entries(gbpPerformance).map(([path, load]) => [dateFromPath(path), load]),
 );
+const ga4LoadersByDate: Record<string, () => Promise<string>> = Object.fromEntries(
+  Object.entries(ga4Summaries).map(([path, load]) => [dateFromPath(path), load]),
+);
 
 const allDates = Object.keys(reportsByDate).sort().reverse();
 
@@ -140,6 +149,7 @@ const InternalSEO = () => {
   const [gbpHtml, setGbpHtml] = useState<string>('');
   const [gbpKwHtml, setGbpKwHtml] = useState<string>('');
   const [gbpPerfHtml, setGbpPerfHtml] = useState<string>('');
+  const [ga4Html, setGa4Html] = useState<string>('');
 
   // Lazy-load the keyword map markdown when the active date changes.
   useMemo(() => {
@@ -195,6 +205,13 @@ const InternalSEO = () => {
         setGbpPerfHtml(marked.parse(md, { gfm: true, breaks: false }) as string);
       });
     } else setGbpPerfHtml('');
+
+    const ga4Loader = ga4LoadersByDate[activeDate];
+    if (ga4Loader) {
+      ga4Loader().then((md) => {
+        setGa4Html(marked.parse(md, { gfm: true, breaks: false }) as string);
+      });
+    } else setGa4Html('');
   }, [activeDate]);
 
   const report = reportsByDate[activeDate];
@@ -354,6 +371,17 @@ const InternalSEO = () => {
           </div>
           <p className="mt-3 text-xs text-gray-500">Site: <code>{report.siteUrl}</code></p>
         </section>
+
+        {/* GA4 — traffic, conversions, and the SEO-vs-Ads split. */}
+        {ga4Html && (
+          <section>
+            <h2 className="text-lg font-semibold text-gray-300 mb-3">Analytics — Visitors, Calls & SEO-vs-Ads</h2>
+            <div
+              className="prose prose-invert prose-sm max-w-none prose-headings:text-gold-500 prose-a:text-gold-400 prose-table:text-xs"
+              dangerouslySetInnerHTML={{ __html: ga4Html }}
+            />
+          </section>
+        )}
 
         {/* Diff vs previous report (only renders if one exists) */}
         {diffHtml && (

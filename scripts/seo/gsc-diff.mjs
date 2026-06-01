@@ -15,6 +15,7 @@
  */
 
 import { readFile, writeFile, readdir } from 'fs/promises';
+import { existsSync } from 'fs';
 import { join } from 'path';
 
 const REPORT_DIR = 'docs/seo-reports';
@@ -27,10 +28,16 @@ const args = Object.fromEntries(
 
 async function listReportDates() {
   const entries = await readdir(REPORT_DIR, { withFileTypes: true });
-  return entries
+  const dated = entries
     .filter((e) => e.isDirectory() && /^\d{4}-\d{2}-\d{2}$/.test(e.name))
-    .map((e) => e.name)
-    .sort();
+    .map((e) => e.name);
+  // Only folders that actually have a GSC pull — GA4-only folders (e.g. a
+  // standalone ga4:pull day) have no gsc-queries.json and would crash the diff.
+  const withGsc = [];
+  for (const d of dated) {
+    if (existsSync(join(REPORT_DIR, d, 'gsc-queries.json'))) withGsc.push(d);
+  }
+  return withGsc.sort();
 }
 
 async function loadReport(date) {

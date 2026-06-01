@@ -1,0 +1,92 @@
+{
+  "property": "properties/532417952",
+  "displayName": "hair-mechanics",
+  "pulledAt": "2026-06-01T17:50:40.022Z",
+  "windows": {
+    "current": "28daysAgo–yesterday",
+    "previous": "56daysAgo–29daysAgo"
+  },
+  "totals": {
+    "current": {
+      "totalUsers": 66,
+      "newUsers": 65,
+      "sessions": 83,
+      "screenPageViews": 134
+    },
+    "previous": {
+      "totalUsers": 84,
+      "newUsers": 84,
+      "sessions": 98,
+      "screenPageViews": 177
+    }
+  },
+  "events": {
+    "phone_call": {
+      "current": 7,
+      "previous": 2
+    },
+    "sms_click": {
+      "current": 1,
+      "previous": 2
+    },
+    "get_directions": {
+      "current": 0,
+      "previous": 1
+    },
+    "review_click": {
+      "current": 0,
+      "previous": 1
+    }
+  },
+  "channels": [
+    {
+      "channel": "Organic Search",
+      "sessions": 40
+    },
+    {
+      "channel": "Direct",
+      "sessions": 21
+    },
+    {
+      "channel": "Organic Social",
+      "sessions": 7
+    },
+    {
+      "channel": "Cross-network",
+      "sessions": 6
+    },
+    {
+      "channel": "Paid Search",
+      "sessions": 6
+    },
+    {
+      "channel": "Referral",
+      "sessions": 2
+    },
+    {
+      "channel": "Unassigned",
+      "sessions": 2
+    }
+  ],
+  "attribution": {
+    "seo": {
+      "total": 5,
+      "byEvent": {
+        "phone_call": 4,
+        "sms_click": 1
+      }
+    },
+    "ads": {
+      "total": 2,
+      "byEvent": {
+        "phone_call": 2
+      }
+    },
+    "other": {
+      "total": 1,
+      "byEvent": {
+        "phone_call": 1
+      }
+    }
+  }
+}
