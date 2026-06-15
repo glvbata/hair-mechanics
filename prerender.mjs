@@ -12,6 +12,8 @@ const ROUTES = [
   '/book',
   '/gallery',
   '/blog',
+  '/blog/best-summer-haircuts-men-2026',
+  '/blog/haircut-cost-auburn-wa',
   '/blog/walk-in-barber-auburn-wa-open-late',
   '/blog/top-mens-haircut-trends-2026',
   '/blog/complete-guide-to-beard-maintenance',

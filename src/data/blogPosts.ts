@@ -29,6 +29,110 @@ const AUTHOR = {
 } as const;
 
 export const BLOG_POSTS: Record<string, BlogPost> = {
+  'best-summer-haircuts-men-2026': {
+    slug: 'best-summer-haircuts-men-2026',
+    title: 'Best Summer Haircuts for Men in 2026',
+    excerpt:
+      "Beat the Washington summer heat with a cut that's cool, low-maintenance, and sharp. Here are the best men's summer haircuts for 2026 — and how to keep them fresh.",
+    image:
+      'https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80',
+    ...AUTHOR,
+    date: 'June 15, 2026',
+    readTime: '5 min read',
+    tags: ['Summer', "Men's Styles", 'Haircuts', 'Auburn WA'],
+    content: `
+      <p class="mb-4">When the Washington summer finally shows up, the last thing you want is heavy hair sticking to your neck. The right summer cut keeps you cool, takes seconds to style in the morning, and still looks sharp when you're out by the water or at a BBQ. Here are the styles our barbers are cutting most this season at Hair Mechanics in Auburn.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">1. The Skin Fade</h2>
+      <p class="mb-4">Nothing beats a <a href="/services/fade" class="text-gold-500 hover:text-gold-400 underline">skin fade</a> for summer. Tight on the sides, faded down to the skin, with just enough length on top to style. It keeps your head cool, looks clean in any setting, and photographs great. The only catch: a skin fade grows out fast, so plan on a touch-up every 2–3 weeks.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">2. Textured Crop</h2>
+      <p class="mb-4">Short, easy, and forgiving. The textured crop keeps the sides faded and the top short enough to skip the styling product on hot days. Run your hands through it after a shower and you're done. It's the lowest-effort cut that still looks intentional.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">3. The Buzz Cut</h2>
+      <p class="mb-4">If you want the coolest, most maintenance-free option on the list, the buzz cut wins. One length all over, no product, no fuss. It's perfect for guys who are active in summer — at the gym, on the field, or in the pool — and don't want to think about their hair at all. Add a clean <a href="/services/line-up" class="text-gold-500 hover:text-gold-400 underline">line-up</a> to keep the edges sharp.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">4. Taper Fade with Texture</h2>
+      <p class="mb-4">Want something that works at the office and the beach? A taper fade keeps it professional around the ears and neckline while leaving enough length on top for a textured, relaxed finish. It's the most versatile cut on this list and grows out cleaner than a skin fade — making it the lowest-maintenance fade for summer.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">5. Classic Crew Cut</h2>
+      <p class="mb-4">A timeless choice that never looks dated. The crew cut is short and tapered with a little more length at the front. It handles heat well, suits almost every face shape, and takes under a minute to style. If you want clean and classic over trendy, this is your cut.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">Summer Hair Care Tips</h2>
+      <p class="mb-4">A great summer cut still needs a little care to stay fresh in the heat:</p>
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li><strong>Rinse after the pool.</strong> Chlorine and salt dry out your hair and scalp. A quick rinse after swimming keeps things healthy.</li>
+        <li><strong>Don't skip scalp care.</strong> Shorter sides mean more sun exposure — a little moisturizer keeps the skin from getting dry or burned.</li>
+        <li><strong>Go lighter on product.</strong> Heavy pomade plus heat equals a greasy look. Switch to a lightweight matte clay or cream for summer.</li>
+        <li><strong>Come in more often.</strong> Short cuts look their best fresh. A line-up every couple of weeks keeps you sharp all season.</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">Get Your Summer Cut in Auburn</h2>
+      <p class="mb-4">Not sure which style fits your hair type or lifestyle? That's what we're here for. Our barbers will help you pick the cut that keeps you cool and looking your best all summer. We're open 7 days a week and take walk-ins all day — no appointment needed.</p>
+
+      <p class="mt-8 mb-4">Ready for a fresh <a href="/services/haircut" class="text-gold-500 hover:text-gold-400 underline">summer haircut</a>? Walk in anytime, or check out our full <a href="/services/fade" class="text-gold-500 hover:text-gold-400 underline">fade services</a> to find your style.</p>
+    `,
+    related: [
+      { slug: 'haircut-cost-auburn-wa' },
+      { slug: 'how-to-maintain-a-fade' },
+    ],
+  },
+
+  'haircut-cost-auburn-wa': {
+    slug: 'haircut-cost-auburn-wa',
+    title: 'How Much Does a Men\'s Haircut Cost in Auburn, WA?',
+    excerpt:
+      "Wondering what a haircut costs in Auburn? Here's a straightforward breakdown of barbershop prices, what's included, and how to get the best value for your money.",
+    image:
+      'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80',
+    ...AUTHOR,
+    date: 'June 13, 2026',
+    readTime: '4 min read',
+    tags: ['Pricing', 'Auburn WA', 'Haircuts'],
+    content: `
+      <p class="mb-4">If you're new to Auburn or just looking for a new barber, the first question is usually a simple one: what's a haircut going to cost me? Some shops make you guess, hide prices behind an app, or surprise you at the register. We don't believe in that. Here's exactly what a men's haircut costs at Hair Mechanics — no surprises.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">Our Prices — Clear and Upfront</h2>
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li><strong>Haircut:</strong> $40 — includes consultation, cut, and finishing</li>
+        <li><strong>Haircut &amp; Beard:</strong> $50 — full grooming with a professional beard shape</li>
+        <li><strong>Kids Cut (12 &amp; under):</strong> $35</li>
+        <li><strong>Line Up / Trim:</strong> $20 — quick touch-up between full cuts</li>
+        <li><strong>Fade:</strong> $40 — skin, mid, and taper fades with precision blending</li>
+      </ul>
+      <p class="mb-4">That's the full menu. What you see is what you pay.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">What's Actually Included in the Price</h2>
+      <p class="mb-4">A $40 haircut at Hair Mechanics isn't just clippers and a quick buzz. Every cut includes:</p>
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li><strong>A real consultation.</strong> We talk through what you want before we start — bring a photo or just describe it.</li>
+        <li><strong>A precision cut</strong> from an experienced barber who works with all hair types.</li>
+        <li><strong>Clean finishing</strong> — neckline, edges, and styling so you walk out ready to go.</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">How Auburn Pricing Compares</h2>
+      <p class="mb-4">Across South King County, a quality men's haircut typically runs anywhere from $30 to $60 depending on the shop and the barber's experience. Chain salons sometimes look cheaper on paper, but you often get a rushed cut from whoever's available — and end up back in the chair sooner. A skilled barber who gets the cut right the first time is the better value, even before you factor in the experience.</p>
+      <p class="mb-4">At $40 for a full haircut, we sit right in the middle of the market while delivering the kind of detail you'd expect from a premium shop — pool table and all.</p>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">How to Get the Best Value</h2>
+      <p class="mb-4">A few simple habits stretch your grooming budget further:</p>
+      <ul class="list-disc pl-6 mb-6 space-y-2">
+        <li><strong>Book a line-up between full cuts.</strong> A $20 <a href="/services/line-up" class="text-gold-500 hover:text-gold-400 underline">line-up</a> at the halfway point keeps you looking fresh without paying for a full cut every two weeks.</li>
+        <li><strong>Bundle the beard.</strong> Adding a beard shape to your cut is just $10 more than a haircut alone — cheaper than two separate visits.</li>
+        <li><strong>Stay on a schedule.</strong> Regulars who come in every 3–4 weeks always look sharp and never need a "fix-it" cut.</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold mt-8 mb-4 text-gold-500">No Appointment, No Surprises</h2>
+      <p class="mb-4">We're a walk-in shop, open 7 days a week until 8PM on weekdays. You don't need an appointment, a deposit, or an app — just come in. Free parking is right out front at <strong>1251 A Street NE, Auburn, WA 98002</strong>.</p>
+
+      <p class="mt-8 mb-4">Ready for a cut you can count on at a price you can see coming? Check out our <a href="/services/haircut" class="text-gold-500 hover:text-gold-400 underline">haircut</a> and <a href="/services/fade" class="text-gold-500 hover:text-gold-400 underline">fade services</a>, then walk in whenever works for you.</p>
+    `,
+    related: [
+      { slug: 'walk-in-barber-auburn-wa-open-late' },
+      { slug: 'best-summer-haircuts-men-2026' },
+    ],
+  },
+
   'walk-in-barber-auburn-wa-open-late': {
     slug: 'walk-in-barber-auburn-wa-open-late',
     title: 'Best Walk-In Barber in Auburn, WA — Open Late 7 Days a Week',
