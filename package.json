@@ -12,7 +12,8 @@
     "seo:pull": "node scripts/seo/gsc-pull-queries.mjs",
     "seo:diff": "node scripts/seo/gsc-diff.mjs",
     "gbp:pull": "node scripts/seo/gbp-pull.mjs",
-    "ga4:pull": "node scripts/seo/ga4-pull.mjs"
+    "ga4:pull": "node scripts/seo/ga4-pull.mjs",
+    "review-card": "node scripts/make-review-card.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",
@@ -35,6 +36,7 @@
     "googleapis": "^171.4.0",
     "open": "^11.0.0",
     "postcss": "^8.4.35",
+    "qrcode": "^1.5.4",
     "sharp": "^0.34.5",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.5.3",

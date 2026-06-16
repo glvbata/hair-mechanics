@@ -2,6 +2,16 @@
   command = "npm run build"
   publish = "dist"
 
+# Branded short link for review requests — /review jumps straight to the Google
+# review page. Used on the QR card + in follow-up texts. Future-proof: if the
+# Google review URL ever changes, update it here, not on every printed card.
+# Must come BEFORE the SPA catch-all so it wins.
+[[redirects]]
+  from = "/review"
+  to = "https://g.page/r/Cc2wjU_thhsrEAI/review"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/*"
   to = "/index.html"

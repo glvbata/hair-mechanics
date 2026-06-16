@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Phone, Instagram, Facebook, Globe } from 'lucide-react';
+import { Phone, Instagram, Facebook, Globe, Star } from 'lucide-react';
 import { trackSocialClick } from '../utils/analytics';
 import { ADDRESS, PHONE_DISPLAY, PHONE_TEL, SOCIAL } from '../constants/business';
 
@@ -30,6 +30,15 @@ const Footer = () => {
             <a href={`tel:${PHONE_TEL}`} className="text-gold-500 hover:text-gold-400 text-sm mt-2 inline-flex items-center">
               <Phone className="h-3.5 w-3.5 mr-1.5" /> {PHONE_DISPLAY}
             </a>
+            <a
+              href={SOCIAL.review}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackSocialClick('review')}
+              className="text-gray-400 hover:text-gold-500 text-sm mt-2 inline-flex items-center"
+            >
+              <Star className="h-3.5 w-3.5 mr-1.5" /> Leave a Google review
+            </a>
             <div className="flex space-x-3 mt-3">
               <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gold-500 transition-colors" aria-label="Instagram" onClick={() => trackSocialClick('instagram')}>
                 <Instagram className="h-5 w-5" />
@@ -55,6 +64,8 @@ const Footer = () => {
               <li><Link to="/services/beard-trim" className="text-gray-400 hover:text-gold-500 transition-colors">Beard Trim</Link></li>
               <li><Link to="/services/kids-cut" className="text-gray-400 hover:text-gold-500 transition-colors">Kids Cuts</Link></li>
               <li><Link to="/services/line-up" className="text-gray-400 hover:text-gold-500 transition-colors">Line Up / Trim</Link></li>
+              <li><Link to="/filipino-barber-auburn" className="text-gray-400 hover:text-gold-500 transition-colors">Filipino Barber</Link></li>
+              <li><Link to="/barberia-auburn-wa" className="text-gray-400 hover:text-gold-500 transition-colors">Barbería (Español)</Link></li>
               <li><Link to="/team" className="text-gray-400 hover:text-gold-500 transition-colors">Our Team</Link></li>
             </ul>
           </div>
