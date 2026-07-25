@@ -15,7 +15,9 @@
 import QRCode from 'qrcode';
 import { mkdir, writeFile } from 'fs/promises';
 
-const REVIEW_URL = 'https://hairmechanics.net/review';
+// ?src=qr distinguishes printed-card scans from the ?src=sms follow-up texts in
+// GA4, so we can tell which channel actually produces reviews.
+const REVIEW_URL = 'https://hairmechanics.net/review?src=qr';
 const QR_PATH = 'public/assets/review-qr.png';
 const CARD_PATH = 'docs/review-card.html';
 
