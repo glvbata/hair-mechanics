@@ -2,6 +2,7 @@ import React from 'react';
 import { Phone, ArrowDown } from 'lucide-react';
 import { trackSMSClick } from '../utils/analytics';
 import { PHONE_DISPLAY, PHONE_SMS } from '../constants/business';
+import OpenNowBadge from './OpenNowBadge';
 
 interface HeroProps {
   onBook: () => void;
@@ -69,7 +70,9 @@ const Hero = ({ onBook }: HeroProps) => {
             💬 Or text us to book
           </a>
           <span className="hidden sm:block text-dark-600">|</span>
-          <span className="text-gray-400 text-sm">Walk-ins welcome · Open 7 days</span>
+          {/* Live status, not a static "open 7 days" claim — the "open now"
+              query family ranks 2–5 and those searchers want one fact. */}
+          <OpenNowBadge />
         </div>
       </div>
 

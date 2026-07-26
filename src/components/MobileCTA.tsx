@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Phone } from 'lucide-react';
 import { handleCall, trackSMSClick } from '../utils/analytics';
 import { PHONE_SMS } from '../constants/business';
+import OpenNowBadge from './OpenNowBadge';
 
 const MobileCTA = () => {
   const [visible, setVisible] = useState(false);
@@ -22,7 +23,13 @@ const MobileCTA = () => {
       }`}
     >
       {/* Safe area padding for notched phones */}
-      <div className="bg-dark-900 border-t border-dark-700 px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] flex gap-3">
+      <div className="bg-dark-900 border-t border-dark-700 px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))]">
+        {/* "Open now — until 8 PM" right above the call button is the fact that
+            converts a walk-in searcher. Compact: no room for the extra clause. */}
+        <div className="flex justify-center pb-2">
+          <OpenNowBadge compact className="text-xs" />
+        </div>
+        <div className="flex gap-3">
         <button
           onClick={handleCall}
           className="flex-1 inline-flex items-center justify-center gap-2 bg-gold-500 text-dark-900 font-display font-bold uppercase tracking-wider text-sm py-3.5 rounded-lg"
@@ -37,6 +44,7 @@ const MobileCTA = () => {
         >
           💬 Text Us
         </a>
+        </div>
       </div>
     </div>
   );
