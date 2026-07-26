@@ -39,8 +39,38 @@ export const REVIEWS_COUNT = 83;
 
 export const COORDS = { lat: 47.3190759, lng: -122.2289829 } as const;
 
+/**
+ * Cities the shop draws from — mirrors the six /{city}-barber area pages.
+ * Feeds `areaServed` in structured data. Keep in sync with the routes.
+ */
+export const AREAS_SERVED = [
+  'Auburn',
+  'Kent',
+  'Federal Way',
+  'Sumner',
+  'Puyallup',
+  'Renton',
+] as const;
+
 export const SITE_URL = 'https://hairmechanics.net';
 export const HERO_IMAGE = `${SITE_URL}/assets/HeroImage.jpg`;
+
+/**
+ * Stable JSON-LD node ids.
+ *
+ * Every schema block on the site points at these instead of re-declaring the
+ * business inline. One consolidated entity is what search engines and LLM
+ * answer engines resolve against — several disconnected BarberShop nodes
+ * describing the same shop dilute it and can be read as separate businesses.
+ *
+ * BUSINESS_ID is declared in index.html (the head template shared by every
+ * prerendered page), so referencing it from any page is always resolvable.
+ */
+export const BUSINESS_ID = `${SITE_URL}/#business`;
+export const BARBER_IDS = {
+  glen: `${SITE_URL}/barber#person`,
+  akshat: `${SITE_URL}/barber/akshat#person`,
+} as const;
 
 export const SOCIAL = {
   instagram: 'https://www.instagram.com/hairmechanics1997',

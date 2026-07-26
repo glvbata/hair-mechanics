@@ -49,18 +49,31 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://hairmechanics.net" />
 
-    <!-- Local Business Schema -->
+    <!-- Local Business Schema
+         Anchored at #business so every other entity on the site (Service pages,
+         barber Person profiles) can reference this one node by @id instead of
+         re-declaring an anonymous BarberShop. One consolidated entity is what
+         search engines and LLM answer engines resolve against; several
+         disconnected copies dilute it. -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "BarberShop",
       "name": "Hair Mechanics LLC",
-      "image": "https://hairmechanics.net/assets/HeroImage.jpg",
+      "image": [
+        "https://hairmechanics.net/assets/HeroImage.jpg",
+        "https://hairmechanics.net/assets/glen.jpg",
+        "https://hairmechanics.net/assets/akshat.jpg"
+      ],
+      "logo": "https://hairmechanics.net/assets/Logo.png",
       "description": "Appointment-friendly barber shop in Auburn, WA open later than most, known for precise cuts. Expert haircuts, fades, beard trims, and grooming for men, women, and kids. Walk-ins welcome, open 7 days a week.",
-      "@id": "https://hairmechanics.net",
+      "@id": "https://hairmechanics.net/#business",
       "url": "https://hairmechanics.net",
       "telephone": "+1-206-399-9288",
       "priceRange": "$$",
+      "paymentAccepted": "Cash, Credit Card, Debit Card",
+      "currenciesAccepted": "USD",
+      "hasMap": "https://www.google.com/maps/place/Hair+Mechanics+LLC",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "1251 A Street Northeast",
@@ -93,6 +106,36 @@
         "https://www.facebook.com/hairmechanics1997",
         "https://www.tiktok.com/@glencelestial",
         "https://www.google.com/maps/place/Hair+Mechanics+LLC"
+      ],
+      "areaServed": [
+        { "@type": "City", "name": "Auburn", "addressRegion": "WA" },
+        { "@type": "City", "name": "Kent", "addressRegion": "WA" },
+        { "@type": "City", "name": "Federal Way", "addressRegion": "WA" },
+        { "@type": "City", "name": "Sumner", "addressRegion": "WA" },
+        { "@type": "City", "name": "Puyallup", "addressRegion": "WA" },
+        { "@type": "City", "name": "Renton", "addressRegion": "WA" }
+      ],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://hairmechanics.net/barber#person",
+        "name": "Glen Celestial",
+        "url": "https://hairmechanics.net/barber"
+      },
+      "employee": [
+        {
+          "@type": "Person",
+          "@id": "https://hairmechanics.net/barber#person",
+          "name": "Glen Celestial",
+          "jobTitle": "Owner & Lead Barber",
+          "url": "https://hairmechanics.net/barber"
+        },
+        {
+          "@type": "Person",
+          "@id": "https://hairmechanics.net/barber/akshat#person",
+          "name": "Akshat Rait",
+          "jobTitle": "Barber",
+          "url": "https://hairmechanics.net/barber/akshat"
+        }
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -135,6 +178,16 @@
               "name": "Line Up / Trim",
               "description": "Quick touch-up between cuts",
               "price": "20.00",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Fade",
+              "description": "Skin, mid, and taper fades with precision blending",
+              "price": "40.00",
               "priceCurrency": "USD"
             }
           }

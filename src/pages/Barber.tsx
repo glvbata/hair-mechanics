@@ -1,8 +1,9 @@
 import PageLayout from '../components/PageLayout';
 import HeroSection from '../components/HeroSection';
 import CTABand from '../components/CTABand';
+import PersonSchema from '../components/PersonSchema';
 import { Phone, Instagram, Scissors, Clock, MapPin } from 'lucide-react';
-import { SITE_URL, SOCIAL } from '../constants/business';
+import { BARBER_IDS, SITE_URL, SOCIAL } from '../constants/business';
 
 const BarberPage = () => (
   <PageLayout
@@ -10,6 +11,16 @@ const BarberPage = () => (
     description="Meet Glen Celestial, owner and lead barber at Hair Mechanics in Auburn, WA. Years of experience, clean fades, precision beard work, and a shop that feels like home."
     canonical={`${SITE_URL}/barber`}
   >
+    <PersonSchema
+      id={BARBER_IDS.glen}
+      name="Glen Celestial"
+      jobTitle="Owner & Lead Barber"
+      description="Owner and lead barber at Hair Mechanics in Auburn, WA. Years of experience behind the chair, specializing in clean fades and precision beard work."
+      image="glen.jpg"
+      url={`${SITE_URL}/barber`}
+      knowsAbout={["Men's haircuts", 'Fades', 'Beard trims', 'Line-ups', 'Barbering']}
+      sameAs={[SOCIAL.instagram, SOCIAL.tiktok]}
+    />
     <HeroSection
       eyebrow="Meet Glen"
       subhead={null}

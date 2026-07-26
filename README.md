@@ -67,10 +67,24 @@ React 18 + TypeScript + Vite + Tailwind CSS 3 + React Router v6. Deployed on **N
 - Each page/component calls `useSEO()` with its own title, description, and canonical.
 
 ### Structured Data (JSON-LD)
-- **BarberShop schema** in `index.html` — name, address, geo, hours, phone, rating, services catalog
-- **AggregateRating** — 4.5 stars, 83 reviews
-- **Service schema** (`ServiceSchema.tsx`) on each of the 6 service pages — individual service + price + provider
-- **FAQPage schema** in the Services component — FAQ accordion with structured data
+
+All entities are anchored by `@id` and reference each other rather than
+re-declaring the business inline. Ids live in `src/constants/business.ts`
+(`BUSINESS_ID`, `BARBER_IDS`).
+
+- **BarberShop schema** in `index.html`, `@id` = `/#business` — name, address, geo,
+  hours, phone, payment, map, logo, image set, `areaServed` (6 cities), services
+  catalog, and `employee`/`founder` refs to the barber Person nodes
+- **Service schema** (`ServiceSchema.tsx`) on each service page — `provider` is a
+  bare `{@id}` ref to `/#business`, so services attach to the one entity
+- **Person schema** (`PersonSchema.tsx`) on `/barber` and `/barber/akshat` —
+  `worksFor` refs `/#business`, closing the loop with its `employee` array
+- **FAQPage schema** in the Services component and on `/auburn-barber` + `/book`
+
+**No `aggregateRating`, deliberately.** Google treats self-serving review markup
+on `LocalBusiness` as a rich-results violation — ratings must come from the
+Google Business Profile, not our own JSON-LD. `RATING` / `REVIEWS_COUNT` in
+`constants/business.ts` are for on-page copy only.
 
 ### Sitemap & Robots
 - `public/sitemap.xml` — all 16 public pages with priorities

@@ -1,8 +1,9 @@
 import PageLayout from '../components/PageLayout';
 import HeroSection from '../components/HeroSection';
 import CTABand from '../components/CTABand';
+import PersonSchema from '../components/PersonSchema';
 import { Phone, Scissors, Clock, MapPin } from 'lucide-react';
-import { SITE_URL } from '../constants/business';
+import { BARBER_IDS, SITE_URL } from '../constants/business';
 
 const BarberAkshatPage = () => (
   <PageLayout
@@ -10,6 +11,15 @@ const BarberAkshatPage = () => (
     description="Meet Akshat Rait, barber at Hair Mechanics in Auburn, WA. Specializing in tapers, skin fades, and modern styles. Walk-ins welcome, open 7 days a week."
     canonical={`${SITE_URL}/barber/akshat`}
   >
+    <PersonSchema
+      id={BARBER_IDS.akshat}
+      name="Akshat Rait"
+      jobTitle="Barber"
+      description="Barber at Hair Mechanics in Auburn, WA. Specializes in skin fades, tapers, and modern styles with sharp lines and smooth blends."
+      image="akshat.jpg"
+      url={`${SITE_URL}/barber/akshat`}
+      knowsAbout={['Skin fades', 'Tapers', "Men's haircuts", 'Modern styles', 'Barbering']}
+    />
     <HeroSection
       eyebrow="Meet Akshat"
       subhead={null}

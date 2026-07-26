@@ -1,4 +1,4 @@
-import { ADDRESS, BUSINESS_LEGAL_NAME, PHONE_TEL, SITE_URL } from '../constants/business';
+import { ADDRESS, AREAS_SERVED, BUSINESS_ID } from '../constants/business';
 
 interface ServiceSchemaProps {
   name: string;
@@ -7,6 +7,15 @@ interface ServiceSchemaProps {
   url: string;
 }
 
+/**
+ * Per-service JSON-LD.
+ *
+ * `provider` is a bare {@id} reference to the BarberShop declared in
+ * index.html rather than an inline copy of the business. Re-declaring name,
+ * address, and phone on five service pages produced five anonymous nodes that
+ * nothing tied back to the shop; the reference makes each service an edge on
+ * the one entity instead.
+ */
 const ServiceSchema = ({ name, description, price, url }: ServiceSchemaProps) => (
   <script
     type="application/ld+json"
@@ -14,30 +23,22 @@ const ServiceSchema = ({ name, description, price, url }: ServiceSchemaProps) =>
       __html: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'Service',
+        '@id': `${url}#service`,
         name,
         description,
-        provider: {
-          '@type': 'BarberShop',
-          name: BUSINESS_LEGAL_NAME,
-          address: {
-            '@type': 'PostalAddress',
-            streetAddress: ADDRESS.street,
-            addressLocality: ADDRESS.city,
-            addressRegion: ADDRESS.region,
-            postalCode: ADDRESS.postal,
-            addressCountry: ADDRESS.country,
-          },
-          telephone: PHONE_TEL,
-          url: SITE_URL,
-        },
-        areaServed: {
+        serviceType: name,
+        provider: { '@id': BUSINESS_ID },
+        areaServed: AREAS_SERVED.map((city) => ({
           '@type': 'City',
-          name: `${ADDRESS.city}, ${ADDRESS.region}`,
-        },
+          name: city,
+          addressRegion: ADDRESS.region,
+        })),
         offers: {
           '@type': 'Offer',
           price,
           priceCurrency: 'USD',
+          availability: 'https://schema.org/InStock',
+          url,
         },
         url,
       }),
