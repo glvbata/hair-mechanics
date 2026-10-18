@@ -62,6 +62,27 @@ export const ROUTE_METADATA = {
     description: 'Looking for a beard trim near me in Auburn, WA? Hair Mechanics offers professional beard trims, shaping, and hot-towel finish. Walk-ins welcome.',
     canonical: `${SITE}/services/beard-trim`,
   },
+  // --- Lead gen (DRAFT) ------------------------------------------------------
+  // Copy owner: Nami (promo-page.md). noindex stays until the page goes live.
+  '/new-client': {
+    lang: 'en',
+    title: 'Free Line-Up With Your First Cut | Hair Mechanics Auburn',
+    description: 'New to Hair Mechanics? Book a $40 Haircut or Fade at 1251 A Street NE, Auburn, and get a free Line Up / Trim within 14 days. Walk-ins welcome.',
+    canonical: `${SITE}/new-client`,
+    noindex: true,
+  },
+  '/privacy': {
+    lang: 'en',
+    title: 'Privacy Policy | Hair Mechanics Auburn',
+    description: `What Hair Mechanics collects on hairmechanics.net, why, and what you can do about it. Plain English. Questions? Call ${PHONE}.`,
+    canonical: `${SITE}/privacy`,
+  },
+  '/terms': {
+    lang: 'en',
+    title: 'SMS Terms | Hair Mechanics Auburn',
+    description: `Terms for Hair Mechanics booking texts: how you join, how often we text, cost, and how to stop. Reply STOP to opt out, HELP for help, or call ${PHONE}.`,
+    canonical: `${SITE}/terms`,
+  },
 };
 
 /**
@@ -72,6 +93,7 @@ export const ROUTE_METADATA = {
  *   canonical: string,
  *   ogLocale?: string,
  *   alternates?: Array<{ hreflang: string, href: string }>,
+ *   noindex?: boolean,
  * }} RouteMeta
  */
 
@@ -109,6 +131,12 @@ export function applyRouteMetadata(template, route) {
   }
   if (meta.ogLocale) {
     insertions.push(`<meta property="og:locale" content="${meta.ogLocale}" />`);
+  }
+  // Draft / hidden routes: the robots tag must be in the static HTML, not
+  // only set by useSEO after hydration, or Google's first crawl indexes it.
+  if (meta.noindex) {
+    html = html.replace(/<meta\s+name="robots"[^>]*\/?>/g, '');
+    insertions.push(`<meta name="robots" content="noindex,nofollow" />`);
   }
 
   // Strip any pre-existing canonical the template might have, to avoid duplicates.

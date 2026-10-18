@@ -34,6 +34,13 @@ const ROUTES = [
   '/barber/akshat',
   '/filipino-barber-auburn',
   '/barberia-auburn-wa',
+  // Lead gen (DRAFT). /new-client is prerendered so ads/GBP links load
+  // instantly, but noindex (see prerender-metadata.mjs) and NOT in
+  // sitemap.xml. /privacy + /terms are footer-only but must be real public
+  // HTML for the 10DLC reviewers.
+  '/new-client',
+  '/privacy',
+  '/terms',
 ];
 
 function routeToFilePath(route, distDir) {

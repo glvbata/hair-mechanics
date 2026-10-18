@@ -25,6 +25,9 @@ import PuyallupPage from './pages/areas/Puyallup';
 import RentonPage from './pages/areas/Renton';
 import FilipinoBarberPage from './pages/FilipinoBarber';
 import BarberiaAuburnPage from './pages/BarberiaAuburn';
+import NewClientPage from './pages/NewClient';
+import PrivacyPage from './pages/Privacy';
+import TermsPage from './pages/Terms';
 import NotFound from './pages/NotFound';
 
 function ServerApp() {
@@ -56,6 +59,10 @@ function ServerApp() {
         {/* Community / niche pages */}
         <Route path="/filipino-barber-auburn" element={<FilipinoBarberPage />} />
         <Route path="/barberia-auburn-wa" element={<BarberiaAuburnPage />} />
+        {/* Lead gen (DRAFT) + legal pages */}
+        <Route path="/new-client" element={<NewClientPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/terms" element={<TermsPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
