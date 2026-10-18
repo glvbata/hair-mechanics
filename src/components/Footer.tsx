@@ -87,6 +87,10 @@ const Footer = () => {
         <div className="border-t border-gray-800 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-center sm:text-left">
           <p className="text-gray-400 text-sm">
             © {new Date().getFullYear()} Hair Mechanics. All rights reserved.
+            {' · '}
+            <Link to="/privacy" className="hover:text-gold-500 transition-colors">Privacy Policy</Link>
+            {' · '}
+            <Link to="/terms" className="hover:text-gold-500 transition-colors">SMS Terms</Link>
           </p>
           <Link
             to={langTarget}

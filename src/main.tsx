@@ -29,6 +29,11 @@ const RentonPage       = lazy(() => import('./pages/areas/Renton.tsx'));
 // Community / niche pages
 const FilipinoBarberPage = lazy(() => import('./pages/FilipinoBarber.tsx'));
 const BarberiaAuburnPage = lazy(() => import('./pages/BarberiaAuburn.tsx'));
+// Lead gen (DRAFT) — /new-client is noindex and off the nav + sitemap until
+// Gian approves; /privacy and /terms are linked from the footer only.
+const NewClientPage    = lazy(() => import('./pages/NewClient.tsx'));
+const PrivacyPage      = lazy(() => import('./pages/Privacy.tsx'));
+const TermsPage        = lazy(() => import('./pages/Terms.tsx'));
 // Internal — hidden, noindex'd, not in sitemap or prerender list
 const InternalSEOPage  = lazy(() => import('./pages/InternalSEO.tsx'));
 const ClientReportPage = lazy(() => import('./pages/ClientReport.tsx'));
@@ -82,6 +87,10 @@ const AppWithScrollRestoration = () => (
         {/* Community / niche pages */}
         <Route path="/filipino-barber-auburn" element={<FilipinoBarberPage />} />
         <Route path="/barberia-auburn-wa" element={<BarberiaAuburnPage />} />
+        {/* Lead gen (DRAFT) + legal pages. /new-client: noindex, not in sitemap/nav. */}
+        <Route path="/new-client" element={<NewClientPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/terms" element={<TermsPage />} />
         {/* Internal SEO dashboard — hidden URL, noindex, not in sitemap */}
         <Route path="/_internal/seo" element={<InternalSEOPage />} />
         {/* Client-facing performance report — shareable, noindex, not in sitemap */}

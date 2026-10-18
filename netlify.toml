@@ -2,6 +2,12 @@
   command = "npm run build"
   publish = "dist"
 
+# Serverless functions (lead form handler). Reached at /.netlify/functions/<name>.
+# Env vars SUPABASE_URL + SUPABASE_ANON_KEY turn on storage; without them the
+# lead function runs in demo mode (logs only). See docs/lead-gen.md.
+[functions]
+  directory = "netlify/functions"
+
 # Branded short link for review requests — /review is now a real static page
 # (public/review/index.html) rather than a 301, so the scan fires a GA4
 # review_click before bouncing to Google. A 301 was invisible: we could never

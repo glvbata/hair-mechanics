@@ -14,11 +14,13 @@ interface PageLayoutProps {
   lang?: string;
   /** hreflang alternates — declares same-content URLs in other languages. */
   alternates?: Array<{ hreflang: string; href: string }>;
+  /** Emit <meta name="robots" content="noindex,nofollow"> — for draft/hidden pages. */
+  noindex?: boolean;
   children: React.ReactNode;
 }
 
-const PageLayout = ({ title, description, canonical, schema, schemaId, lang, alternates, children }: PageLayoutProps) => {
-  useSEO({ title, description, canonical, schema, schemaId, lang, alternates });
+const PageLayout = ({ title, description, canonical, schema, schemaId, lang, alternates, noindex, children }: PageLayoutProps) => {
+  useSEO({ title, description, canonical, schema, schemaId, lang, alternates, noindex });
 
   return (
     <div className="min-h-screen bg-dark-800 text-white">

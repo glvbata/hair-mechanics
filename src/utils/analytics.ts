@@ -29,3 +29,13 @@ export const trackGalleryView = (imageIndex: number) =>
   track('gallery_image_view', { image_index: String(imageIndex) });
 export const trackSocialClick = (platform: string) =>
   track('social_click', { platform });
+
+/**
+ * GA4 recommended event `generate_lead`. Fire ONLY after the lead function
+ * returns ok — never on button click — so the count matches the leads table.
+ */
+export const trackGenerateLead = (params: {
+  service: string;
+  source: string;
+  sms_consent: 'yes' | 'no';
+}) => track('generate_lead', params);
