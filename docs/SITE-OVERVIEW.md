@@ -130,6 +130,8 @@ Single source of truth for name/address/phone/hours/prices/socials: `src/constan
 ### 5g. Security headers (`netlify.toml`)
 Full CSP (allowlisted: GA4, Google Ads, Maps embed, Google Fonts), HSTS with preload, X-Frame-Options DENY, nosniff, strict referrer policy, locked-down Permissions-Policy.
 
+**Watch out:** Google moves gtag's collection endpoints. Until 2026-11-16 `connect-src` blocked `analytics.google.com`, `www.google.com/g/collect` and the doubleclick hosts, so GA4 hits were refused in the browser and nothing showed up as broken. If GA4 numbers drop suddenly, open any page and look for "Content Security Policy" errors in the console first.
+
 ---
 
 ## 6. Google wiring — analytics, ads, search
