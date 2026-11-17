@@ -1,127 +1,81 @@
 /**
- * Route → head-tag metadata used during prerender.
+ * Bake a page's SEO props into its prerendered <head>.
  *
- * Why this exists: the site uses useSEO (a useEffect hook) to manage <title>,
- * <meta>, hreflang, and JSON-LD. useEffect doesn't run during renderToString,
- * so the prerendered HTML otherwise has the static index.html head on every
- * route. Google's first crawl reads that static HTML — for English pages the
- * default is "good enough," but for the Spanish landing it actively hurts
- * (an es-language URL served with <html lang="en"> and an English title is
- * a contradictory signal).
+ * Why this exists: useSEO manages <title>, meta, canonical, hreflang and
+ * JSON-LD inside a useEffect, and useEffect never runs during renderToString.
+ * Before this, the static HTML for 21 of 26 routes carried the homepage's
+ * title and canonical — telling Google on first crawl that every service page
+ * and blog post was a duplicate of the homepage.
  *
- * This file is the prerender-time source of truth. Routes not listed here
- * keep the default index.html head and rely on client-side useSEO to mutate
- * it post-hydration (which Google handles via JS rendering, slower but works).
- *
- * Keep entries here in sync with what each page's useSEO call declares.
+ * Source of truth is each page's own useSEO call: useSEO records its props
+ * during SSR (takeSSRSEO in src/utils/useSEO.ts) and prerender.mjs passes them
+ * here. There is no hand-kept route list to drift out of sync.
  */
 
 const SITE = 'https://hairmechanics.net';
-const PHONE = '(206) 399-9288';
-
-/** @type {Record<string, RouteMeta>} */
-export const ROUTE_METADATA = {
-  '/': {
-    lang: 'en',
-    title: 'Haircut Near Me | Barbershop in Auburn, WA | Hair Mechanics',
-    description: `Looking for a haircut near you in Auburn, WA? Hair Mechanics is Auburn's top-rated barber shop — expert haircuts, fades, beard trims, and kids' cuts. Walk-ins welcome, open 7 days. Call ${PHONE}.`,
-    canonical: SITE,
-    alternates: [
-      { hreflang: 'en', href: SITE },
-      { hreflang: 'es', href: `${SITE}/barberia-auburn-wa` },
-      { hreflang: 'x-default', href: SITE },
-    ],
-  },
-  '/barberia-auburn-wa': {
-    lang: 'es',
-    title: 'Barbería en Auburn, WA | Cortes de Pelo y Degradados | Hair Mechanics',
-    description: `¿Buscando una barbería cerca de mi en Auburn, WA? Hair Mechanics — cortes de pelo, degradados, arreglo de barba. Walk-ins bienvenidos, abiertos 7 días. Llame al ${PHONE}.`,
-    canonical: `${SITE}/barberia-auburn-wa`,
-    ogLocale: 'es_US',
-    alternates: [
-      { hreflang: 'es', href: `${SITE}/barberia-auburn-wa` },
-      { hreflang: 'en', href: SITE },
-      { hreflang: 'x-default', href: SITE },
-    ],
-  },
-  '/filipino-barber-auburn': {
-    lang: 'en',
-    title: 'Filipino Barber in Auburn, WA | Hair Mechanics',
-    description: `Looking for a Filipino barber in Auburn, WA? Hair Mechanics cuts Filipino hair every day — taper fades, side parts, modern styles. Walk-ins welcome. 4.9★ on Google. Call ${PHONE}.`,
-    canonical: `${SITE}/filipino-barber-auburn`,
-  },
-  '/auburn-barber': {
-    lang: 'en',
-    title: 'Barbershop in Auburn, WA | Haircut Near Me | Hair Mechanics',
-    description: `Looking for a barbershop in Auburn, WA? Hair Mechanics is Auburn's top-rated barber shop — expert haircuts, fades, beard trims, and kids' cuts. Walk-ins welcome, open 7 days. Call ${PHONE}.`,
-    canonical: `${SITE}/auburn-barber`,
-  },
-  '/services/beard-trim': {
-    lang: 'en',
-    title: 'Beard Trim Near Me | Beard Shaping in Auburn, WA | Hair Mechanics',
-    description: 'Looking for a beard trim near me in Auburn, WA? Hair Mechanics offers professional beard trims, shaping, and hot-towel finish. Walk-ins welcome.',
-    canonical: `${SITE}/services/beard-trim`,
-  },
-};
 
 /**
- * @typedef {{
- *   lang: 'en' | 'es' | string,
- *   title: string,
- *   description: string,
- *   canonical: string,
- *   ogLocale?: string,
- *   alternates?: Array<{ hreflang: string, href: string }>,
- * }} RouteMeta
+ * @param {string} template  index.html with the app markup already injected
+ * @param {import('./src/utils/useSEO').SEOProps} seo
+ * @returns {string}
  */
-
-/**
- * Apply route metadata to an HTML template by patching <html lang>, <title>,
- * description meta, canonical link, and hreflang alternates. Returns the
- * patched HTML string.
- */
-export function applyRouteMetadata(template, route) {
-  const meta = ROUTE_METADATA[route];
-  if (!meta) return template;
-
+export function applySEO(template, seo) {
+  const lang = seo.lang || 'en';
+  const image = seo.ogImage ? absolute(seo.ogImage) : null;
   let html = template;
 
-  // <html lang="...">
-  html = html.replace(/<html[^>]*lang="[^"]*"/, `<html lang="${meta.lang}"`);
+  html = html.replace(/<html[^>]*lang="[^"]*"/, `<html lang="${lang}"`);
+  html = html.replace(/<title>[^<]*<\/title>/, `<title>${esc(seo.title)}</title>`);
+  html = setMeta(html, 'name', 'title', seo.title);
+  html = setMeta(html, 'name', 'description', seo.description);
+  html = setMeta(html, 'name', 'robots', seo.noindex ? 'noindex, nofollow' : 'index, follow');
 
-  // <title>
-  html = html.replace(/<title>[^<]*<\/title>/, `<title>${escapeHtml(meta.title)}</title>`);
-
-  // <meta name="description">
-  html = html.replace(
-    /<meta\s+name="description"\s+content="[^"]*"\s*\/?>/,
-    `<meta name="description" content="${escapeHtml(meta.description)}" />`,
-  );
-
-  // Drop any existing canonical / hreflang links and rewrite. Insert before
-  // </head> to keep them grouped.
-  const insertions = [];
-  insertions.push(`<link rel="canonical" href="${meta.canonical}" />`);
-  if (meta.alternates) {
-    for (const alt of meta.alternates) {
-      insertions.push(`<link rel="alternate" hreflang="${alt.hreflang}" href="${alt.href}" />`);
-    }
+  html = setMeta(html, 'property', 'og:title', seo.title);
+  html = setMeta(html, 'property', 'og:description', seo.description);
+  html = setMeta(html, 'property', 'twitter:title', seo.title);
+  html = setMeta(html, 'property', 'twitter:description', seo.description);
+  if (seo.canonical) {
+    html = setMeta(html, 'property', 'og:url', seo.canonical);
+    html = setMeta(html, 'property', 'twitter:url', seo.canonical);
   }
-  if (meta.ogLocale) {
-    insertions.push(`<meta property="og:locale" content="${meta.ogLocale}" />`);
+  if (image) {
+    html = setMeta(html, 'property', 'og:image', image);
+    html = setMeta(html, 'property', 'twitter:image', image);
   }
 
-  // Strip any pre-existing canonical the template might have, to avoid duplicates.
-  html = html.replace(/<link\s+rel="canonical"[^>]*\/?>/g, '');
-  html = html.replace(/<link\s+rel="alternate"\s+hreflang="[^"]+"[^>]*\/?>/g, '');
+  // Canonical + hreflang: drop the template's copies, then write this page's.
+  html = html.replace(/<link\s+rel="canonical"[^>]*\/?>\s*/g, '');
+  html = html.replace(/<link\s+rel="alternate"\s+hreflang="[^"]+"[^>]*\/?>\s*/g, '');
 
-  html = html.replace('</head>', `${insertions.join('\n    ')}\n  </head>`);
+  const head = [];
+  if (seo.canonical && !seo.noindex) head.push(`<link rel="canonical" href="${esc(seo.canonical)}" />`);
+  for (const alt of seo.alternates ?? []) {
+    head.push(`<link rel="alternate" hreflang="${esc(alt.hreflang)}" href="${esc(alt.href)}" />`);
+  }
+  head.push(`<meta property="og:locale" content="${lang === 'es' ? 'es_US' : 'en_US'}" />`);
+  if (seo.schema) {
+    // Same id useSEO uses, so the client reuses this node instead of adding a second copy.
+    const id = seo.schemaId || 'page-schema';
+    const json = JSON.stringify(seo.schema).replace(/</g, '\\u003c');
+    head.push(`<script type="application/ld+json" id="${esc(id)}">${json}</script>`);
+  }
 
-  return html;
+  return html.replace('</head>', `  ${head.join('\n    ')}\n  </head>`);
 }
 
-function escapeHtml(s) {
-  return s
+/** Replace an existing <meta {attr}="{key}" content="…"> tag, or append one before </head>. */
+function setMeta(html, attr, key, value) {
+  const re = new RegExp(`<meta\\s+${attr}="${key.replace('.', '\\.')}"\\s+content="[^"]*"\\s*\\/?>`);
+  const tag = `<meta ${attr}="${key}" content="${esc(value)}">`;
+  return re.test(html) ? html.replace(re, tag) : html.replace('</head>', `  ${tag}\n  </head>`);
+}
+
+function absolute(url) {
+  return url.startsWith('/') ? `${SITE}${url}` : url;
+}
+
+function esc(s) {
+  return String(s)
     .replace(/&/g, '&amp;')
     .replace(/"/g, '&quot;')
     .replace(/</g, '&lt;')

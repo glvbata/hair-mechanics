@@ -28,7 +28,9 @@ Business website for **Hair Mechanics LLC**, a barbershop in Auburn, WA owned by
 - **Build-time prerendering** (`prerender.mjs`) — this is the important part
 - **Netlify** hosting with SPA fallback + custom headers (`netlify.toml`)
 
-**The lesson:** this started as a client-only React SPA — meaning Google's first look at every page was an empty `<div id="root">`. We had to **bolt on a prerender step** that renders all 26 routes to real, static HTML files at build time (`dist/auburn-barber/index.html`, etc.), including per-route `<title>`, meta description, canonical, and hreflang tags (`prerender-metadata.mjs`). Search engines now get finished HTML instantly; React "hydrates" on top for interactivity.
+**The lesson:** this started as a client-only React SPA — meaning Google's first look at every page was an empty `<div id="root">`. We had to **bolt on a prerender step** that renders all 26 routes to real, static HTML files at build time (`dist/auburn-barber.html`, etc.), including per-route `<title>`, meta description, canonical, hreflang, OG tags and page JSON-LD (`prerender-metadata.mjs`). Search engines now get finished HTML instantly; React "hydrates" on top for interactivity.
+
+**The second lesson (2026-11-16):** until then only 5 routes had hand-written head tags; the other 21 shipped the homepage's title **and canonical** in their static HTML, so Google's first read of every service page and blog post said "I'm a copy of the homepage." Now `useSEO` records its props during SSR and the prerender bakes them in, so each page's own `useSEO` call is the only source. The build fails if a route never calls `useSEO` or has no canonical. Files are `foo.html`, not `foo/index.html`, because Netlify 301s `/foo` → `/foo/` when a folder index exists. There is no SPA catch-all: unknown URLs get `dist/404.html` with a real 404 status.
 
 The build command chain (`package.json`):
 
@@ -98,7 +100,7 @@ Posts cross-link to each other and to service pages.
 
 ### 5b. Per-page titles & descriptions
 - `src/utils/useSEO.ts` sets title / meta description / OG / Twitter / canonical on every route change (client-side).
-- `prerender-metadata.mjs` bakes the same into the static HTML at build time for the routes where first-crawl correctness matters most (home, Spanish page, key service/area pages).
+- `prerender-metadata.mjs` bakes the same props into every route's static HTML at build time (captured from `useSEO` during SSR — no separate list to keep in sync).
 
 ### 5c. Structured data (JSON-LD) — the machine-readable layer
 | Schema | Where | Notes |
@@ -200,7 +202,7 @@ Rating gap is the #1 constraint: 4.5★/83 vs competitors at ~4.8★/several hun
 1. **Every change must be deployable** — push to `main` = live. Check `netlify.toml` implications.
 2. **SEO first** — any content/structure change should consider ranking impact.
 3. **Business facts change in one place** — `src/constants/business.ts`, never inline.
-4. **New route? Three updates**: `main.tsx` routes, `prerender.mjs` ROUTES list, `public/sitemap.xml` (+ optional `prerender-metadata.mjs` entry).
+4. **New route? Four updates**: `main.tsx` routes, `entry-server.tsx` routes, `prerender.mjs` ROUTES list, `public/sitemap.xml`. A route missing from ROUTES is a **real 404** on the live site (no SPA catch-all). The page must call `useSEO` with a canonical or the build fails. Retired URLs get a 301 in `netlify.toml`.
 5. **One FAQPage schema per URL.** Schema must match visible content.
 6. **Don't change business info without confirming with Gian** — Glen's details are real.
 7. Reports get committed (audit trail); OAuth tokens never do (`.secrets/` is gitignored).

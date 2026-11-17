@@ -3,6 +3,7 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
 import { Routes, Route } from 'react-router-dom';
 import App from './App';
+import { takeSSRSEO, type SEOProps } from './utils/useSEO';
 
 // Sync imports for SSR — lazy() doesn't work server-side
 import GalleryPage from './pages/Gallery';
@@ -62,10 +63,11 @@ function ServerApp() {
   );
 }
 
-export function render(url: string): string {
-  return renderToString(
+export function render(url: string): { html: string; seo: SEOProps | null } {
+  const html = renderToString(
     <StaticRouter location={url}>
       <ServerApp />
     </StaticRouter>
   );
+  return { html, seo: takeSSRSEO() };
 }

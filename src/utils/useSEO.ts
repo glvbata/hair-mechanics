@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { HERO_IMAGE, PHONE_DISPLAY, SITE_URL } from '../constants/business';
 
-interface SEOProps {
+export interface SEOProps {
   title: string;
   description: string;
   canonical?: string;
@@ -43,7 +43,21 @@ const setMetaTag = (property: string, content: string, isProperty = false) => {
   }
 };
 
-export const useSEO = ({ title, description, canonical, ogImage, schema, schemaId, noindex, lang, alternates }: SEOProps) => {
+// Prerender capture. useEffect never runs inside renderToString, so without
+// this every prerendered page shipped the homepage's <title> and canonical.
+// During SSR we record the page's props instead; prerender.mjs bakes them into
+// that page's static <head>. This hook stays the single source of truth.
+let ssrSEO: SEOProps | null = null;
+export const takeSSRSEO = (): SEOProps | null => {
+  const seo = ssrSEO;
+  ssrSEO = null;
+  return seo;
+};
+
+export const useSEO = (props: SEOProps) => {
+  if (typeof window === 'undefined') ssrSEO = props;
+  const { title, description, canonical, ogImage, schema, schemaId, noindex, lang, alternates } = props;
+
   useEffect(() => {
     document.title = title;
 
