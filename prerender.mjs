@@ -2,7 +2,7 @@ import { createServer } from 'vite';
 import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { applyRouteMetadata } from './prerender-metadata.mjs';
+import { applySEO } from './prerender-metadata.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -36,12 +36,15 @@ const ROUTES = [
   '/barberia-auburn-wa',
 ];
 
+// /foo → dist/foo.html, not dist/foo/index.html. Netlify 301s /foo → /foo/
+// whenever a folder index exists, which put a redirect on every URL in the
+// sitemap and contradicted the no-slash canonicals. A .html file is served at
+// /foo directly.
 function routeToFilePath(route, distDir) {
   if (route === '/') return resolve(distDir, 'index.html');
-  // /foo → dist/foo/index.html  (works with Netlify's SPA + static serving)
-  const dir = resolve(distDir, route.replace(/^\//, ''));
-  mkdirSync(dir, { recursive: true });
-  return resolve(dir, 'index.html');
+  const file = resolve(distDir, `${route.replace(/^\//, '')}.html`);
+  mkdirSync(dirname(file), { recursive: true });
+  return file;
 }
 
 async function prerender() {
@@ -64,25 +67,30 @@ async function prerender() {
         `<noscript><link rel="stylesheet" href="${href}"></noscript>`
     );
 
+    const renderPage = (route) => {
+      const { html: appHtml, seo } = render(route);
+      // Fail the build rather than ship a page with the homepage's head tags.
+      if (!seo) throw new Error(`${route}: page never called useSEO`);
+      const html = asyncCssTemplate.replace(
+        `<div id="root"></div>`,
+        `<div id="root">${appHtml}</div>`
+      );
+      return { html, seo };
+    };
+
+    // Any failure is fatal: there is no SPA catch-all anymore, so a route that
+    // isn't prerendered would be a real 404 on the live site.
     for (const route of ROUTES) {
-      try {
-        const appHtml = render(route);
-        // Body injection
-        let html = asyncCssTemplate.replace(
-          `<div id="root"></div>`,
-          `<div id="root">${appHtml}</div>`
-        );
-        // Per-route head metadata (title, html lang, description, canonical,
-        // hreflang alternates). Falls back to template defaults for routes
-        // without metadata — useSEO still mutates them client-side post-hydration.
-        html = applyRouteMetadata(html, route);
-        const filePath = routeToFilePath(route, distDir);
-        writeFileSync(filePath, html);
-        console.log(`✓ Prerendered: ${route}`);
-      } catch (err) {
-        console.warn(`⚠ Skipped ${route}: ${err.message}`);
-      }
+      const { html, seo } = renderPage(route);
+      if (!seo.canonical) throw new Error(`${route}: useSEO has no canonical`);
+      writeFileSync(routeToFilePath(route, distDir), applySEO(html, seo));
+      console.log(`✓ Prerendered: ${route}  →  ${seo.canonical}`);
     }
+
+    // Netlify serves dist/404.html with a real 404 status for unknown URLs.
+    const notFound = renderPage('/__not-found__');
+    writeFileSync(resolve(distDir, '404.html'), applySEO(notFound.html, { ...notFound.seo, noindex: true }));
+    console.log('✓ Prerendered: 404.html');
   } finally {
     await vite.close();
   }

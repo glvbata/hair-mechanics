@@ -9,15 +9,52 @@
 # reviewed". The page self-redirects in ~2s, so the friction cost is ~nil.
 #
 # The Google destination now lives in that file. Netlify resolves /review to
-# /review/index.html automatically, and static files beat the SPA catch-all
-# below, so no explicit rule is needed.
+# /review/index.html automatically, so no explicit rule is needed.
 #
 # NOTE: the old rule was a 301, which browsers cache indefinitely. Anyone who
 # already scanned the card will keep skipping straight to Google. Their reviews
 # still land, they just won't show in GA4. Use 302 for anything like this later.
 
+# No SPA catch-all. Every public route is prerendered to its own .html file
+# (prerender.mjs), so an unknown URL now gets dist/404.html with a real 404
+# status. The old "/* → /index.html 200" rule answered every junk URL with the
+# homepage and a 200 — soft 404s that Google can index as homepage duplicates.
+# Only the hidden dashboards are client-rendered, so only they get the SPA shell.
+
+# Retired URLs that were once in the sitemap. They used to soft-404 to the
+# homepage; send them (and any links they still have) to the closest live page.
 [[redirects]]
-  from = "/*"
+  from = "/services/womens-cut"
+  to = "/services/haircut"
+  status = 301
+
+[[redirects]]
+  from = "/blog/top-mens-haircut-trends-2025"
+  to = "/blog/top-mens-haircut-trends-2026"
+  status = 301
+
+[[redirects]]
+  from = "/blog/evolution-of-mens-hairstyles"
+  to = "/blog"
+  status = 301
+
+[[redirects]]
+  from = "/blog/haircut-for-your-face-shape"
+  to = "/blog"
+  status = 301
+
+[[redirects]]
+  from = "/blog/quick-fixes-for-bad-hair-days"
+  to = "/blog"
+  status = 301
+
+[[redirects]]
+  from = "/blog/ultimate-hair-product-guide"
+  to = "/blog"
+  status = 301
+
+[[redirects]]
+  from = "/_internal/*"
   to = "/index.html"
   status = 200
 
@@ -36,7 +73,11 @@
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
     # CSP: GA4 + Google Ads + Google Maps embed; inline style/script allowed for
     # React-injected JSON-LD, Tailwind runtime classes, and GA inline bootstrap.
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://region1.google-analytics.com https://googleads.g.doubleclick.net; frame-src https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+    # connect-src follows Google's published CSP list for GA4 + Ads. gtag now
+    # sends hits to analytics.google.com, www.google.com/g/collect,
+    # stats.g.doubleclick.net and ad.doubleclick.net; the old list allowed none
+    # of them, so page_view and event hits were refused (seen 2026-11-16).
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://ad.doubleclick.net https://www.google.com https://www.googleadservices.com https://pagead2.googlesyndication.com; frame-src https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
 
 [[headers]]
   for = "/*.html"
